@@ -15,7 +15,11 @@ class CreateRegistFosterTable extends Migration
     {
         Schema::create('registFoster', function (Blueprint $table) {
             $table->integer('users_id');
-            $table->timestamps();
+            $table->string('name');
+            $table->string('gender');
+            $table->integer('age');
+            $table->string('addressNumber');
+            $table->string('address');
         });
     }
 
