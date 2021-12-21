@@ -134,7 +134,7 @@
                             <a href="#">利用規約を確認する<a> 
                             <!-- <input id="name" type="checkbox" class="" name="name" value="女性" required autocomplete="name" autofocus><label class="form-check-label">利用規約に同意する</label> -->
                         </div>
-                        <input type='hidden' name='status'value=1>
+                        <input type='hidden' name='status'value=0>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

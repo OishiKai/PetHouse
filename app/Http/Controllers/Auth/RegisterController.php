@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\RegistFoster;
 
 class RegisterController extends Controller
 {
@@ -68,6 +69,17 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // dd($data);
+        if($data['status'] == 0){
+            $postalcode = "{$data['zip21']}-{$data['zip22']}";
+            $registfoster = RegistFoster::insertGetId([
+                'user_email' => $data['email'],
+                'name' => $data['name'], 
+                'gender' => $data['gender'],
+                'age' => $data['age'],
+                'postalCode' => $postalcode,
+                'address' => $data['addr21'],
+            ]);
+        }
         return User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
