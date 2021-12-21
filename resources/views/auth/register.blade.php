@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('head')
+<script src="{{ asset('js/formSwitch.js') }}" defer></script>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+@endsection
+
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -12,7 +18,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('ニックネーム') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -61,6 +67,73 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('お名前') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="kanjiFamiliyName" value="{{ old('kanjiFamiliyName') }}" placeholder="名字">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="kanjiFirstName" value="{{ old('kanjiFirstName') }}" placeholder="名前">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="kanaFamiliyName" value="{{ old('kanaFamiliyName') }}" placeholder="フリガナ(名字)">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="kanaFirstName" value="{{ old('kanaFirstName') }}" placeholder="フリガナ(名前)">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('性別・年齢') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="radio" class="" name="gender" value="男性" cheched><label class="form-check-label">男性</label>
+                                <input type="radio" class="" name="gender" value="女性"><label class="form-check-label">女性</label>
+                                <input id="name" type="number" class="" name="age"><label class="form-check-label">歳</label>
+                                <!-- @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror -->
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('電話番号') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="number" class="form-control @error('name') is-invalid @enderror" name="phonenumber" value="{{ old('phonenumber') }}">
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('住所') }}</label>
+
+                            <div class="col-md-6">
+                                <!-- ▼郵便番号入力フィールド(3桁+4桁) -->
+                                <input type="text" name="zip21" size="4" maxlength="3"> － <input type="text" name="zip22" size="5" maxlength="4" onKeyUp="AjaxZip3.zip2addr('zip21','zip22','addr21','addr21');">
+                                <!-- ▼住所入力フィールド(都道府県+以降の住所) -->
+                                <input type="text" name="addr21" size="40">
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('利用規約') }}</label>
+                            <a href="#">利用規約を確認する<a> 
+                            <!-- <input id="name" type="checkbox" class="" name="name" value="女性" required autocomplete="name" autofocus><label class="form-check-label">利用規約に同意する</label> -->
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
