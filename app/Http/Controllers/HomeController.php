@@ -26,8 +26,8 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function switchForm()
+    public function questionnaire()
     {
-        return view('switchForm');
+        return view('');
     }
 }
