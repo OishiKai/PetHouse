@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/baseScript.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,114 +19,90 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/baseStyle.css') }}" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/307140e2a3.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
         <!--header-->
         <div id="top" >
             <div class="top-logo">
-                <a href="./index.html">
-                    <img src="/css/img/logo.png" alt="logo-image" width="350px" height="150px">
+                <a href="./base.html">
+                    <img src="{{ asset('js/img/logo-removebg-preview (3).png') }}" alt="logo-image">
                 </a>
             </div>
-            <div class="top-menu">
-                    <a class="loginmenu1" href="#">会員ログイン</a>
-                    <a class="loginmenu" href="#">お気に入り</a>
-                    <a class="loginmenu" href="#">申し込み・お問い合わせ一覧</a>
-                    <a class="loginmenu" href="#">よくある質問</a>
-        </div>
+                <div class="top-menu">
+                    <a class="loginmenu" href="form.html" title="会員登録・ログイン">
+                        <i class="far fa-user-circle" style="font-size: 40px;"></i><br>会員登録・ログイン
+                    </a>
+                    <a class="loginmenu" href="#" title="お気に入り">
+                        <i class="fas fa-heart" style="font-size: 40px;"></i><br>お気に入り
+                    </a>
+                    <a class="loginmenu" href="#" title="メッセージ">
+                        <i class="fas fa-comments" style="font-size: 40px;"></i><br>メッセージ
+                    </a>
+                    <a class="loginmenu" href="#" title="よくある質問">
+                        <i class="fas fa-question" style="font-size: 40px;"></i><br>よくある質問
+                    </a>
+               
+                </div>
         </div> 
-        <!--header-->
-        <!--navigation-->
-            <div id="nav">
-                <div class="bar-button-left">
-                        <a  href="#">初めての方</a>
-                        <a  href="#">里親応募者・希望者向けご案内</a>
-                        <a href="#">ペットを探す</a>
-                </div>
-                <div class="bar-button-right">
-                        <a href="#">サイトへのお問い合わせ</a>
-                </div>
-            </div>
-        
     
-    <!--navigation-->
-
-        <!--wrapper-->
-            <div id="wrapper">
-                <div class="page-intro">
-                    <p>Pet House......</p>
-                </div>
-                <div class="wp-menu">
-                    <ul class="wp-mn-left">
-                        <h1>里親になりたい方</h1>
-                        <li><a href="#">募集中のペットを探す</a></li>
-                        <li><a href="#">＞里親応募の流れ</a></li>
-                    </ul>
-                    <ul class="wp-mn-right">
-                        <h1>里親を募集したい方</h1>
-                        <li><a href="#">里親募集者登録を行う</a></li>
-                        <li><a href="#">＞里親を見つけるまでの流れ</a></li>
-                    </ul>
-                </div>
+        <!--navigation-->
+        <div id="nav">
+            <div class="bar-button-left">
+                    <a class="bar" href="base.html">HOME<br>--Pet House Top--</a>
+                    <a class="bar" href="#">PET ROOM<br>--犬・猫 検索--</a>
+                    <a class="bar" href="#">お問い合わせ<br>--サイトに対して--</a>
             </div>
-            
+        </div>
+
+        <br><br>
         
-        <!--wrapper-->
-
-        <!--main content-->
-
-        @yield('content')
-
-        <!--main content-->
-
-
-
-
+        <main class="py-4">
+            @yield('content')
+        </main>
         
+        <br><br>
+    </div>
+    
+    
+    
+    <div class="scrolltoTopbtn">
+      <i class="fas fa-angle-up" style="font-size:60px;" title="トップページへ"></i><br>
+      
+    </div>
 
 
         <!--footer-->
         <footer>
-            <div id="footer">
-                <div class="footer-logo">
-                    <a href="./index.html">
-                        <img src="/css/img/logo.png" alt="logo-image" width="200px" height="100px">
-                    </a>
-                </div>
-                <div class="footer-content">
-                
-                    <ul>
-                        <h2>ご利用案内</h2>
-                        <li><a href="#">初めての方</a></li>
-                        <li><a href="#">里親応募・募集案内</a></li>
-                        <li><a href="#">サイトのご利用案内</a></li>
-                        <li><a href="#">利用規約</a></li>
-                        <li><a href="#">個人情報保護方針(プライバシーポリシー)</a></li>
-                    </ul>
-                    <ul>
-                        <h2>会員</h2>
-                        <li> <a href="#">会員ログイン</a> </li>
-                        <li> <a href="#">会員登録(無料)</a></li>
-                        <li><a href="#">お気に入り一覧</a></li>
-                    </ul>
-                    <ul>
-                        <h2>その他</h2>
-                        <li><a href="#">お気に入り登録</a></li>
-                        <li><a href="#">特集記事</a></li>
-                        <li><a href="#">ペット保障のお勧め</a></li>
-                        <li><a href="#">ペットを探す</a></li>
-                    </ul>
-                    <ul>
-                        <h2>サポート</h2>
-                        <li><a href="#">よくある質問</a></li>
-                        <li><a href="#">サイト(事務局)へのお問い合わせ</a></li>
-                        <li><a href="#">メンテナンス</a></li>
-                        <li><a href="#">保障情報</a></li>
-                    </ul>
+            <div id="footer_nav">
+                <a class="footer-logo" href="./base.html">
+                    <img src="{{ asset('js/img/logo-removebg-preview (3).png') }}" alt="footer-logo-image">
+                </a>
+                <div class="footer-main">
+                <ul><h2>サイト案内</h2>
+                    <li><a href="#">TOPページ</a></li>
+                    <li><a href="#">よくある質問</a></li>
+                    <li><a href="#">サイトのお問い合わせ</a></li>
+                </ul>
+                <ul><h2>会員</h2>
+                    <li><a href="#">会員ログイン</a></li>
+                    <li><a href="#">会員登録(無料)</a></li>
+                </ul>
+                <ul><h2>その他</h2>
+                    <li><a href="#">お気に入り一覧</a></li>
+                    <li><a href="#">メッセージ</a></li>
+                </ul>
                 </div>
             </div>
-            <p class="copyright">COPYRIGHT© 2022 PET HOUSE ALL RIGHTS RESERVED.</p>
+            <small>&copy; copyright</small>
+            
         </footer>
-        <!--footer-->
     </body>
 </html>
