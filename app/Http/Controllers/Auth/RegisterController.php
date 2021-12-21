@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\RegistFoster;
 
 class RegisterController extends Controller
 {
@@ -49,9 +50,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'kanjiFamiliyName' => ['required', 'string', 'max:25'],
+            'kanjiFirstName' => ['required', 'string', 'max:25'],
+            'kanaFamiliyName' => ['required', 'string', 'max:25'],
+            'kanaFirstName' => ['required', 'string', 'max:25'],
+            'phonenumber' => ['required', 'integer', 'max:25'],
         ]);
     }
 
@@ -63,10 +68,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
+        if($data['status'] == 0){
+            $postalcode = "{$data['zip21']}-{$data['zip22']}";
+            $registfoster = RegistFoster::insertGetId([
+                'user_email' => $data['email'],
+                'name' => $data['name'], 
+                'gender' => $data['gender'],
+                'age' => $data['age'],
+                'postalCode' => $postalcode,
+                'address' => $data['addr21'],
+            ]);
+        }
         return User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'kanjiFamiliyName'=> $data['kanjiFamiliyName'],
+            'kanjiFirstName'=> $data['kanjiFirstName'],
+            'kanaFamiliyName'=> $data['kanaFamiliyName'],
+            'kanaFirstName'=> $data['kanaFirstName'],
+            'phonenumber'=> $data['phonenumber'],
+            'status'=> $data['status'],
         ]);
     }
 }

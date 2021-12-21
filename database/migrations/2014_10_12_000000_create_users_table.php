@@ -15,12 +15,18 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->integer('status');//里親or保護活動者を判断する値。 0=> 里親, 1=>保護活動者
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            $table->string('kanjiFamiliyName');
+            $table->string('kanjiFirstName');
+            $table->string('kanaFamiliyName');
+            $table->string('kanaFirstName');
+            $table->integer('phonenumber');
+        
             $table->timestamps();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
         });
     }
 
