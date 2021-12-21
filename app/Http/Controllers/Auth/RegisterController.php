@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\RegistFoster;
+use App\Fosterquestionnaire;
 
 class RegisterController extends Controller
 {
@@ -68,7 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // dd($data);
+        dd($data);
         if($data['status'] == 0){
             $postalcode = "{$data['zip21']}-{$data['zip22']}";
             $registfoster = RegistFoster::insertGetId([
@@ -79,6 +80,7 @@ class RegisterController extends Controller
                 'postalCode' => $postalcode,
                 'address' => $data['addr21'],
             ]);
+            // $initQuestionnaire = Fosterquestionnaire::insertGetId(['user_email' => $data['email']]);
         }
         return User::create([
             'email' => $data['email'],

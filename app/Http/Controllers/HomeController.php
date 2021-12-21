@@ -26,8 +26,10 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function questionnaire()
-    {
+    public function questionnaire($id)
+    {   
+        $user = \Auth::user();
+        
         return view('');
     }
 }
