@@ -49,10 +49,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'gender' => ['required', 'string', 'max:255'],
+            'kanjiFamiliyName' => ['required', 'string', 'max:25'],
+            'kanjiFirstName' => ['required', 'string', 'max:25'],
+            'kanaFamiliyName' => ['required', 'string', 'max:25'],
+            'kanaFirstName' => ['required', 'string', 'max:25'],
+            'phonenumber' => ['required', 'integer', 'max:25'],
         ]);
     }
 
@@ -64,13 +67,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-         dd($data);
+        // dd($data);
         return User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'gender' => $data['gender'],
-
+            'kanjiFamiliyName'=> $data['kanjiFamiliyName'],
+            'kanjiFirstName'=> $data['kanjiFirstName'],
+            'kanaFamiliyName'=> $data['kanaFamiliyName'],
+            'kanaFirstName'=> $data['kanaFirstName'],
+            'phonenumber'=> $data['phonenumber'],
+            'status'=> $data['status'],
         ]);
     }
 }
