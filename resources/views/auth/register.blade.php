@@ -168,7 +168,7 @@
                     <!-- 保護活動者用フォームここから -->
                     <div id='conservationForms'>
                         <form method="POST" action="{{ route('register') }}">
-
+                            @csrf
                             <input type='hidden' name='status'value=1> 
 
                             <div class="form-group row">
@@ -250,7 +250,7 @@
                                     </button>
                                 </div>
                             </div>
-                            
+
                         </form>
                     </div>
                 </div>
