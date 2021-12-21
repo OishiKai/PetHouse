@@ -21,7 +21,7 @@
                             <label class="form-check-label"> 保護活動者</label>
                         </div>
                     </from>
-                    
+                    <!-- 里親用ホームここから-->
                     <div id='fosterForms'>
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
