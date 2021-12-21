@@ -14,7 +14,7 @@ class CreateRegistFosterTable extends Migration
     public function up()
     {
         Schema::create('registFoster', function (Blueprint $table) {
-            $table->integer('users_id');
+            $table->integer('users_email');
             $table->string('name');
             $table->string('gender');
             $table->integer('age');
