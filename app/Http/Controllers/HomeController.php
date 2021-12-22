@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Fosterquestionnaire;
 
 class HomeController extends Controller
 {
@@ -29,7 +30,7 @@ class HomeController extends Controller
     public function questionnaire($id)
     {   
         $user = \Auth::user();
-        
-        return view('');
+        $questionnaire = Fosterquestionnaire::where('user_email', $user['email'])->first();
+        return view('fosterQuestionnaire', compact('user','questionnaire'));
     }
 }
