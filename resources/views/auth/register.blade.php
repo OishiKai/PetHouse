@@ -36,7 +36,7 @@
                     <form method="POST" action="{{ route('register') }}"  required>
                         @csrf
             
-                        <div id='fosterForms'>
+                        <div id='default'>
 
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right ">{{ __('ニックネーム') }}</label>
@@ -182,7 +182,7 @@
                         @csrf
                         <!-- 里親用フォームここまで -->
                         <!-- 保護活動者用フォームここから -->
-                        <div id='conservationForms'>
+                        <div id='another'>
                             <input type='hidden' name='status' value=1> 
 
                             <div class="form-group row">
