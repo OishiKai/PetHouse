@@ -31,6 +31,7 @@ class HomeController extends Controller
     {   
         $user = \Auth::user();
         $questionnaire = Fosterquestionnaire::where('user_email', $user['email'])->first();
+        // dd($user);
         return view('fosterQuestionnaire', compact('user','questionnaire'));
     }
 }

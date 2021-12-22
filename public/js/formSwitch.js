@@ -1,5 +1,5 @@
 function formSwitch() {
-    hoge = document.getElementsByName('maker')
+    hoge = document.getElementsByName('switch')
     if (hoge[0].checked) {
         // 好きな食べ物が選択されたら下記を実行します
         document.getElementById('default').style.display = "";

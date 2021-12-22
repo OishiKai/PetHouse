@@ -21,11 +21,11 @@
                         <div class="col-md-6">
                             <form>
                                 <div class="form-check form-group row">
-                                    <input class="form-check-input" type="radio" name="maker" onclick="formSwitch()" checked>
+                                    <input class="form-check-input" id='switch' type="radio" name="switch" onclick="formSwitch()" checked>
                                     <label class="form-check-label"> 里親</label>
                                 </div>
                                 <div class="form-check form-group row">
-                                    <input class="form-check-input" type="radio" name="maker" onclick="formSwitch()">
+                                    <input class="form-check-input" id='switch' type="radio" name="switch" onclick="formSwitch()">
                                     <label class="form-check-label"> 保護活動者</label>
                                 </div>
                             </form>
