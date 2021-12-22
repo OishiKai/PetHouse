@@ -14,7 +14,7 @@ class CreateFosterquestionnairesTable extends Migration
     public function up()
     {
         Schema::create('fosterquestionnaires', function (Blueprint $table) {
-            $table->integer('user_email')->unique();
+            $table->string('user_email')->unique();
             $table->string('housemate')->default('none'); // あり(家族) or あり(家族以外) or なし
             $table->integer('housemateNumber')->default('0');
             $table->string('housemateDetail')->default('none');// 続柄=>〇〇,年齢=>〇歳&続柄=>〇〇,年齢=>〇歳&... で一つの文字列にする
