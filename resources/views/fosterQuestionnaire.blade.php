@@ -14,7 +14,7 @@
                 <div class="card-header">{{ __('里親アンケート') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="/answerFosterQuestionnaire">
                         @csrf
 
                         <!-- 同居人の有無-->
@@ -365,10 +365,6 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('現在飼育中のペット状況') }}</label>
 
                             <div class="col-md-6">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="chk01" value="飼っていない">
-                                    <label class="form-check-label" for="chk01">飼っていない</label>
-                                </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" name="chk02" value="犬">
                                     <label class="form-check-label" for="chk02">犬</label>
