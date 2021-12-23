@@ -34,4 +34,11 @@ class HomeController extends Controller
         // dd($user);
         return view('fosterQuestionnaire', compact('user','questionnaire'));
     }
+
+    public function answerFosterQuestionnaire(Request $request)
+    {
+        $data = $request->all();
+        dd($data);
+        return view('home');
+    }
 }

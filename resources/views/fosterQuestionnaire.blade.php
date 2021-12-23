@@ -21,20 +21,18 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('同居人の有無') }}</label>
                             <div class="col-md-6">
-                                <form>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="switch" value='あり(家族)' onclick=" formSwitchThird()" checked>
-                                        <label class="form-check-label"> あり(家族)</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="switch" value='あり(家族以外)' onclick=" formSwitchThird()">
-                                        <label class="form-check-label"> あり(家族以外)</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="switch" value='なし'onclick="formSwitchThird()">
-                                        <label class="form-check-label"> なし</label>
-                                    </div>
-                                </form>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="switch" value='あり(家族)' onclick=" formSwitchThird()" checked>
+                                    <label class="form-check-label"> あり(家族)</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="switch" value='あり(家族以外)' onclick=" formSwitchThird()">
+                                    <label class="form-check-label"> あり(家族以外)</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="switch" value='なし'onclick="formSwitchThird()">
+                                    <label class="form-check-label"> なし</label>
+                                </div>
                             </div>
                         </div>
 
@@ -139,7 +137,7 @@
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('同居人の合意') }}</label>
                                 <div class="col-md-6">
-                                    <form>
+                                    
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="housemateAgreement" value='あり' checked>
                                             <label class="form-check-label"> あり</label>
@@ -148,7 +146,6 @@
                                             <input class="form-check-input" type="radio" name="housemateAgreement" value='なし'>
                                             <label class="form-check-label"> なし</label>
                                         </div>
-                                    </form>
                                 </div>
                             </div>
 
@@ -255,7 +252,7 @@
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('アレルギーの有無') }}</label>
                                 <div class="col-md-6">
-                                    <select id='allergy' name='housemateAllergy'>
+                                    <select id='allergy' name='housemateAllergySolo'>
                                         <option value='なし'>なし</option>
                                         <option value='1'>犬アレルギー</option>
                                         <option value='2'>猫アレルギー</option>
@@ -282,7 +279,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('住居のペット飼育の可否') }}</label>
                             <div class="col-md-6">
-                                <form>
+                                
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="landlordAgreement" value='可' checked>
                                         <label class="form-check-label"> 可</label>
@@ -291,14 +288,13 @@
                                         <input class="form-check-input" type="radio" name="landlordAgreement" value='不可'>
                                         <label class="form-check-label"> 不可</label>
                                     </div>
-                                </form>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('一年以内の転居・転勤') }}</label>
                             <div class="col-md-6">
-                                <form>
+                                
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="transfer" value='なし' checked>
                                         <label class="form-check-label"> なし</label>
@@ -307,14 +303,14 @@
                                         <input class="form-check-input" type="radio" name="transfer" value='あり'>
                                         <label class="form-check-label"> あり</label>
                                     </div>
-                                </form>
+                                
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('募集者による自宅訪問可否') }}</label>
                             <div class="col-md-6">
-                                <form>
+                                
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="visitable" value='可' checked>
                                         <label class="form-check-label"> 可</label>
@@ -323,14 +319,14 @@
                                         <input class="form-check-input" type="radio" name="visitable" value='不可'>
                                         <label class="form-check-label"> 不可</label>
                                     </div>
-                                </form>
+                                
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('飼育場所') }}</label>
                             <div class="col-md-6">
-                                <form>
+                                
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="breedingPlace" value='室内' checked>
                                         <label class="form-check-label"> 室内</label>
@@ -339,7 +335,7 @@
                                         <input class="form-check-input" type="radio" name="breedingPlace" value='屋外'>
                                         <label class="form-check-label"> 屋外</label>
                                     </div>
-                                </form>
+                                
                             </div>
                         </div>
 
@@ -365,28 +361,33 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('現在飼育中のペット状況') }}</label>
 
                             <div class="col-md-6">
+                                <input type="checkbox" name="pets[]" value="test" style='display:none' checked>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="chk02" value="犬">
+                                    <input class="form-check-input" type="checkbox" name="pets[]" value="飼っていない" checked>
+                                    <label class="form-check-label" for="chk02">飼っていない</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="pets[]" value="犬">
                                     <label class="form-check-label" for="chk02">犬</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="chk03" value="猫">
+                                    <input class="form-check-input" type="checkbox" name="pets[]" value="猫">
                                     <label class="form-check-label" for="chk03">猫</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="chk04" value="小動物">
+                                    <input class="form-check-input" type="checkbox" name="pets[]" value="小動物">
                                     <label class="form-check-label" for="chk03">小動物</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="chk05" value="鳥類">
+                                    <input class="form-check-input" type="checkbox" name="pets[]" value="鳥類">
                                     <label class="form-check-label" for="chk03">鳥類</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="chk06" value="爬虫類">
+                                    <input class="form-check-input" type="checkbox" name="pets[]" value="爬虫類">
                                     <label class="form-check-label" for="chk03">爬虫類</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="chk07" value="その他">
+                                    <input class="form-check-input" type="checkbox" name="pets[]" value="その他">
                                     <label class="form-check-label" for="chk03">その他</label>
                                 </div>
                             </div>
@@ -399,6 +400,7 @@
                                 </button>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>
