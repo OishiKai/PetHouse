@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\RegistFoster;
+use App\Fosterquestionnaire;
 
 class RegisterController extends Controller
 {
@@ -48,16 +49,39 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'kanjiFamiliyName' => ['required', 'string', 'max:25'],
-            'kanjiFirstName' => ['required', 'string', 'max:25'],
-            'kanaFamiliyName' => ['required', 'string', 'max:25'],
-            'kanaFirstName' => ['required', 'string', 'max:25'],
-            'phonenumber' => ['required', 'integer', 'max:25'],
-        ]);
+    {   
+        if($data['status']==0){
+            return Validator::make($data, [
+                // users部分のバリデーション
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:9', 'confirmed'],
+                'kanjiFamilyName' => ['required', 'string','max:25'],
+                'kanjiFirstName' => ['required', 'string', 'max:25'],
+                'kanaFamilyName' => ['required', 'string', 'min:2','max:25', 'regex:/^[ァ-ヶ 　]+$/u'],
+                'kanaFirstName' => ['required', 'string', 'min:2', 'max:25', 'regex:/^[ァ-ヶ 　]+$/u'],
+                'phoneNumber' => ['required', 'string', 'regex:/^[0-9]{10}/u','max:11'],
+                
+                // registFoster部分のバリデーション
+
+                'name' => ['required', 'string', 'min:3', 'max:25'],
+                'age' => ['required', 'integer', 'between:18,100'],
+                'zip21' => ['required', 'string', 'regex:/^[0-9]{3}/u','max:3'],
+                'zip22' => ['required', 'string', 'regex:/^[0-9]{4}/u','max:4'],
+                'addr21' => ['required', 'string', 'max:40'],
+            ]);
+        }else{
+            return Validator::make($data, [
+                // users部分のバリデーション
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:9', 'confirmed'],
+                'kanjiFamilyName' => ['required', 'string','max:25'],
+                'kanjiFirstName' => ['required', 'string', 'max:25'],
+                'kanaFamilyName' => ['required', 'string', 'min:2','max:25', 'regex:/^[ァ-ヶ 　]+$/u'],
+                'kanaFirstName' => ['required', 'string', 'min:2', 'max:25', 'regex:/^[ァ-ヶ 　]+$/u'],
+                'phoneNumber' => ['required', 'string', 'regex:/^[0-9]{10}/u','max:11'],
+            ]);
+        };
+
     }
 
     /**
@@ -67,7 +91,7 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    {   
         // dd($data);
         if($data['status'] == 0){
             $postalcode = "{$data['zip21']}-{$data['zip22']}";
@@ -79,15 +103,16 @@ class RegisterController extends Controller
                 'postalCode' => $postalcode,
                 'address' => $data['addr21'],
             ]);
+            $initQuestionnaire = Fosterquestionnaire::insertGetId(['user_email' => $data['email']]);
         }
         return User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'kanjiFamiliyName'=> $data['kanjiFamiliyName'],
+            'kanjiFamilyName'=> $data['kanjiFamilyName'],
             'kanjiFirstName'=> $data['kanjiFirstName'],
-            'kanaFamiliyName'=> $data['kanaFamiliyName'],
+            'kanaFamilyName'=> $data['kanaFamilyName'],
             'kanaFirstName'=> $data['kanaFirstName'],
-            'phonenumber'=> $data['phonenumber'],
+            'phoneNumber'=> $data['phoneNumber'],
             'status'=> $data['status'],
         ]);
     }

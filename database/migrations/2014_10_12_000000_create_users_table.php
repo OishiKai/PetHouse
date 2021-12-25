@@ -18,11 +18,11 @@ class CreateUsersTable extends Migration
             $table->integer('status');//里親or保護活動者を判断する値。 0=> 里親, 1=>保護活動者
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('kanjiFamiliyName');
+            $table->string('kanjiFamilyName');
             $table->string('kanjiFirstName');
-            $table->string('kanaFamiliyName');
+            $table->string('kanaFamilyName');
             $table->string('kanaFirstName');
-            $table->integer('phonenumber');
+            $table->string('phoneNumber');
         
             $table->timestamps();
             $table->timestamp('email_verified_at')->nullable();
