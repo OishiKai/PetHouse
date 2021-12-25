@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('head')
-<script src="{{ asset('js/formSwitchThird.js') }}" defer></script>
-<script src="{{ asset('js/renderPulldown.js') }}" defer></script>
-<!-- <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script> -->
+<script src="{{ asset('js/formSwitch.js') }}" defer></script>
+<script src="{{ asset('js/formSwitchPrefecture.js') }}" defer></script>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 @endsection
 
 @section('content')
@@ -11,388 +11,431 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('里親アンケート') }}</div>
+                <div class="card-header">{{ __('保護活動者アンケート') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/answerFosterQuestionnaire">
+                    <form method="POST" action="/answerFosterQuestionnaire" enctype="multipart/form-data">
                         @csrf
 
-                        <!-- 同居人の有無-->
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('同居人の有無') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('保護活動者属性') }}</label>
                             <div class="col-md-6">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="switch" value='あり(家族)' onclick=" formSwitchThird()" checked>
-                                    <label class="form-check-label"> あり(家族)</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="switch" value='あり(家族以外)' onclick=" formSwitchThird()">
-                                    <label class="form-check-label"> あり(家族以外)</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="switch" value='なし'onclick="formSwitchThird()">
-                                    <label class="form-check-label"> なし</label>
-                                </div>
+                                <select name='conservationStatus'>
+                                    <option value='個人' selected>個人</option>
+                                    <option value='有志の団体・グループ(非法人)'>有志の団体・グループ(非法人)</option>
+                                    <option value='企業'>企業</option>
+                                    <option value='NPO法人'>NPO法人</option>
+                                    <option value='一般社団法人'>一般社団法人</option>
+                                    <option value='動物病院'>動物病院</option>
+                                    <option value='自治体'>自治体</option>
+                                    <option value='その他の法人'>その他の法人</option>
+                                </select>
                             </div>
                         </div>
 
-                        <!-- 同居人の人数-->
-                        <div id='default'>
-                            <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('本人以外の同居人') }}</label>
-                                <div class="col-md-6">
-                                    <select id='housemate' name='housemateNumber' onchange='renderPulldown(1)'>
-                                        <option value='1' selected>1人</option>
-                                        <option value='2'>2人</option>
-                                        <option value='3'>3人</option>
-                                        <option value='4'>4人</option>
-                                        <option value='5'>5人</option>
-                                        <option value='6'>6人</option>
-                                        <option value='7'>7人</option>
-                                        <option value='8'>8人</option>
-                                        <option value='9'>9人</option>
-                                    </select>
-                                </div>
-                            </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right ">{{ __('団体名・活動名') }}</label>
 
-                            <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('同居人の続柄/年齢') }}</label>
-                                <div class="col-md-6">
-                                    <div id='pd1' class='form-group row'>
-                                        <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
-                                        </select>
-                                    </div>
-                                    <div id='pd2' class='form-group row' style="display: none;">
-                                        <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
-                                        </select>
-                                    </div>
-                                    <div id='pd3' class='form-group row' style="display: none;">
-                                        <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateDetailAge[]' >
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
-                                        </select>
-                                    </div>
-                                    <div id='pd4' class='form-group row' style="display: none;">
-                                        <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
-                                        </select>
-                                    </div>
-                                    <div id='pd5' class='form-group row' style="display: none;">
-                                        <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
-                                        </select>
-                                    </div>
-                                    <div id='pd6' class='form-group row' style="display: none;">
-                                        <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
-                                        </select>
-                                    </div>
-                                    <div id='pd7' class='form-group row' style="display: none;">
-                                        <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
-                                        </select>
-                                    </div>
-                                    <div id='pd8' class='form-group row' style="display: none;">
-                                        <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
-                                        </select>
-                                    </div>
-                                    <div id='pd9' class='form-group row' style="display: none;">
-                                        <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
-                                        </select>
-                                    </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('activityName') is-invalid @enderror" name="activityName" value="{{ old('activityName') }}" required>
+
+                                @error('activityName')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('活動拠点') }}</label>
+
+                            <div class="col-md-6">
+                                <!-- ▼郵便番号入力フィールド(3桁+4桁) -->
+                                <input class="@error('zip21') is-invalid @enderror" type="text" name="zip21" size="4" maxlength="3" value="{{ old('zip21')}}" required> － <input class="@error('zip22') is-invalid @enderror" value="{{ old('zip22')}}" type="text" name="zip22" size="5" maxlength="4" onKeyUp="AjaxZip3.zip2addr('zip21','zip22','addr21','addr21');" required>
+                                @error('zip21')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                @error('zip22')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                
+                                <!-- ▼住所入力フィールド(都道府県+以降の住所) -->
+                                <input id='foster' type="text" name="addr21" size="40" required> 
+                                <!-- @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror -->
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('保護施設') }}</label>
+
+                            <div class="col-md-6">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="自宅" checked>
+                                    <label class="form-check-label">自宅</label>
                                 </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="専用シェルター">
+                                    <label class="form-check-label">専用シェルター</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護猫カフェ">
+                                    <label class="form-check-label">保護猫カフェ</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護犬カフェ">
+                                    <label class="form-check-label">保護犬カフェ</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="動物病院">
+                                    <label class="form-check-label">動物病院</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name='switch' onchange='formSwitch()'>
+                                    <label class="form-check-label">その他</label>
+                                </div>
+                                <input type="text" id='default' class="form-control" name='other' style="display: none;">
 
                             </div>
-
-                            <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('同居人の合意') }}</label>
-                                <div class="col-md-6">
-                                    
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="housemateAgreement" value='あり' checked>
-                                            <label class="form-check-label"> あり</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="housemateAgreement" value='なし'>
-                                            <label class="form-check-label"> なし</label>
-                                        </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('アレルギーの有無') }}</label>
-                                <div class="col-md-6">
-                                    <select id='allergy' name='housemateAllergy' onchange='renderPulldown(2)'>
-                                        <option value='なし'>なし</option>
-                                        <option value='1'>1人</option>
-                                        <option value='2'>2人</option>
-                                        <option value='3'>3人</option>
-                                        <option value='4'>4人</option>
-                                        <option value='5'>5人</option>
-                                        <option value='6'>6人</option>
-                                        <option value='7'>7人</option>
-                                        <option value='8'>8人</option>
-                                        <option value='9'>9人</option>
-                                    </select>
-                                </div>
-                            </div>
+                        </div>
                         
-
-                            <div class="form-group row" id='allergyDetail' style="display: none;">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('アレルギーの詳細') }}</label>
-                                <div class="col-md-6">
-                                    <div id='al1' class='form-group row'>
-                                        <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
-                                        </select>
-                                    </div>
-                                    <div id='al2' class='form-group row'>
-                                        <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
-                                        </select>
-                                    </div>
-                                    <div id='al3' class='form-group row'>
-                                        <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
-                                        </select>
-                                    </div>
-                                    <div id='al4' class='form-group row'>
-                                        <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
-                                        </select>
-                                    </div>
-                                    <div id='al5' class='form-group row'>
-                                        <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
-                                        </select>
-                                    </div>
-                                    <div id='al6' class='form-group row'>
-                                        <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
-                                        </select>
-                                    </div>
-                                    <div id='al7' class='form-group row'>
-                                        <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
-                                        </select>
-                                    </div>
-                                    <div id='al8' class='form-group row'>
-                                        <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
-                                        </select>
-                                    </div>
-                                    <div id='al9' class='form-group row'>
-                                        <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
-                                        </select>
-                                        <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
-                                        </select>
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('応募可能地域') }}</label>
+                            <div class="col-md-6">    
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-header">
+                                    <input class="form-check-input" type="checkbox" name="area[]" value='北海道'>
+                                    <label class="form-check-label">北海道</label>
                                     </div>
                                 </div>
 
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-header">
+                                        <input class="form-check-input" type="checkbox" name='tohoku' onchange='formSwitchPrefecture("tohoku")'>
+                                        <label class="form-check-label">東北地方</label>
+                                    </div>
+                                    <ul class="list-group list-group-flush" id='tohokuPrefectures' style="display: none;">
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='青森県'>
+                                                <label class="form-check-label">青森県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='岩手県'>
+                                                <label class="form-check-label">岩手県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='秋田県'>
+                                                <label class="form-check-label">秋田県</label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='宮城県'>
+                                                <label class="form-check-label">宮城県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='山形県'>
+                                                <label class="form-check-label">山形県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='福島県'>
+                                                <label class="form-check-label">福島県</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-header">
+                                        <input class="form-check-input" type="checkbox" name='kanto' onchange='formSwitchPrefecture("kanto")'>
+                                        <label class="form-check-label">関東地方</label>
+                                    </div>
+                                    <ul class="list-group list-group-flush" id='kantoPrefectures' style="display: none;">
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='茨城県'>
+                                                <label class="form-check-label">茨城県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='栃木県'>
+                                                <label class="form-check-label">岩手県</label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='群馬県'>
+                                                <label class="form-check-label">群馬県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='埼玉県'>
+                                                <label class="form-check-label">埼玉県</label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='千葉県'>
+                                                <label class="form-check-label">千葉県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='東京都'>
+                                                <label class="form-check-label">東京都</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='神奈川県'>
+                                                <label class="form-check-label">神奈川県</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-header">
+                                        <input class="form-check-input" type="checkbox" name='tyubu' onchange='formSwitchPrefecture("tyubu")'>
+                                        <label class="form-check-label">中部地方</label>
+                                    </div>
+                                    <ul class="list-group list-group-flush" id='tyubuPrefectures' style="display: none;">
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='新潟県'>
+                                                <label class="form-check-label">新潟県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='富山県'>
+                                                <label class="form-check-label">富山県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='石川県'>
+                                                <label class="form-check-label">石川県</label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='福井県'>
+                                                <label class="form-check-label">福井県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='山梨県'>
+                                                <label class="form-check-label">山梨県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='長野県'>
+                                                <label class="form-check-label">長野県</label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='岐阜県'>
+                                                <label class="form-check-label">岐阜県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='静岡県'>
+                                                <label class="form-check-label">静岡県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='愛知県'>
+                                                <label class="form-check-label">愛知県</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-header">
+                                        <input class="form-check-input" type="checkbox" name='kinki' onchange='formSwitchPrefecture("kinki")'>
+                                        <label class="form-check-label">近畿地方</label>
+                                    </div>
+                                    <ul class="list-group list-group-flush" id='kinkiPrefectures' style="display: none;">
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='三重県'>
+                                                <label class="form-check-label">三重県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='滋賀県'>
+                                                <label class="form-check-label">滋賀県</label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='京都府'>
+                                                <label class="form-check-label">京都府</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='大阪府'>
+                                                <label class="form-check-label">大阪府</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='兵庫県'>
+                                                <label class="form-check-label">兵庫県</label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='奈良県'>
+                                                <label class="form-check-label">奈良県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='和歌山県'>
+                                                <label class="form-check-label">和歌山県</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-header">
+                                        <input class="form-check-input" type="checkbox" name='tyugoku' onchange='formSwitchPrefecture("tyugoku")'>
+                                        <label class="form-check-label">中国地方</label>
+                                    </div>
+                                    <ul class="list-group list-group-flush" id='tyugokuPrefectures' style="display: none;">
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='鳥取県'>
+                                                <label class="form-check-label">鳥取県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='島根県'>
+                                                <label class="form-check-label">島根県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='岡山県'>
+                                                <label class="form-check-label">岡山県</label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='広島県'>
+                                                <label class="form-check-label">広島県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='山口県'>
+                                                <label class="form-check-label">山口県</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-header">
+                                        <input class="form-check-input" type="checkbox" name='shikoku' onchange='formSwitchPrefecture("shikoku")'>
+                                        <label class="form-check-label">四国地方</label>
+                                    </div>
+                                    <ul class="list-group list-group-flush" id='shikokuPrefectures' style="display: none;">
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='徳島県'>
+                                                <label class="form-check-label">徳島県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='香川県'>
+                                                <label class="form-check-label">香川県</label>
+                                                
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='愛媛県'>
+                                                <label class="form-check-label">愛媛県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='高知県'>
+                                                <label class="form-check-label">高知県</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-header">
+                                        <input class="form-check-input" type="checkbox" name='kyusyu' onchange='formSwitchPrefecture("kyusyu")'>
+                                        <label class="form-check-label">九州地方</label>
+                                    </div>
+                                    <ul class="list-group list-group-flush" id='kyusyuPrefectures' style="display: none;">
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='福岡県'>
+                                                <label class="form-check-label">福岡県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='佐賀県'>
+                                                <label class="form-check-label">佐賀県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='長崎県'>
+                                                <label class="form-check-label">熊本県</label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='熊本県'>
+                                                <label class="form-check-label">熊本県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='大分県'>
+                                                <label class="form-check-label">大分県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='宮崎県'>
+                                                <label class="form-check-label">宮崎県</label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='鹿児島県'>
+                                                <label class="form-check-label">鹿児島県</label>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='沖縄県'>
+                                                <label class="form-check-label">沖縄県</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
+
+
+                            <!-- <div class="col-md-6">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="自宅" checked>
+                                    <label class="form-check-label">自宅</label>
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="専用シェルター">
+                                    <label class="form-check-label">専用</label>
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護猫カフェ">
+                                    <label class="form-check-label">保護</label>
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護犬カフェ">
+                                    <label class="form-check-label">保護</label>
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="専用シェルター">
+                                    <label class="form-check-label">専用</label>
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護猫カフェ">
+                                    <label class="form-check-label">保護</label>
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護犬カフェ">
+                                    <label class="form-check-label">保護</label>
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="専用シェルター">
+                                    <label class="form-check-label">専用</label>
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護猫カフェ">
+                                    <label class="form-check-label">保護</label>
+                                    
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="専用シェルター">
+                                    <label class="form-check-label">専用</label>
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護猫カフェ">
+                                    <label class="form-check-label">保護</label>
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護犬カフェ">
+                                    <label class="form-check-label">保護</label>
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護犬カフェ">
+                                    <label class="form-check-label">保護</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護猫カフェ">
+                                    <label class="form-check-label">保護猫カフェ</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護犬カフェ">
+                                    <label class="form-check-label">保護犬カフェ</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="動物病院">
+                                    <label class="form-check-label">動物病院</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name='' onchange='formSwitch()'>
+                                    <label class="form-check-label">その他</label>
+                                </div>
+                                <input type="text" class="form-control" name='other' style="display: none;">
+
+                            </div> -->
                         </div>
 
-                        <div id='another'>
-                            <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('アレルギーの有無') }}</label>
-                                <div class="col-md-6">
-                                    <select id='allergy' name='housemateAllergySolo'>
-                                        <option value='なし'>なし</option>
-                                        <option value='犬アレルギー'>犬アレルギー</option>
-                                        <option value='猫アレルギー'>猫アレルギー</option>
-                                    </select>
-                                </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right ">{{ __('活動URL') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ old('url') }}" required>
+
+                                @error('url')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('住居タイプ') }}</label>
+                            <label class="col-md-4 col-form-label text-md-right ">{{ __('プロフィール') }}</label>
+
                             <div class="col-md-6">
-                                <select name='houseType'>
-                                    <option value='持ち家:戸建て'>持ち家:戸建て</option>
-                                    <option value='持ち家:マンション'>持ち家:マンション</option>
-                                    <option value='賃貸:戸建て'>賃貸:戸建て</option>
-                                    <option value='賃貸:マンション'>賃貸:マンション</option>
-                                    <option value='賃貸:アパート'>賃貸:アパート</option>
-                                    <option value='賃貸:社宅・寮・公営住宅'>賃貸:社宅・寮・公営住宅</option>
-                                    <option value='賃貸:その他'>賃貸:その他</option>
-                                </select>
+                                <textarea name='profile' class="form-control @error('profile') is-invalid @enderror" cols='30' rows='5' required></textarea>
+
+                                @error('url')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('住居のペット飼育の可否') }}</label>
-                            <div class="col-md-6">
-                                
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="landlordAgreement" value='可' checked>
-                                        <label class="form-check-label"> 可</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="landlordAgreement" value='不可'>
-                                        <label class="form-check-label"> 不可</label>
-                                    </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('一年以内の転居・転勤') }}</label>
-                            <div class="col-md-6">
-                                
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="transfer" value='なし' checked>
-                                        <label class="form-check-label"> なし</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="transfer" value='あり'>
-                                        <label class="form-check-label"> あり</label>
-                                    </div>
-                                
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('募集者による自宅訪問可否') }}</label>
-                            <div class="col-md-6">
-                                
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="visitable" value='可' checked>
-                                        <label class="form-check-label"> 可</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="visitable" value='不可'>
-                                        <label class="form-check-label"> 不可</label>
-                                    </div>
-                                
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('飼育場所') }}</label>
-                            <div class="col-md-6">
-                                
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="breedingPlace" value='室内' checked>
-                                        <label class="form-check-label"> 室内</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="breedingPlace" value='屋外'>
-                                        <label class="form-check-label"> 屋外</label>
-                                    </div>
-                                
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('ペットが単独になる時間') }}</label>
-                            <div class="col-md-6">
-                                <select name='aloneHours'>
-                                    <option value='1時間未満'>1時間未満</option>
-                                    <option value='約1時間'>約1時間</option>
-                                    <option value='約2時間'>約2時間</option>
-                                    <option value='約3時間'>約3時間</option>
-                                    <option value='約4時間'>約4時間</option>
-                                    <option value='約5時間'>約5時間</option>
-                                    <option value='約6時間'>約6時間</option>
-                                    <option value='約7時間'>約7時間</option>
-                                    <option value='約8時間以上'>約8時間以上</option>
-                                </select>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('現在飼育中のペット状況') }}</label>
+                            <label class="col-md-4 col-form-label text-md-right ">{{ __('プロフィール画像') }}</label>
 
                             <div class="col-md-6">
-                                <input type="checkbox" name="pets[]" value="test" style='display:none' checked>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="pets[]" value="飼っていない" checked>
-                                    <label class="form-check-label" for="chk02">飼っていない</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="pets[]" value="犬">
-                                    <label class="form-check-label" for="chk02">犬</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="pets[]" value="猫">
-                                    <label class="form-check-label" for="chk03">猫</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="pets[]" value="小動物">
-                                    <label class="form-check-label" for="chk03">小動物</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="pets[]" value="鳥類">
-                                    <label class="form-check-label" for="chk03">鳥類</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="pets[]" value="爬虫類">
-                                    <label class="form-check-label" for="chk03">爬虫類</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="pets[]" value="その他">
-                                    <label class="form-check-label" for="chk03">その他</label>
-                                </div>
+                                <input type="file" name="profile_img">
                             </div>
                         </div>
-
+                        
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
