@@ -14,8 +14,18 @@ class CreateConservationquestionnairesTable extends Migration
     public function up()
     {
         Schema::create('conservationquestionnaires', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->string('user_email');
+            $table->string('answered');
+            $table->string('conservationStatus');
+            $table->string('activityName');
+            $table->string('address');
+            $table->string('postalCode');
+            $table->string('shelter');
+            $table->string('pet'); // 保護中のペット
+            $table->string('area');
+            $table->string('url');
+            $table->string('profile');
+            $table->string('logo');
         });
     }
 
