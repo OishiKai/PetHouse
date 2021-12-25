@@ -254,8 +254,8 @@
                                 <div class="col-md-6">
                                     <select id='allergy' name='housemateAllergySolo'>
                                         <option value='なし'>なし</option>
-                                        <option value='1'>犬アレルギー</option>
-                                        <option value='2'>猫アレルギー</option>
+                                        <option value='犬アレルギー'>犬アレルギー</option>
+                                        <option value='猫アレルギー'>猫アレルギー</option>
                                     </select>
                                 </div>
                             </div>
