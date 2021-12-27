@@ -14,7 +14,7 @@
                 <div class="card-header">{{ __('保護活動者アンケート') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/answerFosterQuestionnaire" enctype="multipart/form-data">
+                    <form method="POST" action="/answerQuestionnaire" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -77,8 +77,8 @@
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">{{ __('保護施設') }}</label>
 
-                            <div class="col-md-6">
-                                <div class="form-check form-check-inline">
+                            <div class="col-md-6 @error('shelter') is-invalid @enderror">
+                                <div class="form-check form-check-inline @error('shelter') is-invalid @enderror">
                                     <input class="form-check-input" type="checkbox" name="shelter[]" value="自宅" checked>
                                     <label class="form-check-label">自宅</label>
                                 </div>
@@ -103,17 +103,48 @@
                                     <label class="form-check-label">その他</label>
                                 </div>
                                 <input type="text" id='default' class="form-control" name='other' style="display: none;">
+                                @error('shelter')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('保護中のペット') }}</label>
+
+                            <div class="col-md-6">
+                                <div class="form-check form-check-inline  @error('pet') is-invalid @enderror">
+                                    <input class="form-check-input" type="checkbox" name="pet[]" value="犬">
+                                    <label class="form-check-label">犬</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="pet[]" value="猫">
+                                    <label class="form-check-label">猫</label>
+                                </div>
+
+                                @error('pet')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">{{ __('応募可能地域') }}</label>
-                            <div class="col-md-6">    
+                            <div class="col-md-6 required">
+                                @error('area')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
                                 <div class="card" style="width: 18rem;">
                                     <div class="card-header">
-                                    <input class="form-check-input" type="checkbox" name="area[]" value='北海道'>
-                                    <label class="form-check-label">北海道</label>
+                                        <input class="form-check-input" type="checkbox" name="area[]" value='北海道'>
+                                        <label class="form-check-label">北海道</label>
                                     </div>
                                 </div>
 
@@ -401,7 +432,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right ">{{ __('活動URL') }}</label>
+                            <label class="col-md-4 col-form-label text-md-right ">{{ __('活動URL/Twitterアカウント等') }}</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ old('url') }}" required>
@@ -420,7 +451,7 @@
                             <div class="col-md-6">
                                 <textarea name='profile' class="form-control @error('profile') is-invalid @enderror" cols='30' rows='5' required></textarea>
 
-                                @error('url')
+                                @error('profile')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -432,7 +463,7 @@
                             <label class="col-md-4 col-form-label text-md-right ">{{ __('プロフィール画像') }}</label>
 
                             <div class="col-md-6">
-                                <input type="file" name="profile_img">
+                                <input type="file" name="profile_img" required>
                             </div>
                         </div>
                         
