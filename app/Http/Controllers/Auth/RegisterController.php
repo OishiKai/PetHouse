@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\RegistFoster;
 use App\Fosterquestionnaire;
+use App\Conservationquestionnaire;
 
 class RegisterController extends Controller
 {
@@ -104,6 +105,8 @@ class RegisterController extends Controller
                 'address' => $data['addr21'],
             ]);
             $initQuestionnaire = Fosterquestionnaire::insertGetId(['user_email' => $data['email']]);
+        }else{
+            $initQuestionnaire = Conservationquestionnaire::insertGetId(['user_email' => $data['email']]);
         }
         return User::create([
             'email' => $data['email'],

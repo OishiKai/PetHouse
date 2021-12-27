@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/questionnaire/{id}', 'HomeController@questionnaire')->name('questionnaire');
-    Route::post('/answerFosterQuestionnaire', 'HomeController@answerFosterQuestionnaire')->name('answerFosterQuestionnaire');
+    Route::get('/questionnaire', 'HomeController@questionnaire')->name('questionnaire');
+    Route::post('/answerQuestionnaire', 'HomeController@answerQuestionnaire')->name('answerQuestionnaire');
 });
