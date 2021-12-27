@@ -14,7 +14,7 @@
                 <div class="card-header">{{ __('里親アンケート') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/answerFosterQuestionnaire">
+                    <form method="POST" action="/answerQuestionnaire">
                         @csrf
 
                         <!-- 同居人の有無-->
