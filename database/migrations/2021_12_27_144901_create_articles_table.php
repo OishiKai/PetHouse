@@ -14,7 +14,29 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id'); // 記事ID
+            $table->string('user_id');
+            $table->integer('watch')->default(0); // 閲覧数
+            $table->string('status'); // 状況
+            $table->string('species'); // ペットの種類
+            $table->string('size'); // ペットのサイズ
+            $table->string('gender'); // 性別
+            $table->integer('age'); // 年齢
+            $table->string('vaccination'); // ワクチン状況
+            $table->string('castration'); // 避妊・去勢
+            $table->string('singlePerson'); // 独身の募集可否
+            $table->string('elderPerson'); // 老人の募集可否
+            $table->integer('recruitmentPeriod'); // 募集期間
+
+            $table->string('place'); // ペット所在地
+            $table->string('name'); // ペットの名前
+            $table->string('pattern'); //ペットの毛柄
+
+            $table->string('background'); // 募集の経緯
+            $table->string('personality'); // 性格
+            $table->string('health'); // 健康状態
+            $table->string('transaction'); // 引き渡し可能場所
+
             $table->timestamps();
         });
     }
