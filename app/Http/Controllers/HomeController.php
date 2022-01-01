@@ -164,4 +164,15 @@ class HomeController extends Controller
         // dd($data);
         return view('home');
     }
+
+    public function article()
+    {
+        $user = \Auth::user();
+
+        if ($user['status'] == '1'){
+            return view('article');
+        }else{
+            return view('home');
+        }
+    }
 }
