@@ -26,7 +26,7 @@ class CreateArticlesTable extends Migration
             $table->string('vaccination'); // ワクチン状況
             $table->string('castration'); // 避妊・去勢
             $table->string('singlePerson'); // 独身の募集可否
-            $table->string('elderPerson'); // 老人の募集可否
+            $table->string('elderPerson'); // 高齢者の募集可否
             $table->integer('recruitmentPeriod'); // 募集期間
 
             $table->string('place'); // ペット所在地

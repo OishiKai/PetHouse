@@ -376,59 +376,6 @@
                                     </ul>
                                 </div>
                             </div>
-
-
-                            <!-- <div class="col-md-6">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="自宅" checked>
-                                    <label class="form-check-label">自宅</label>
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="専用シェルター">
-                                    <label class="form-check-label">専用</label>
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護猫カフェ">
-                                    <label class="form-check-label">保護</label>
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護犬カフェ">
-                                    <label class="form-check-label">保護</label>
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="専用シェルター">
-                                    <label class="form-check-label">専用</label>
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護猫カフェ">
-                                    <label class="form-check-label">保護</label>
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護犬カフェ">
-                                    <label class="form-check-label">保護</label>
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="専用シェルター">
-                                    <label class="form-check-label">専用</label>
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護猫カフェ">
-                                    <label class="form-check-label">保護</label>
-                                    
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="専用シェルター">
-                                    <label class="form-check-label">専用</label>
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護猫カフェ">
-                                    <label class="form-check-label">保護</label>
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護犬カフェ">
-                                    <label class="form-check-label">保護</label>
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護犬カフェ">
-                                    <label class="form-check-label">保護</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護猫カフェ">
-                                    <label class="form-check-label">保護猫カフェ</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="保護犬カフェ">
-                                    <label class="form-check-label">保護犬カフェ</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="shelter[]" value="動物病院">
-                                    <label class="form-check-label">動物病院</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name='' onchange='formSwitch()'>
-                                    <label class="form-check-label">その他</label>
-                                </div>
-                                <input type="text" class="form-control" name='other' style="display: none;">
-
-                            </div> -->
                         </div>
 
                         <div class="form-group row">
