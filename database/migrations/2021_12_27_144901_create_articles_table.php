@@ -16,6 +16,7 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id'); // 記事ID
             $table->string('user_id');
+            $table->string('title'); // タイトル
             $table->integer('watch')->default(0); // 閲覧数
             $table->string('status'); // 状況
             $table->string('species'); // ペットの種類
