@@ -16,9 +16,48 @@
 
                 <div class="card-body">
 
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
                         
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right ">{{ __('ペットの写真➀') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="file" name="img1" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right ">{{ __('ペットの写真➁') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="file" name="img2" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right ">{{ __('ペットの写真➂') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="file" name="img2" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right ">{{ __('ペットの写真➃') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="file" name="img2" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right ">{{ __('ペットの写真⑤') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="file" name="img2" required>
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">{{ __('タイトル') }}</label>
@@ -209,7 +248,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-check form-check-inline  @error('gender') is-invalid @enderror">
-                                    <input class="form-check-input" type="radio" name="gender" value="オス">
+                                    <input class="form-check-input" type="radio" name="gender" value="オス"  checked>
                                     <label class="form-check-label">オス</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -224,7 +263,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-check form-check-inline  @error('vaccination') is-invalid @enderror">
-                                    <input class="form-check-input" type="radio" name="vaccination" value="接種済み">
+                                    <input class="form-check-input" type="radio" name="vaccination" value="接種済み"  checked>
                                     <label class="form-check-label">接種済み</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -239,7 +278,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-check form-check-inline  @error('castration') is-invalid @enderror">
-                                    <input class="form-check-input" type="radio" name="castration" value="接種済み">
+                                    <input class="form-check-input" type="radio" name="castration" value="接種済み"  checked>
                                     <label class="form-check-label">施術済み</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -254,7 +293,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-check form-check-inline  @error('singlePerson') is-invalid @enderror">
-                                    <input class="form-check-input" type="radio" name="singlePerson" value="可">
+                                    <input class="form-check-input" type="radio" name="singlePerson" value="可"  checked>
                                     <label class="form-check-label">可</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -269,7 +308,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-check form-check-inline  @error('elderPerson') is-invalid @enderror">
-                                    <input class="form-check-input" type="radio" name="elderPerson" value="可">
+                                    <input class="form-check-input" type="radio" name="elderPerson" value="可"  checked>
                                     <label class="form-check-label">可</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -292,6 +331,61 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('ペット所在地') }}</label>
+                            <div class="col-md-6">
+                                <select name='recruitmentPeriod'>
+                                    <option value='北海道' selected>北海道</option>
+                                    <option value='青森県'>青森県</option>
+                                    <option value='岩手県'>岩手県</option>
+                                    <option value='秋田県'>秋田県</option>
+                                    <option value='宮城県'>宮城県</option>
+                                    <option value='山形県'>山形県</option>
+                                    <option value='福島県'>福島県</option>
+                                    <option value='茨城県'>茨城県</option>
+                                    <option value='栃木県'>栃木県</option>
+                                    <option value='群馬県'>群馬県</option>
+                                    <option value='埼玉県'>埼玉県</option>
+                                    <option value='千葉県'>千葉県</option>
+                                    <option value='東京都'>東京都</option>
+                                    <option value='神奈川県'>神奈川県</option>
+                                    <option value='新潟県'>新潟県</option>
+                                    <option value='富山県'>富山県</option>
+                                    <option value='石川県'>石川県</option>
+                                    <option value='福井県'>福井県</option>
+                                    <option value='山梨県'>山梨県</option>
+                                    <option value='長野県'>長野県</option>
+                                    <option value='岐阜県'>岐阜県</option>
+                                    <option value='静岡県'>静岡県</option>
+                                    <option value='愛知県'>愛知県</option>
+                                    <option value='三重県'>三重県</option>
+                                    <option value='滋賀県'>滋賀県</option>
+                                    <option value='京都府'>京都府</option>
+                                    <option value='大阪府'>大阪府</option>
+                                    <option value='兵庫県'>兵庫県</option>
+                                    <option value='奈良県'>奈良県</option>
+                                    <option value='和歌山県'>和歌山県</option>
+                                    <option value='鳥取県'>鳥取県</option>
+                                    <option value='島根県'>島根県</option>
+                                    <option value='岡山県'>岡山県</option>
+                                    <option value='広島県'>広島県</option>
+                                    <option value='山口県'>山口県</option>
+                                    <option value='徳島県'>徳島県</option>
+                                    <option value='香川県'>香川県</option>
+                                    <option value='愛媛県'>愛媛県</option>
+                                    <option value='高知県'>高知県</option>
+                                    <option value='福岡県'>福岡県</option>
+                                    <option value='佐賀県'>佐賀県</option>
+                                    <option value='長崎県'>長崎県</option>
+                                    <option value='熊本県'>熊本県</option>
+                                    <option value='大分県'>大分県</option>
+                                    <option value='宮崎県'>宮崎県</option>
+                                    <option value='鹿児島県'>鹿児島県</option>
+                                    <option value='沖縄県'>沖縄県</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">{{ __('応募可能地域') }}</label>
                             <div class="col-md-6 required">
                                 @error('area')
@@ -302,7 +396,7 @@
 
                                 <div class="card" style="width: 18rem;">
                                     <div class="card-header">
-                                        <input class="form-check-input" type="radio" name="place" value='北海道'>
+                                        <input class="form-check-input" type="checkbox" name="area[]" value='北海道'>
                                         <label class="form-check-label">北海道</label>
                                     </div>
                                 </div>
@@ -315,21 +409,21 @@
                                     <ul class="list-group list-group-flush" id='tohokuPrefectures' style="display: none;">
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='青森県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='青森県'>
                                                 <label class="form-check-label">青森県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='岩手県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='岩手県'>
                                                 <label class="form-check-label">岩手県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='秋田県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='秋田県'>
                                                 <label class="form-check-label">秋田県</label>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='宮城県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='宮城県'>
                                                 <label class="form-check-label">宮城県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='山形県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='山形県'>
                                                 <label class="form-check-label">山形県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='福島県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='福島県'>
                                                 <label class="form-check-label">福島県</label>
                                             </div>
                                         </li>
@@ -344,27 +438,27 @@
                                     <ul class="list-group list-group-flush" id='kantoPrefectures' style="display: none;">
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='茨城県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='茨城県'>
                                                 <label class="form-check-label">茨城県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='栃木県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='栃木県'>
                                                 <label class="form-check-label">岩手県</label>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='群馬県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='群馬県'>
                                                 <label class="form-check-label">群馬県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='埼玉県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='埼玉県'>
                                                 <label class="form-check-label">埼玉県</label>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='千葉県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='千葉県'>
                                                 <label class="form-check-label">千葉県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='東京都'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='東京都'>
                                                 <label class="form-check-label">東京都</label>
-                                                <input class="form-check-input" type="radio" name="place" value='神奈川県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='神奈川県'>
                                                 <label class="form-check-label">神奈川県</label>
                                             </div>
                                         </li>
@@ -379,31 +473,31 @@
                                     <ul class="list-group list-group-flush" id='tyubuPrefectures' style="display: none;">
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='新潟県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='新潟県'>
                                                 <label class="form-check-label">新潟県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='富山県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='富山県'>
                                                 <label class="form-check-label">富山県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='石川県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='石川県'>
                                                 <label class="form-check-label">石川県</label>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='福井県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='福井県'>
                                                 <label class="form-check-label">福井県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='山梨県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='山梨県'>
                                                 <label class="form-check-label">山梨県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='長野県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='長野県'>
                                                 <label class="form-check-label">長野県</label>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='岐阜県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='岐阜県'>
                                                 <label class="form-check-label">岐阜県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='静岡県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='静岡県'>
                                                 <label class="form-check-label">静岡県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='愛知県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='愛知県'>
                                                 <label class="form-check-label">愛知県</label>
                                             </div>
                                         </li>
@@ -418,27 +512,27 @@
                                     <ul class="list-group list-group-flush" id='kinkiPrefectures' style="display: none;">
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='三重県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='三重県'>
                                                 <label class="form-check-label">三重県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='滋賀県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='滋賀県'>
                                                 <label class="form-check-label">滋賀県</label>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='京都府'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='京都府'>
                                                 <label class="form-check-label">京都府</label>
-                                                <input class="form-check-input" type="radio" name="place" value='大阪府'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='大阪府'>
                                                 <label class="form-check-label">大阪府</label>
-                                                <input class="form-check-input" type="radio" name="place" value='兵庫県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='兵庫県'>
                                                 <label class="form-check-label">兵庫県</label>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='奈良県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='奈良県'>
                                                 <label class="form-check-label">奈良県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='和歌山県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='和歌山県'>
                                                 <label class="form-check-label">和歌山県</label>
                                             </div>
                                         </li>
@@ -453,19 +547,19 @@
                                     <ul class="list-group list-group-flush" id='tyugokuPrefectures' style="display: none;">
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='鳥取県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='鳥取県'>
                                                 <label class="form-check-label">鳥取県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='島根県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='島根県'>
                                                 <label class="form-check-label">島根県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='岡山県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='岡山県'>
                                                 <label class="form-check-label">岡山県</label>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='広島県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='広島県'>
                                                 <label class="form-check-label">広島県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='山口県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='山口県'>
                                                 <label class="form-check-label">山口県</label>
                                             </div>
                                         </li>
@@ -480,18 +574,18 @@
                                     <ul class="list-group list-group-flush" id='shikokuPrefectures' style="display: none;">
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='徳島県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='徳島県'>
                                                 <label class="form-check-label">徳島県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='香川県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='香川県'>
                                                 <label class="form-check-label">香川県</label>
                                                 
                                             </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='愛媛県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='愛媛県'>
                                                 <label class="form-check-label">愛媛県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='高知県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='高知県'>
                                                 <label class="form-check-label">高知県</label>
                                             </div>
                                         </li>
@@ -506,29 +600,29 @@
                                     <ul class="list-group list-group-flush" id='kyusyuPrefectures' style="display: none;">
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='福岡県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='福岡県'>
                                                 <label class="form-check-label">福岡県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='佐賀県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='佐賀県'>
                                                 <label class="form-check-label">佐賀県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='長崎県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='長崎県'>
                                                 <label class="form-check-label">熊本県</label>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='熊本県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='熊本県'>
                                                 <label class="form-check-label">熊本県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='大分県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='大分県'>
                                                 <label class="form-check-label">大分県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='宮崎県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='宮崎県'>
                                                 <label class="form-check-label">宮崎県</label>
                                             </div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="place" value='鹿児島県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='鹿児島県'>
                                                 <label class="form-check-label">鹿児島県</label>
-                                                <input class="form-check-input" type="radio" name="place" value='沖縄県'>
+                                                <input class="form-check-input" type="checkbox" name="area[]" value='沖縄県'>
                                                 <label class="form-check-label">沖縄県</label>
                                             </div>
                                         </li>
@@ -607,6 +701,34 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right ">{{ __('引き渡し場所') }}</label>
+
+                            <div class="col-md-6">
+                                <textarea name='transaction' class="form-control @error('transaction') is-invalid @enderror" cols='20' rows='3' required></textarea>
+
+                                @error('transaction')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right ">{{ __('募集の経緯') }}</label>
+
+                            <div class="col-md-6">
+                                <textarea name='remarks' class="form-control @error('remarks') is-invalid @enderror" cols='20' rows='10' required></textarea>
+
+                                @error('remarks')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
