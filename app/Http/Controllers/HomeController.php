@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Fosterquestionnaire;
 use App\Conservationquestionnaire;
+use App\Article;
 
 class HomeController extends Controller
 {
@@ -174,5 +175,11 @@ class HomeController extends Controller
         }else{
             return view('home');
         }
+    }
+
+    public function articleStore()
+    {
+        $user = \Auth::user();
+
     }
 }
