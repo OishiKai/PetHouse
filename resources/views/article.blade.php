@@ -12,11 +12,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('記事投稿フォーム') }}</div>
 
                 <div class="card-body">
 
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('articleStore') }}" enctype="multipart/form-data">
                         @csrf
                         
                         <div class="form-group row">
@@ -728,7 +728,7 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
