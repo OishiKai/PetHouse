@@ -177,9 +177,16 @@ class HomeController extends Controller
         }
     }
 
-    public function articleStore()
+    public function articleStore(Request $request)
     {
         $user = \Auth::user();
-
+        $data = $request->all();
+        dd($data);
+        $memo_id = Article::insertGetId([
+            'content' => $data['content'],
+            'user_id' => $data['user_id'], 
+            'tag_id' => $tag_id,
+            'status' => 1
+        ]);
     }
 }

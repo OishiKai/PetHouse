@@ -39,7 +39,7 @@
                             <label class="col-md-4 col-form-label text-md-right ">{{ __('ペットの写真➂') }}</label>
 
                             <div class="col-md-6">
-                                <input type="file" name="img2" required>
+                                <input type="file" name="img3" required>
                             </div>
                         </div>
 
@@ -47,7 +47,7 @@
                             <label class="col-md-4 col-form-label text-md-right ">{{ __('ペットの写真➃') }}</label>
 
                             <div class="col-md-6">
-                                <input type="file" name="img2" required>
+                                <input type="file" name="img4" required>
                             </div>
                         </div>
 
@@ -55,7 +55,7 @@
                             <label class="col-md-4 col-form-label text-md-right ">{{ __('ペットの写真⑤') }}</label>
 
                             <div class="col-md-6">
-                                <input type="file" name="img2" required>
+                                <input type="file" name="img5" required>
                             </div>
                         </div>
 
