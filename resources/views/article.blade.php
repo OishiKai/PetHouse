@@ -716,7 +716,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right ">{{ __('募集の経緯') }}</label>
+                            <label class="col-md-4 col-form-label text-md-right ">{{ __('その他備考') }}</label>
 
                             <div class="col-md-6">
                                 <textarea name='remarks' class="form-control @error('remarks') is-invalid @enderror" cols='20' rows='10' required></textarea>
