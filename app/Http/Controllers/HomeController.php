@@ -187,4 +187,14 @@ class HomeController extends Controller
         Article::test($data, $user['id']);
         return view('home');
     }
+
+    public function articleDetail($id)
+    {
+        $data = Article::where('id', $id)->get();
+        dd($data);
+        Article::validator($request);
+        
+        Article::test($data, $user['id']);
+        return view('home');
+    }
 }
