@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Fosterquestionnaire;
 use App\Conservationquestionnaire;
+use App\Article;
 
 class HomeController extends Controller
 {
@@ -162,6 +163,28 @@ class HomeController extends Controller
         }
         
         // dd($data);
+        return view('home');
+    }
+
+    public function article()
+    {
+        $user = \Auth::user();
+
+        if ($user['status'] == '1'){
+            return view('article');
+        }else{
+            return view('home');
+        }
+    }
+
+    public function articleStore(Request $request)
+    {
+        $user = \Auth::user();
+        $data = $request->all();
+        // dd($data);
+        Article::validator($request);
+        
+        Article::test($data, $user['id']);
         return view('home');
     }
 }

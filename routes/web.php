@@ -21,4 +21,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/questionnaire', 'HomeController@questionnaire')->name('questionnaire');
     Route::post('/answerQuestionnaire', 'HomeController@answerQuestionnaire')->name('answerQuestionnaire');
+    Route::get('/article', 'HomeController@article')->name('article');
+    Route::post('/articleStore', 'HomeController@articleStore')->name('articleStore');
 });
