@@ -181,12 +181,10 @@ class HomeController extends Controller
     {
         $user = \Auth::user();
         $data = $request->all();
-        dd($data);
-        $memo_id = Article::insertGetId([
-            'content' => $data['content'],
-            'user_id' => $data['user_id'], 
-            'tag_id' => $tag_id,
-            'status' => 1
-        ]);
+        // dd($data);
+        Article::validator($request);
+        
+        Article::test($data, $user['id']);
+        return view('home');
     }
 }

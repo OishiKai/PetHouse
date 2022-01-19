@@ -333,7 +333,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('ペット所在地') }}</label>
                             <div class="col-md-6">
-                                <select name='recruitmentPeriod'>
+                                <select name='place'>
                                     <option value='北海道' selected>北海道</option>
                                     <option value='青森県'>青森県</option>
                                     <option value='岩手県'>岩手県</option>
@@ -663,7 +663,7 @@
                             <label class="col-md-4 col-form-label text-md-right ">{{ __('募集の経緯') }}</label>
 
                             <div class="col-md-6">
-                                <textarea name='background' class="form-control @error('background') is-invalid @enderror" cols='20' rows='10' required></textarea>
+                                <textarea name='background' class="form-control @error('background') is-invalid @enderror" cols='20' rows='10' value="{{ old('background') }}" required></textarea>
 
                                 @error('background')
                                     <span class="invalid-feedback" role="alert">
@@ -677,7 +677,7 @@
                             <label class="col-md-4 col-form-label text-md-right ">{{ __('性格') }}</label>
 
                             <div class="col-md-6">
-                                <textarea name='personality' class="form-control @error('personality') is-invalid @enderror" cols='20' rows='3' required></textarea>
+                                <textarea name='personality' class="form-control @error('personality') is-invalid @enderror" cols='20' rows='3' value="{{ old('personality') }}" required></textarea>
 
                                 @error('personality')
                                     <span class="invalid-feedback" role="alert">
@@ -691,7 +691,7 @@
                             <label class="col-md-4 col-form-label text-md-right ">{{ __('健康状態') }}</label>
 
                             <div class="col-md-6">
-                                <textarea name='health' class="form-control @error('health') is-invalid @enderror" cols='20' rows='3' required></textarea>
+                                <textarea name='health' class="form-control @error('health') is-invalid @enderror" cols='20' rows='3' value="{{ old('health') }}" required></textarea>
 
                                 @error('health')
                                     <span class="invalid-feedback" role="alert">
@@ -705,7 +705,7 @@
                             <label class="col-md-4 col-form-label text-md-right ">{{ __('引き渡し場所') }}</label>
 
                             <div class="col-md-6">
-                                <textarea name='transaction' class="form-control @error('transaction') is-invalid @enderror" cols='20' rows='3' required></textarea>
+                                <textarea name='transaction' class="form-control @error('transaction') is-invalid @enderror" cols='20' rows='3' value="{{ old('transaction') }}" required></textarea>
 
                                 @error('transaction')
                                     <span class="invalid-feedback" role="alert">
@@ -719,7 +719,7 @@
                             <label class="col-md-4 col-form-label text-md-right ">{{ __('その他備考') }}</label>
 
                             <div class="col-md-6">
-                                <textarea name='remarks' class="form-control @error('remarks') is-invalid @enderror" cols='20' rows='10' required></textarea>
+                                <textarea name='remarks' class="form-control @error('remarks') is-invalid @enderror" cols='20' rows='10' value="{{ old('remarks') }}" required></textarea>
 
                                 @error('remarks')
                                     <span class="invalid-feedback" role="alert">
