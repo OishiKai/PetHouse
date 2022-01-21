@@ -1,16 +1,27 @@
+@extends('layouts.app')
+
+@section('head')
+<script src="{{ asset('js/articleDetailScript.js') }}" defer></script>
+<link href="{{ asset('css/articleDetailStyle.css') }}" rel="stylesheet">
+@endsection
+
+@section('content')
+<?php
+// dd($user);
+?>
 <div id="wrapper">
     <div class="back">
         <a href="javascript:history.back()">＜＜前のページに戻る</a>
     </div>
     <div class="Publication">
-        <p>[]の里親募集詳細</p>
-        <p>募集ID：[]</p>
+        <p>{{$user['id']}}の里親募集詳細</p>
+        <p>募集ID：{{$data['id']}}</p>
         <p>掲載日：[]</p>
         <p class="Deadline">掲載期限：[]まで</p>
     </div>
     <div id="main">
         <section id="title">
-            <h2>[題名]</h2>
+            <h2>{{$data['title']}}</h2>
                 <p>♥お気に入り登録者[]人｜閲覧数[]</p>
         </section>
         <section id="imgGallery">
@@ -173,3 +184,4 @@
         </div>
     </div>
 </div>
+@endsection
