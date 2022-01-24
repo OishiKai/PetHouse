@@ -1,35 +1,20 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/baseScript.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/baseStyle.css') }}" rel="stylesheet">
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/307140e2a3.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-</head>
-<body>
-        <!--header-->
+<!DOCTYPE html>
+<html lang='ja'>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>犬・猫</title>
+        <link href="{{ asset('css/registerLoginLootStyle.css') }}" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="/img/favicon1.png">
+      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://kit.fontawesome.com/307140e2a3.js"></script>
+      
+      @yield('head')
+    </head>
+    <body>
+    <!--header-->
         <div id="top" >
             <div class="top-logo">
                 <a href="./base.html">
@@ -52,35 +37,21 @@
                
                 </div>
         </div> 
-    
-        <!--navigation-->
+        
         <div id="nav">
             <div class="bar-button-left">
-                    <a class="bar" href="base.html">HOME<br>--Pet House Top--</a>
-                    <a class="bar" href="#">PET ROOM<br>--犬・猫 検索--</a>
-                    <a class="bar" href="#">お問い合わせ<br>--サイトに対して--</a>
+                    <a class="bar-home" href="base.html">HOME<br>--Pet House Top--</a>
+                    
+                     <a class="bar-room" id="bar-room-popup" href="pet-seach.html">PET ROOM<br>--犬・猫 検索--</a>
+                     
+                    <a class="bar-contact" href="#">お問い合わせ<br>--サイトに対して--</a>
             </div>
         </div>
 
-        <br><br>
+        @yield('content')
         
-        <main class="py-4">
-            @yield('content')
-        </main>
-        
-        <br><br>
-    </div>
-    
-    
-    
-    <div class="scrolltoTopbtn">
-      <i class="fas fa-angle-up" style="font-size:60px;" title="トップページへ"></i><br>
-      
-    </div>
-
-
-        <!--footer-->
         <footer>
+
             <div id="footer_nav">
                 <a class="footer-logo" href="./base.html">
                     <img src="{{ asset('js/img/logo-removebg-preview (3).png') }}" alt="footer-logo-image">
@@ -104,5 +75,12 @@
             <small>&copy; copyright</small>
             
         </footer>
+
+        <script>
+           
+        </script>
     </body>
+        <!--Library-->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="{{ asset('js/lootScript.js') }}" defer></script>
 </html>
