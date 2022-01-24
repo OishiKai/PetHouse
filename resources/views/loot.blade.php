@@ -23,30 +23,6 @@
 @section('content')
 
 <body>
-    <!--header-->
-    <div id="top">
-        <div class="top-logo">
-            <a href="./base.html">
-                <img src="img/logo-removebg-preview (3).png" alt="logo-image">
-            </a>
-        </div>
-        <div class="top-menu">
-            <a class="loginmenu" href="form.html" title="会員登録・ログイン">
-                <i class="far fa-user-circle" style="font-size: 40px;"></i><br>会員登録・ログイン
-            </a>
-            <a class="loginmenu" href="#" title="お気に入り">
-                <i class="fas fa-heart" style="font-size: 40px;"></i><br>お気に入り
-            </a>
-            <a class="loginmenu" href="#" title="メッセージ">
-                <i class="fas fa-comments" style="font-size: 40px;"></i><br>メッセージ
-            </a>
-            <a class="loginmenu" href="#" title="よくある質問">
-                <i class="fas fa-question" style="font-size: 40px;"></i><br>よくある質問
-            </a>
-        </div>
-    </div>
-
-    <!--navigation-->
 
     <div id="nav">
         <div class="bar-button-left">
