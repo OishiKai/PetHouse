@@ -34,6 +34,11 @@ class HomeController extends Controller
         return view('loot');
     }
 
+    public function base2()
+    {
+        return view('base2');
+    }
+
     public function questionnaire()
     {   
         $user = \Auth::user();
