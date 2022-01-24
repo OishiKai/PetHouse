@@ -29,6 +29,11 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function loot()
+    {
+        return view('loot');
+    }
+
     public function questionnaire()
     {   
         $user = \Auth::user();
@@ -196,6 +201,6 @@ class HomeController extends Controller
         $data = $article[0];
 
         // dd($data);
-        return view('detail', compact('data', 'user','id'));
+        return view('detail', compact('data','user','id'));
     }
 }
