@@ -27,11 +27,11 @@
         </section>
         <section id="imgGallery">
             <div class="mein-frame">
-                <img id="main-img" src="#" alt="メイン写真">
+                <img id="main-img" src="{{ asset('article_images\1.jpg') }}" alt="メイン写真">
             </div>
             <ul class="thumbspace">
                 <li>
-                    <img class="thumbnails" src="#" data-imagesrc="#" alt="写真1">
+                    <img class="thumbnails" src="public\article_images\3e20da53-bb4c-44b5-9b96-1654cf1b7fa4(1).jpg" alt="写真1">
                 </li>
                 <li>
                     <img class="thumbnails" src="#" data-imagesrc="#" alt="写真2">
@@ -62,7 +62,7 @@
                         <table>
                             <tr>
                                 <th>状況</th>
-                                <td>[]</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th>種類</th>
