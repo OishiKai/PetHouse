@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 
 class Article extends Model
 {
+    public $timestamps = true;
     static function test($data, $user){
         $uuid = (string) Str::uuid();
         

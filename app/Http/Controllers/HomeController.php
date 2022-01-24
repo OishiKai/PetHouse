@@ -43,6 +43,7 @@ class HomeController extends Controller
 
     public function answerQuestionnaire(Request $request)
     {
+        dd($request);
         $data = $request->all();
         
         $user = \Auth::user();
@@ -162,7 +163,7 @@ class HomeController extends Controller
             // dd($data);
         }
         
-        // dd($data);
+        dd($data);
         return view('home');
     }
 
@@ -186,5 +187,15 @@ class HomeController extends Controller
         
         Article::test($data, $user['id']);
         return view('home');
+    }
+
+    public function articleDetail($id)
+    {
+        $user = \Auth::user();
+        $article = Article::where('id', $id)->get();
+        $data = $article[0];
+
+        // dd($data);
+        return view('detail', compact('data', 'user','id'));
     }
 }
