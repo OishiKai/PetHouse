@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('head')
+<script src="{{ asset('js/passwordDisplay.js') }}" defer></script>
 <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 @endsection
 
@@ -43,37 +44,53 @@
             </div>
         </div>
     </div>
-    <form action="/action_page.php">
-        <div id="formA">
+    <div id="formA">
+        <form method="POST" action="{{ route('formTest') }}">
+            @csrf
             <div class="row">
                 <div class="col-25">
                     <span class="form">必須</span>
                     <label for="nickname">ニックネーム</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="nickname" name="nickname" placeholder="ニックネームを入力" />
+                    <input type="text" id="name" name="name" class="@error('name') is-invalid @enderror"
+                        placeholder="ニックネームを入力" value="{{ old('name') }}" required />
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-25">
                     <span class="form">必須</span>
                     <label for="email">メールアドレス</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="email" name="email" placeholder="メールアドレスうを入力" />
-
+                    <input type="text" id="email" name="email" class="@error('email') is-invalid @enderror"
+                        placeholder="メールアドレスを入力" required>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-25">
                     <span class="form">必須</span>
                     <label for="pswA">パスワード</label>
                 </div>
                 <div class="col-75">
-                    <input type="password" id="pswA" name="pswA" placeholder="パスワードを入力" />
+                    <input type="password" id="password" name="password" class="@error('password') is-invalid @enderror"
+                        placeholder="パスワードを入力" required>
                     <p>確認のため、もう一度入力してください</p>
-                    <input type="password" id="psw-repeatA" name="psw-repeatA" placeholder="もう一度パスワードを入力" /><br />
-                    <input type="checkbox" id="hidepwordA" name="hidepwdA" value="hidepasswordA" />
+                    <input type="password" id="password" name="password_confirmation" placeholder="もう一度パスワードを入力"
+                        required><br />
+                    <input type="checkbox" id="display" name="display" onchange='passwordDisplay("display")'>
                     <label for="hidepwordA"> パスワードを表示する</label>
                 </div>
                 <h6 class="h6-required">※8~20文字数内で<br />設定してください</h6>
@@ -84,19 +101,31 @@
                     <label for="nameA">お名前</label>
                 </div>
                 <div class="col-35">
-                    <input type="text" id="fnameA" name="firstnameA" placeholder="姓名" />
+                    <input type="text" id="fnameA" name="kanjiFamilyName"
+                        class="@error('kanjiFamilyName') is-invalid @enderror" placeholder="姓名">
                 </div>
                 <div class="col-35">
-                    <input type="text" id="lnameA" name="lastnameA" placeholder="氏名" />
+                    <input type="text" id="lnameA" name="kanjiFirstName"
+                        class="@error('kanjiFirstName') is-invalid @enderror" placeholder="氏名" />
                 </div>
                 <h6 class="h6-required">※全角<br />例（山田　太郎）</h6>
             </div>
             <div class="row">
                 <div class="col-40">
-                    <input type="text" id="furifnameA" name="furifirstnameA" placeholder="フリガナ(姓名)" />
+                    <input type="text" name="kanaFamilyName" class="@error('kanaFamilyName') is-invalid @enderror" placeholder="フリガナ(姓名)" />
+                        @error('kanaFamilyName')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                 </div>
                 <div class="col-41">
-                    <input type="text" id="furilnameA" name="furilastnameA" placeholder="フリガナ(氏名)" />
+                    <input type="text" name="kanaFirstName" class="@error('kanaFirstName') is-invalid @enderror" placeholder="フリガナ(氏名)" />
+                        @error('kanaFirstName')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                 </div>
                 <h6 class="h6-required">※全角<br />例（ヤマダ　タロウ）</h6>
             </div>
@@ -106,13 +135,13 @@
                     <label for="age">性別・年齢</label>
                 </div>
                 <div class="col-35">
-                    <input type="radio" id="dansei" name="seibetsu" value="male" />
+                    <input type="radio" id="dansei" name="gender" value="male" />
                     <label for="male">男性</label>
-                    <input type="radio" id="josei" name="seibetsu" value="female" />
+                    <input type="radio" id="josei" name="gender" value="female" />
                     <label for="female">女性</label>
                 </div>
                 <div class="col-42">
-                    <input type="text" id="age" name="nenrei" />
+                    <input type="text" id="age" name="age" />
                 </div>
                 <h5>歳</h5>
             </div>
@@ -122,11 +151,18 @@
                     <label for="telA">電話番号</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="telA" name="telephoneA" placeholder="電話番号を入力" />
+                    <input type="text" name="phoneNumber" class="@error('phoneNumber') is-invalid @enderror"
+                        placeholder="電話番号を入力" />
+                    @error('phoneNumber')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <br />
                 <h6 class="h6-required">※ハイフンなし</h6>
             </div>
+
             <div class="row">
                 <div class="col-25">
                     <span class="form">必須</span>
@@ -137,88 +173,30 @@
                     <h7>〒</h7>
                 </div>
                 <div class="col-42">
-                    <input type="text" id="zipcode1" name="zipcode1" />
+                    <input type="text" class="@error('zip21') is-invalid @enderror" name="zip21" size="4" maxlength="3"
+                        required>
+                    @error('zip21')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="col-43">
                     <h7>ー</h7>
                 </div>
                 <div class="col-42">
-                    <input type="text" id="zipcode2" name="zipcode2" />
-                </div>
-
-                <div class="col-76">
-                    <p>◇都道府県</p>
-                    <select name="pref_id">
-                        <option value="" selected>--都道府県--</option>
-                        <option value="1">北海道</option>
-                        <option value="2">青森県</option>
-                        <option value="3">岩手県</option>
-                        <option value="4">宮城県</option>
-                        <option value="5">秋田県</option>
-                        <option value="6">山形県</option>
-                        <option value="7">福島県</option>
-                        <option value="8">茨城県</option>
-                        <option value="9">栃木県</option>
-                        <option value="10">群馬県</option>
-                        <option value="11">埼玉県</option>
-                        <option value="12">千葉県</option>
-                        <option value="13">東京都</option>
-                        <option value="14">神奈川県</option>
-                        <option value="15">新潟県</option>
-                        <option value="16">富山県</option>
-                        <option value="17">石川県</option>
-                        <option value="18">福井県</option>
-                        <option value="19">山梨県</option>
-                        <option value="20">長野県</option>
-                        <option value="21">岐阜県</option>
-                        <option value="22">静岡県</option>
-                        <option value="23">愛知県</option>
-                        <option value="24">三重県</option>
-                        <option value="25">滋賀県</option>
-                        <option value="26">京都府</option>
-                        <option value="27">大阪府</option>
-                        <option value="28">兵庫県</option>
-                        <option value="29">奈良県</option>
-                        <option value="30">和歌山県</option>
-                        <option value="31">鳥取県</option>
-                        <option value="32">島根県</option>
-                        <option value="33">岡山県</option>
-                        <option value="34">広島県</option>
-                        <option value="35">山口県</option>
-                        <option value="36">徳島県</option>
-                        <option value="37">香川県</option>
-                        <option value="38">愛媛県</option>
-                        <option value="39">高知県</option>
-                        <option value="40">福岡県</option>
-                        <option value="41">佐賀県</option>
-                        <option value="42">長崎県</option>
-                        <option value="43">熊本県</option>
-                        <option value="44">大分県</option>
-                        <option value="45">宮崎県</option>
-                        <option value="46">鹿児島県</option>
-                        <option value="47">沖縄県</option>
-                    </select>
+                    <input class="@error('zip22') is-invalid @enderror" value="{{ old('zip22') }}"
+                        type="text" name="zip22" size="5" maxlength="4"
+                        onKeyUp="AjaxZip3.zip2addr('zip21','zip22','addr21','addr21');" required>
+                    @error('zip21')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="col-76">
-                    <p>◇市区町村</p>
-                    <input type="text" id="add1" name="telephone" />
-                </div>
-                <div class="col-76-1">
-                    <h6 class="h6-required">※全角</h6>
-                </div>
-                <div class="col-76">
-                    <p>◇丁目・番地</p>
-                    <input type="text" id="add2" name="telephone" />
-                </div>
-                <div class="col-76-1">
-                    <h6 class="h6-required">※全角</h6>
-                </div>
-                <div class="col-76">
-                    <p>◇マンション・アパート名・部屋番号等</p>
-                    <input type="text" id="add3" name="telephone" />
-                </div>
-                <div class="col-76-1">
-                    <h6 class="h6-required">※全角</h6>
+                    <p>◇住所</p>
+                    <input type="text" name="addr21" size="40" required>
                 </div>
             </div>
 
@@ -338,71 +316,103 @@
                     <label for="yes">同意</label>
                 </div>
             </div>
-
+            <input type='hidden' name='status' value=0>
             <div class="row">
                 <input type="submit" value="確認画面へ" />
             </div>
-        </div>
+        </form>
+    </div>
 
-        <!--formB-->
-        <div id="formB" style="display: none;">
+    <!--formB-->
+    <div id="formB" style="display: none;">
+        <form method="POST" action="{{ route('formTest') }}">
+            @csrf
             <div class="row">
                 <div class="col-25">
                     <span class="form">必須</span>
-                    <label for="emailB">メールアドレス</label>
+                    <label for="email">メールアドレス</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="mailB" name="emailB" placeholder="メールアドレスうを入力" />
+                    <input type="text" id="email" name="email" class="@error('email') is-invalid @enderror"
+                        placeholder="メールアドレスを入力" required>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-25">
                     <span class="form">必須</span>
-                    <label for="pswB">パスワード</label>
+                    <label for="pswA">パスワード</label>
                 </div>
                 <div class="col-75">
-                    <input type="password" id="pswB" name="pswB" placeholder="パスワードを入力" />
+                    <input type="password" id="password" name="password" class="@error('password') is-invalid @enderror"
+                        placeholder="パスワードを入力" required>
                     <p>確認のため、もう一度入力してください</p>
-                    <input type="password" id="psw-repeatB" name="psw-repeatB" placeholder="もう一度パスワードを入力" /><br />
-                    <input type="checkbox" id="hidepwordB" name="hidepwdB" value="hidepasswordB" />
-                    <label for="hidepasswordB"> パスワードを表示する</label>
+                    <input type="password" id="password" name="password_confirmation" placeholder="もう一度パスワードを入力"
+                        required><br />
+                    <input type="checkbox" id="display" name="display" onchange='passwordDisplay("display")'>
+                    <label for="hidepwordA"> パスワードを表示する</label>
                 </div>
                 <h6 class="h6-required">※8~20文字数内で<br />設定してください</h6>
             </div>
+
             <div class="row">
                 <div class="col-25">
                     <span class="form">必須</span>
-                    <label for="name">担当者名</label>
+                    <label for="nameA">お名前</label>
                 </div>
                 <div class="col-35">
-                    <input type="text" id="fnameB" name="firstnameB" placeholder="姓名" />
+                    <input type="text" id="fnameA" name="kanjiFamilyName"
+                        class="@error('kanjiFamilyName') is-invalid @enderror" placeholder="姓名">
                 </div>
                 <div class="col-35">
-                    <input type="text" id="lnameB" name="lastnameB" placeholder="氏名" />
+                    <input type="text" id="lnameA" name="kanjiFirstName"
+                        class="@error('kanjiFirstName') is-invalid @enderror" placeholder="氏名" />
                 </div>
                 <h6 class="h6-required">※全角<br />例（山田　太郎）</h6>
             </div>
             <div class="row">
                 <div class="col-40">
-                    <input type="text" id="furifnameB" name="furifirstnameB" placeholder="フリガナ(姓名)" />
+                    <input type="text" name="kanaFamilyName" class="@error('kanaFamilyName') is-invalid @enderror" placeholder="フリガナ(姓名)" />
+                    @error('kanaFamilyName')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="col-41">
-                    <input type="text" id="furilnameB" name="furilastnameB" placeholder="フリガナ(氏名)" />
+                    <input type="text" name="kanaFirstName" class="@error('kanaFirstName') is-invalid @enderror" placeholder="フリガナ(氏名)" />
+                    @error('kanaFirstName')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <h6 class="h6-required">※全角<br />例（ヤマダ　タロウ）</h6>
             </div>
+
             <div class="row">
                 <div class="col-25">
                     <span class="form">必須</span>
-                    <label for="telB">電話番号</label>
+                    <label for="telA">電話番号</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="telB" name="telephoneB" placeholder="電話番号を入力" />
+                    <input type="text" name="phoneNumber" class="@error('phoneNumber') is-invalid @enderror"
+                        placeholder="電話番号を入力" />
+                    @error('phoneNumber')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <br />
                 <h6 class="h6-required">※ハイフンなし</h6>
             </div>
+
             <div class="row">
                 <div class="col-25">
                     <span class="form">必須</span>
@@ -519,10 +529,11 @@
                     <label for="yes">同意</label>
                 </div>
             </div>
-
+            <input type='hidden' name='status' value=1>
             <div class="row">
                 <input type="submit" value="確認画面へ" />
             </div>
-        </div>
+        </form>
+    </div>
 </div>
 @endsection

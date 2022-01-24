@@ -34,6 +34,13 @@ class HomeController extends Controller
         return view('form');
     }
 
+    public function formTest(Request $request)
+    {
+        $data = $request->all();
+        dd($data);
+        return view('home');
+    }
+
     public function questionnaire()
     {   
         $user = \Auth::user();
