@@ -62,19 +62,19 @@
                         <table>
                             <tr>
                                 <th>状況</th>
-                                <td></td>
+                                <td>{{$data['status']}}</td>
                             </tr>
                             <tr>
                                 <th>種類</th>
-                                <td>[]</td>
+                                <td>{{$data['species']}}</td>
                             </tr>
                             <tr>
                                 <th>サイズ</th>
-                                <td>[]</td>
+                                <td>{{$data['size']}}</td>
                             </tr>
                             <tr>
                                 <th>ペット所在地</th>
-                                <td>[]</td>
+                                <td>{{$data['place']}}</td>
                             </tr>
                         </table>
                     </li>
@@ -86,15 +86,15 @@
                         <table>
                             <tr>
                                 <th>ワクチン接種</th>
-                                <td>[]</td>
+                                <td>{{$data['vaccination']}}</td>
                             </tr>
                             <tr>
                                 <th>去勢／避妊</th>
-                                <td>[]</td>
+                                <td>{{$data['castration']}}</td>
                             </tr>
                             <tr>
                                 <th>健康状態</th>
-                                <td>[]</td>
+                                <td>{{$data['health']}}</td>
                             </tr>
                         </table>
                     </li>
@@ -106,15 +106,15 @@
                         <table>
                             <tr>
                                 <th>募集の経緯</th>
-                                <td>[]</td>
+                                <td>{{$data['background']}}</td>
                             </tr>
                             <tr>
                                 <th>性格や特徴</th>
-                                <td>[]</td>
+                                <td>{{$data['personality']}}</td>
                             </tr>
                             <tr>
                                 <th>その他備考</th>
-                                <td>[]</td>
+                                <td>{{$data['remarks']}}</td>
                             </tr>
                         </table>
                     </li>
@@ -126,11 +126,11 @@
                         <table>
                             <tr>
                                 <th><p>・単身者応募</p></th>
-                                <td>[]</td>
+                                <td>{{$data['singlePerson']}}</td>
                             </tr>
                             <tr>
                                 <th><p>・高齢者応募(６５歳以上)</p></th>
-                                <td>[]</td>
+                                <td>{{$data['elderPerson']}}</td>
                             </tr>
                             <tr>
                                 <th><p>・先住ペットがいる方</p></th>
@@ -142,11 +142,11 @@
                             </tr>
                             <tr>
                                 <th>募集可能地域</th>
-                                <td>[]</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th>引き渡し場所</th>
-                                <td>[]</td>
+                                <td>{{$data['transaction']}}</td>
                             </tr>
                         </table>
                     </li>
