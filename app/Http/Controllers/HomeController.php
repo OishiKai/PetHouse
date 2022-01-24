@@ -29,14 +29,9 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function loot()
+    public function form()
     {
-        return view('loot');
-    }
-
-    public function base2()
-    {
-        return view('base2');
+        return view('form');
     }
 
     public function questionnaire()
