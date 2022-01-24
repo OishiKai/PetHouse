@@ -7,7 +7,7 @@
 
 @section('content')
 <?php
-// dd($user);
+// dd($data);
 ?>
 <div id="wrapper">
     <div class="back">
@@ -15,8 +15,9 @@
     </div>
     <div class="Publication">
         <p>{{$user['id']}}の里親募集詳細</p>
-        <p>募集ID：{{$data['id']}}</p>
+        <p>募集ID：{{$id}}</p>
         <p>掲載日：[]</p>
+
         <p class="Deadline">掲載期限：[]まで</p>
     </div>
     <div id="main">

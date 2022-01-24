@@ -196,6 +196,6 @@ class HomeController extends Controller
         $data = $article[0];
 
         // dd($data);
-        return view('detail', compact('data', 'user'));
+        return view('detail', compact('data', 'user','id'));
     }
 }

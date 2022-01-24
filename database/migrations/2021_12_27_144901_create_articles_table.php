@@ -39,6 +39,7 @@ class CreateArticlesTable extends Migration
             $table->string('health'); // 健康状態
             $table->string('transaction'); // 引き渡し可能場所
             $table->string('remarks'); // その他備考
+            
             $table->timestamps();
         });
     }
