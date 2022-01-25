@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Fosterquestionnaire;
 use App\Conservationquestionnaire;
@@ -26,13 +27,20 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (Auth::check()) {
+            $user = \Auth::user();
+            return view('home', compact('user'));
+        }
         return view('home');
     }
 
     public function home()
     {
-        $user = \Auth::user();
-        return view('homeAuthed', compact('user'));
+        if (Auth::check()) {
+            $user = \Auth::user();
+            return view('home', compact('user'));
+        }
+        return view('home');
     }
 
     public function questionnaire()
