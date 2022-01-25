@@ -49,9 +49,9 @@ class HomeController extends Controller
 
         if ($user['status'] == 0){
             // dd($user);
-            return view('fosterQuestionnaire');
+            return view('fosterQuestionnaire', compact('user'));
         }else{
-            return view('conservationQuestionnaire');
+            return view('conservationQuestionnaire', compact('user'));
         }
     }
 

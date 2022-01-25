@@ -1,6 +1,8 @@
 @extends('layouts.base')
-
 @section('head')
+<script src="{{ asset('js/FosterquestionnaireScript.js') }}" defer></script>
+<link href="{{ asset('css/FosterquestionnaireStyle.css') }}" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 @endsection
 
 @section('content')
@@ -53,18 +55,21 @@
 
 
                         <script>
-                            $(function ($) {
-                                $('#number').change(function () {
-                                    $('#P').empty();
-                                    for (var i = 0; i < $(this).val(); i++) {
-                                        var addForm = $(
-                                            '<p>続柄・関係<select name="relationship[]" id="relationship1"><option class="a" disabled selected>選択してください</option><option value="配偶者">配偶者</option><option value="子ども">子ども</option><option value="父">父</option><option value="母">母</option><option value="兄弟・姉妹">兄弟・姉妹</option><option value="祖父">祖父</option><option value="祖母">祖母</option><option value="叔父">叔父</option><option value="叔母">叔母</option><option value="孫">孫</option><option value="甥姪">甥姪</option><option value="その他">その他</option></select>年齢<select name="age[]" id="age"><option class="a" disabled selected>選択してください</option><option value="3歳未満">3歳未満</option><option value="3歳～6歳未満">3歳～6歳未満</option><option value="6歳～10歳未満">6歳～10歳未満</option><option value="10歳～20歳未満">10歳～20歳未満</option><option value="20歳～30歳未満">20歳～30歳未満</option><option value="30歳～40歳未満">30歳～40歳未満</option><option value="40歳～50歳未満">40歳～50歳未満</option><option value="50歳～60歳未満">50歳～60歳未満</option><option value="60歳～70歳未満">60歳～70歳未満</option><option value="70歳～80歳未満">70歳～80歳未満</option><option value="80歳～90歳未満">80歳～90歳未満</option><option value="90歳～100歳未満">90歳～100歳未満</option><option value="100歳以上">100歳以上</option></select>歳</p>'
-                                        );
-                                        $('#P').append(addForm);
+                            window.addEventListener('DOMContentLoaded', function () {
+                                $(function ($) {
+                                    $('#number').change(function () {
+                                        $('#P').empty();
+                                        for (var i = 0; i < $(this).val(); i++) {
+                                            var addForm = $(
+                                                '<p>続柄・関係<select name="relationship[]" id="relationship1"><option class="a" disabled selected>選択してください</option><option value="配偶者">配偶者</option><option value="子ども">子ども</option><option value="父">父</option><option value="母">母</option><option value="兄弟・姉妹">兄弟・姉妹</option><option value="祖父">祖父</option><option value="祖母">祖母</option><option value="叔父">叔父</option><option value="叔母">叔母</option><option value="孫">孫</option><option value="甥姪">甥姪</option><option value="その他">その他</option></select>年齢<select name="age[]" id="age"><option class="a" disabled selected>選択してください</option><option value="3歳未満">3歳未満</option><option value="3歳～6歳未満">3歳～6歳未満</option><option value="6歳～10歳未満">6歳～10歳未満</option><option value="10歳～20歳未満">10歳～20歳未満</option><option value="20歳～30歳未満">20歳～30歳未満</option><option value="30歳～40歳未満">30歳～40歳未満</option><option value="40歳～50歳未満">40歳～50歳未満</option><option value="50歳～60歳未満">50歳～60歳未満</option><option value="60歳～70歳未満">60歳～70歳未満</option><option value="70歳～80歳未満">70歳～80歳未満</option><option value="80歳～90歳未満">80歳～90歳未満</option><option value="90歳～100歳未満">90歳～100歳未満</option><option value="100歳以上">100歳以上</option></select>歳</p>'
+                                            );
+                                            $('#P').append(addForm);
 
-                                    }
+                                        }
+                                    });
                                 });
                             });
+
                         </script>
 
 
@@ -125,16 +130,19 @@
 
                     <div id="abc">
 
-                        <script>
-                            $(document).on("click", ".add", function () {
+                        <script type="module">
+                            window.addEventListener('DOMContentLoaded', function () {
+                                $(document).on("click", ".add", function () {
                                 $(this).parent().clone(true).insertAfter($(this).parent());
-                            });
-                            $(document).on("click", ".del", function () {
+                                }); 
+                                $(document).on("click", ".del", function () {
                                 var target = $(this).parent();
                                 if (target.parent().children().length > 1) {
                                     target.remove();
                                 }
                             });
+                            });
+
                         </script>
 
                         <dd>
