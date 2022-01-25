@@ -12,14 +12,13 @@
         <h1>LOG IN</h1>
     </div>
     <form method="POST" action="{{ route('login') }}">
-        @csrf
         <div class="row">
             <div class="col-25">
                 <span class="form">必須</span>
                 <label for="email">メールアドレス</label>
             </div>
             <div class="col-75">
-                <input type="text" name="email" placeholder="メールアドレスを入力" required>
+                <input type="text" id="email" name="email" placeholder="メールアドレスを入力" required>
             </div>
         </div>
         <div class="row">
@@ -28,12 +27,12 @@
                 <label for="psw">パスワード</label>
             </div>
             <div class="col-75">
-                <input type="password" name="password" placeholder="パスワードを入力" pattern="(?=.*[a-z]).{8,}" required>
+                <input type="password" id="psw" name="psw" placeholder="パスワードを入力" pattern="(?=.*[a-z]).{8,}" required>
             </div>
 
         </div>
-        <div style="width: 100%; text-align: center;">
-            <input type="submit" id="login" value="ログイン">
+        <div style="width: 10%; text-align: center;">
+            <input type="submit" value="ログイン">
         </div>
 
 
