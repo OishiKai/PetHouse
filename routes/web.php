@@ -12,16 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
-
 Auth::routes();
 
+Route::get('/home', 'HomeController@home')->name('home');
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::post('/formTest', 'HomeController@formTest')->name('formTest');
-    Route::get('/loot', 'HomeController@loot')->name('loot');
-    Route::get('/form', 'HomeController@form')->name('form');
+    Route::get('/home', 'HomeController@home')->name('home');
     Route::get('/questionnaire', 'HomeController@questionnaire')->name('questionnaire');
     Route::post('/answerQuestionnaire', 'HomeController@answerQuestionnaire')->name('answerQuestionnaire');
     Route::get('/article', 'HomeController@article')->name('article');
