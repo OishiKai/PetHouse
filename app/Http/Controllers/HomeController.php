@@ -29,14 +29,10 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function loot()
+    public function home()
     {
-        return view('loot');
-    }
-
-    public function base2()
-    {
-        return view('base2');
+        $user = \Auth::user();
+        return view('homeAuthed', compact('user'));
     }
 
     public function questionnaire()
