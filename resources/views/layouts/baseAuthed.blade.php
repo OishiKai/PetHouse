@@ -24,13 +24,11 @@
             
                 <div class="top-menu">
                 {{$user['kanjiFamilyName']}}様
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
-                        <a class="loginmenu" href="{{ route('logout') }}" title="ログアウト" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                        
-                            <i class="far fa-user-circle" style="font-size: 40px;"></i><br>ログアウト
-                        </a>
-                    </form>
+                    <a class="loginmenu" href="{{ route('logout') }}" title="ログアウト" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                        <i class="far fa-user-circle" style="font-size: 40px;"></i><br>ログアウト
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form></form>
                     <a class="loginmenu" href="#" title="お気に入り">
                         <i class="fas fa-heart" style="font-size: 40px;"></i><br>お気に入り
                     </a>
