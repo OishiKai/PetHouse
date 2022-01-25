@@ -2,8 +2,8 @@
 
 @section('content')
 <ul class="breadcrumb">
-    <li><a href="base.html">HOME</a></li>
-    <li><a href="form.html">会員ログイン</a></li>
+    <li><a href="{{ route('home') }}">HOME</a></li>
+    <li><a href="{{ route('register') }}">新規登録</a></li>
     <li>ログイン</li>
 </ul>
 
@@ -38,7 +38,7 @@
 
 
         <br><a id="forgotpwd" href="forgotpass.html">パスワードをお忘れですか？</a><br>
-        <a id="signup" href="form.html">新規登録！</a>
+        <a id="signup" href="{{ route('register') }}">新規登録！</a>
 
     </form>
 </div>
