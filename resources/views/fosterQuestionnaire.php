@@ -11,7 +11,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('里親アンケート') }}</div>
+                <div class="card-header">
+                    {{ __('里親アンケート') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="/answerQuestionnaire">
@@ -19,18 +20,22 @@
 
                         <!-- 同居人の有無-->
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('同居人の有無') }}</label>
+                            <label for="name"
+                                class="col-md-4 col-form-label text-md-right">{{ __('同居人の有無') }}</label>
                             <div class="col-md-6">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="switch" value='あり(家族)' onclick=" formSwitchThird()" checked>
+                                    <input class="form-check-input" type="radio" name="switch" value='あり(家族)'
+                                        onclick=" formSwitchThird()" checked>
                                     <label class="form-check-label"> あり(家族)</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="switch" value='あり(家族以外)' onclick=" formSwitchThird()">
+                                    <input class="form-check-input" type="radio" name="switch" value='あり(家族以外)'
+                                        onclick=" formSwitchThird()">
                                     <label class="form-check-label"> あり(家族以外)</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="switch" value='なし'onclick="formSwitchThird()">
+                                    <input class="form-check-input" type="radio" name="switch" value='なし'
+                                        onclick="formSwitchThird()">
                                     <label class="form-check-label"> なし</label>
                                 </div>
                             </div>
@@ -39,7 +44,8 @@
                         <!-- 同居人の人数-->
                         <div id='default'>
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('本人以外の同居人') }}</label>
+                                <label for="name"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('本人以外の同居人') }}</label>
                                 <div class="col-md-6">
                                     <select id='housemate' name='housemateNumber' onchange='renderPulldown(1)'>
                                         <option value='1' selected>1人</option>
@@ -56,78 +62,259 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('同居人の続柄/年齢') }}</label>
+                                <label for="name"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('同居人の続柄/年齢') }}</label>
                                 <div class="col-md-6">
                                     <div id='pd1' class='form-group row'>
                                         <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
+                                            <option value='3歳未満'>3歳未満</option>
+                                            <option value='6歳未満'>6歳未満</option>
+                                            <option value='10歳未満'>10歳未満</option>
+                                            <option value='10歳以上'>10歳以上</option>
+                                            <option value='20歳以上'>20歳以上</option>
+                                            <option value='30歳以上'>30歳以上</option>
+                                            <option value='40歳以上'>40歳以上</option>
+                                            <option value='50歳以上'>50歳以上</option>
+                                            <option value='60歳以上'>60歳以上</option>
+                                            <option value='70歳以上'>70歳以上</option>
+                                            <option value='80歳以上'>80歳以上</option>
+                                            <option value='90歳以上'>90歳以上</option>
+                                            <option value='100歳以上'>100歳以上</option>
                                         </select>
                                     </div>
                                     <div id='pd2' class='form-group row' style="display: none;">
                                         <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
+                                            <option value='3歳未満'>3歳未満</option>
+                                            <option value='6歳未満'>6歳未満</option>
+                                            <option value='10歳未満'>10歳未満</option>
+                                            <option value='10歳以上'>10歳以上</option>
+                                            <option value='20歳以上'>20歳以上</option>
+                                            <option value='30歳以上'>30歳以上</option>
+                                            <option value='40歳以上'>40歳以上</option>
+                                            <option value='50歳以上'>50歳以上</option>
+                                            <option value='60歳以上'>60歳以上</option>
+                                            <option value='70歳以上'>70歳以上</option>
+                                            <option value='80歳以上'>80歳以上</option>
+                                            <option value='90歳以上'>90歳以上</option>
+                                            <option value='100歳以上'>100歳以上</option>
                                         </select>
                                     </div>
                                     <div id='pd3' class='form-group row' style="display: none;">
                                         <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
-                                        <select name='housemateDetailAge[]' >
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
+                                        <select name='housemateDetailAge[]'>
+                                            <option value='3歳未満'>3歳未満</option>
+                                            <option value='6歳未満'>6歳未満</option>
+                                            <option value='10歳未満'>10歳未満</option>
+                                            <option value='10歳以上'>10歳以上</option>
+                                            <option value='20歳以上'>20歳以上</option>
+                                            <option value='30歳以上'>30歳以上</option>
+                                            <option value='40歳以上'>40歳以上</option>
+                                            <option value='50歳以上'>50歳以上</option>
+                                            <option value='60歳以上'>60歳以上</option>
+                                            <option value='70歳以上'>70歳以上</option>
+                                            <option value='80歳以上'>80歳以上</option>
+                                            <option value='90歳以上'>90歳以上</option>
+                                            <option value='100歳以上'>100歳以上</option>
                                         </select>
                                     </div>
                                     <div id='pd4' class='form-group row' style="display: none;">
                                         <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
+                                            <option value='3歳未満'>3歳未満</option>
+                                            <option value='6歳未満'>6歳未満</option>
+                                            <option value='10歳未満'>10歳未満</option>
+                                            <option value='10歳以上'>10歳以上</option>
+                                            <option value='20歳以上'>20歳以上</option>
+                                            <option value='30歳以上'>30歳以上</option>
+                                            <option value='40歳以上'>40歳以上</option>
+                                            <option value='50歳以上'>50歳以上</option>
+                                            <option value='60歳以上'>60歳以上</option>
+                                            <option value='70歳以上'>70歳以上</option>
+                                            <option value='80歳以上'>80歳以上</option>
+                                            <option value='90歳以上'>90歳以上</option>
+                                            <option value='100歳以上'>100歳以上</option>
                                         </select>
                                     </div>
                                     <div id='pd5' class='form-group row' style="display: none;">
                                         <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
+                                            <option value='3歳未満'>3歳未満</option>
+                                            <option value='6歳未満'>6歳未満</option>
+                                            <option value='10歳未満'>10歳未満</option>
+                                            <option value='10歳以上'>10歳以上</option>
+                                            <option value='20歳以上'>20歳以上</option>
+                                            <option value='30歳以上'>30歳以上</option>
+                                            <option value='40歳以上'>40歳以上</option>
+                                            <option value='50歳以上'>50歳以上</option>
+                                            <option value='60歳以上'>60歳以上</option>
+                                            <option value='70歳以上'>70歳以上</option>
+                                            <option value='80歳以上'>80歳以上</option>
+                                            <option value='90歳以上'>90歳以上</option>
+                                            <option value='100歳以上'>100歳以上</option>
                                         </select>
                                     </div>
                                     <div id='pd6' class='form-group row' style="display: none;">
                                         <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
+                                            <option value='3歳未満'>3歳未満</option>
+                                            <option value='6歳未満'>6歳未満</option>
+                                            <option value='10歳未満'>10歳未満</option>
+                                            <option value='10歳以上'>10歳以上</option>
+                                            <option value='20歳以上'>20歳以上</option>
+                                            <option value='30歳以上'>30歳以上</option>
+                                            <option value='40歳以上'>40歳以上</option>
+                                            <option value='50歳以上'>50歳以上</option>
+                                            <option value='60歳以上'>60歳以上</option>
+                                            <option value='70歳以上'>70歳以上</option>
+                                            <option value='80歳以上'>80歳以上</option>
+                                            <option value='90歳以上'>90歳以上</option>
+                                            <option value='100歳以上'>100歳以上</option>
                                         </select>
                                     </div>
                                     <div id='pd7' class='form-group row' style="display: none;">
                                         <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
+                                            <option value='3歳未満'>3歳未満</option>
+                                            <option value='6歳未満'>6歳未満</option>
+                                            <option value='10歳未満'>10歳未満</option>
+                                            <option value='10歳以上'>10歳以上</option>
+                                            <option value='20歳以上'>20歳以上</option>
+                                            <option value='30歳以上'>30歳以上</option>
+                                            <option value='40歳以上'>40歳以上</option>
+                                            <option value='50歳以上'>50歳以上</option>
+                                            <option value='60歳以上'>60歳以上</option>
+                                            <option value='70歳以上'>70歳以上</option>
+                                            <option value='80歳以上'>80歳以上</option>
+                                            <option value='90歳以上'>90歳以上</option>
+                                            <option value='100歳以上'>100歳以上</option>
                                         </select>
                                     </div>
                                     <div id='pd8' class='form-group row' style="display: none;">
                                         <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
+                                            <option value='3歳未満'>3歳未満</option>
+                                            <option value='6歳未満'>6歳未満</option>
+                                            <option value='10歳未満'>10歳未満</option>
+                                            <option value='10歳以上'>10歳以上</option>
+                                            <option value='20歳以上'>20歳以上</option>
+                                            <option value='30歳以上'>30歳以上</option>
+                                            <option value='40歳以上'>40歳以上</option>
+                                            <option value='50歳以上'>50歳以上</option>
+                                            <option value='60歳以上'>60歳以上</option>
+                                            <option value='70歳以上'>70歳以上</option>
+                                            <option value='80歳以上'>80歳以上</option>
+                                            <option value='90歳以上'>90歳以上</option>
+                                            <option value='100歳以上'>100歳以上</option>
                                         </select>
                                     </div>
                                     <div id='pd9' class='form-group row' style="display: none;">
                                         <select name='housemateDetailRelation[]'>
-                                            <option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateDetailAge[]'>
-                                            <option value='3歳未満'>3歳未満</option><option value='6歳未満'>6歳未満</option><option value='10歳未満'>10歳未満</option><option value='10歳以上'>10歳以上</option><option value='20歳以上'>20歳以上</option><option value='30歳以上'>30歳以上</option><option value='40歳以上'>40歳以上</option><option value='50歳以上'>50歳以上</option><option value='60歳以上'>60歳以上</option><option value='70歳以上'>70歳以上</option><option value='80歳以上'>80歳以上</option><option value='90歳以上'>90歳以上</option><option value='100歳以上'>100歳以上</option>
+                                            <option value='3歳未満'>3歳未満</option>
+                                            <option value='6歳未満'>6歳未満</option>
+                                            <option value='10歳未満'>10歳未満</option>
+                                            <option value='10歳以上'>10歳以上</option>
+                                            <option value='20歳以上'>20歳以上</option>
+                                            <option value='30歳以上'>30歳以上</option>
+                                            <option value='40歳以上'>40歳以上</option>
+                                            <option value='50歳以上'>50歳以上</option>
+                                            <option value='60歳以上'>60歳以上</option>
+                                            <option value='70歳以上'>70歳以上</option>
+                                            <option value='80歳以上'>80歳以上</option>
+                                            <option value='90歳以上'>90歳以上</option>
+                                            <option value='100歳以上'>100歳以上</option>
                                         </select>
                                     </div>
                                 </div>
@@ -135,22 +322,26 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('同居人の合意') }}</label>
+                                <label for="name"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('同居人の合意') }}</label>
                                 <div class="col-md-6">
-                                    
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="housemateAgreement" value='あり' checked>
-                                            <label class="form-check-label"> あり</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="housemateAgreement" value='なし'>
-                                            <label class="form-check-label"> なし</label>
-                                        </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="housemateAgreement"
+                                            value='あり' checked>
+                                        <label class="form-check-label"> あり</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="housemateAgreement"
+                                            value='なし'>
+                                        <label class="form-check-label"> なし</label>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('アレルギーの有無') }}</label>
+                                <label for="name"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('アレルギーの有無') }}</label>
                                 <div class="col-md-6">
                                     <select id='allergy' name='housemateAllergy' onchange='renderPulldown(2)'>
                                         <option value='なし'>なし</option>
@@ -166,81 +357,172 @@
                                     </select>
                                 </div>
                             </div>
-                        
+
 
                             <div class="form-group row" id='allergyDetail' style="display: none;">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('アレルギーの詳細') }}</label>
+                                <label for="name"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('アレルギーの詳細') }}</label>
                                 <div class="col-md-6">
                                     <div id='al1' class='form-group row'>
                                         <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='本人'>本人</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
+                                            <option value='犬アレルギー'>犬アレルギー</option>
+                                            <option value='猫アレルギー'>猫アレルギー</option>
                                         </select>
                                     </div>
                                     <div id='al2' class='form-group row'>
                                         <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='本人'>本人</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
+                                            <option value='犬アレルギー'>犬アレルギー</option>
+                                            <option value='猫アレルギー'>猫アレルギー</option>
                                         </select>
                                     </div>
                                     <div id='al3' class='form-group row'>
                                         <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='本人'>本人</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
+                                            <option value='犬アレルギー'>犬アレルギー</option>
+                                            <option value='猫アレルギー'>猫アレルギー</option>
                                         </select>
                                     </div>
                                     <div id='al4' class='form-group row'>
                                         <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='本人'>本人</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
+                                            <option value='犬アレルギー'>犬アレルギー</option>
+                                            <option value='猫アレルギー'>猫アレルギー</option>
                                         </select>
                                     </div>
                                     <div id='al5' class='form-group row'>
                                         <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='本人'>本人</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
+                                            <option value='犬アレルギー'>犬アレルギー</option>
+                                            <option value='猫アレルギー'>猫アレルギー</option>
                                         </select>
                                     </div>
                                     <div id='al6' class='form-group row'>
                                         <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='本人'>本人</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
+                                            <option value='犬アレルギー'>犬アレルギー</option>
+                                            <option value='猫アレルギー'>猫アレルギー</option>
                                         </select>
                                     </div>
                                     <div id='al7' class='form-group row'>
                                         <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='本人'>本人</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
+                                            <option value='犬アレルギー'>犬アレルギー</option>
+                                            <option value='猫アレルギー'>猫アレルギー</option>
                                         </select>
                                     </div>
                                     <div id='al8' class='form-group row'>
                                         <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='本人'>本人</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
+                                            <option value='犬アレルギー'>犬アレルギー</option>
+                                            <option value='猫アレルギー'>猫アレルギー</option>
                                         </select>
                                     </div>
                                     <div id='al9' class='form-group row'>
                                         <select name='housemateAllergyDetailRelation[]'>
-                                        <option value='本人'>本人</option><option value='配偶者'>配偶者</option><option value='子ども'>子ども</option><option value='父'>父</option><option value='母'>母</option><option value='兄弟・姉妹'>兄弟・姉妹</option><option value='祖父'>祖父</option><option value='祖母'>祖母</option><option value='孫'>孫</option><option value='その他'>その他</option>
+                                            <option value='本人'>本人</option>
+                                            <option value='配偶者'>配偶者</option>
+                                            <option value='子ども'>子ども</option>
+                                            <option value='父'>父</option>
+                                            <option value='母'>母</option>
+                                            <option value='兄弟・姉妹'>兄弟・姉妹</option>
+                                            <option value='祖父'>祖父</option>
+                                            <option value='祖母'>祖母</option>
+                                            <option value='孫'>孫</option>
+                                            <option value='その他'>その他</option>
                                         </select>
                                         <select name='housemateAllergyDetailAllergy[]'>
-                                        <option value='犬アレルギー'>犬アレルギー</option><option value='猫アレルギー'>猫アレルギー</option>
+                                            <option value='犬アレルギー'>犬アレルギー</option>
+                                            <option value='猫アレルギー'>猫アレルギー</option>
                                         </select>
                                     </div>
                                 </div>
@@ -250,7 +532,8 @@
 
                         <div id='another'>
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('アレルギーの有無') }}</label>
+                                <label for="name"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('アレルギーの有無') }}</label>
                                 <div class="col-md-6">
                                     <select id='allergy' name='housemateAllergySolo'>
                                         <option value='なし'>なし</option>
@@ -262,7 +545,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('住居タイプ') }}</label>
+                            <label for="name"
+                                class="col-md-4 col-form-label text-md-right">{{ __('住居タイプ') }}</label>
                             <div class="col-md-6">
                                 <select name='houseType'>
                                     <option value='持ち家:戸建て'>持ち家:戸建て</option>
@@ -277,70 +561,77 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('住居のペット飼育の可否') }}</label>
+                            <label for="name"
+                                class="col-md-4 col-form-label text-md-right">{{ __('住居のペット飼育の可否') }}</label>
                             <div class="col-md-6">
-                                
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="landlordAgreement" value='可' checked>
-                                        <label class="form-check-label"> 可</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="landlordAgreement" value='不可'>
-                                        <label class="form-check-label"> 不可</label>
-                                    </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="landlordAgreement" value='可'
+                                        checked>
+                                    <label class="form-check-label"> 可</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="landlordAgreement" value='不可'>
+                                    <label class="form-check-label"> 不可</label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('一年以内の転居・転勤') }}</label>
+                            <label for="name"
+                                class="col-md-4 col-form-label text-md-right">{{ __('一年以内の転居・転勤') }}</label>
                             <div class="col-md-6">
-                                
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="transfer" value='なし' checked>
-                                        <label class="form-check-label"> なし</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="transfer" value='あり'>
-                                        <label class="form-check-label"> あり</label>
-                                    </div>
-                                
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="transfer" value='なし' checked>
+                                    <label class="form-check-label"> なし</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="transfer" value='あり'>
+                                    <label class="form-check-label"> あり</label>
+                                </div>
+
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('募集者による自宅訪問可否') }}</label>
+                            <label for="name"
+                                class="col-md-4 col-form-label text-md-right">{{ __('募集者による自宅訪問可否') }}</label>
                             <div class="col-md-6">
-                                
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="visitable" value='可' checked>
-                                        <label class="form-check-label"> 可</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="visitable" value='不可'>
-                                        <label class="form-check-label"> 不可</label>
-                                    </div>
-                                
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="visitable" value='可' checked>
+                                    <label class="form-check-label"> 可</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="visitable" value='不可'>
+                                    <label class="form-check-label"> 不可</label>
+                                </div>
+
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('飼育場所') }}</label>
+                            <label for="name"
+                                class="col-md-4 col-form-label text-md-right">{{ __('飼育場所') }}</label>
                             <div class="col-md-6">
-                                
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="breedingPlace" value='室内' checked>
-                                        <label class="form-check-label"> 室内</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="breedingPlace" value='屋外'>
-                                        <label class="form-check-label"> 屋外</label>
-                                    </div>
-                                
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="breedingPlace" value='室内'
+                                        checked>
+                                    <label class="form-check-label"> 室内</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="breedingPlace" value='屋外'>
+                                    <label class="form-check-label"> 屋外</label>
+                                </div>
+
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('ペットが単独になる時間') }}</label>
+                            <label for="name"
+                                class="col-md-4 col-form-label text-md-right">{{ __('ペットが単独になる時間') }}</label>
                             <div class="col-md-6">
                                 <select name='aloneHours'>
                                     <option value='1時間未満'>1時間未満</option>
@@ -358,12 +649,14 @@
 
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('現在飼育中のペット状況') }}</label>
+                            <label for="name"
+                                class="col-md-4 col-form-label text-md-right">{{ __('現在飼育中のペット状況') }}</label>
 
                             <div class="col-md-6">
                                 <input type="checkbox" name="pets[]" value="test" style='display:none' checked>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="pets[]" value="飼っていない" checked>
+                                    <input class="form-check-input" type="checkbox" name="pets[]" value="飼っていない"
+                                        checked>
                                     <label class="form-check-label" for="chk02">飼っていない</label>
                                 </div>
                                 <div class="form-check form-check-inline">

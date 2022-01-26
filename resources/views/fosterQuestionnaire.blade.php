@@ -20,7 +20,7 @@
             なるべく詳細な情報の提供にご協力ください</p>
     </div>
 
-    <form method="POST" action="/answerQuestionnaire">
+    <form method="POST" action="/confirmQuestionnaire">
         @csrf
         <div id="b">
             <div class="cohabit">
@@ -28,12 +28,12 @@
                 <dl>
                     <dt><span class="must">必須</span>同居人の有無</dt>
                     <dd>
-                        <label><input type="radio" name="housemate" id="housemate1"
-                                onclick="document.getElementById('xyz').style.display = 'block';">あり(家族)</label>
-                        <label><input type="radio" name="housemate" id="housemate2"
-                                onclick="document.getElementById('xyz').style.display = 'block';">あり(家族以外)</label>
-                        <label><input type="radio" name="housemate" id="housemate3"
-                                onclick="document.getElementById('xyz').style.display = 'none';">なし(単身)</label>
+                        <label><input type="radio" name="switch"
+                                onclick="document.getElementById('xyz').style.display = 'block';" value='あり(家族)' checked>あり(家族)</label>
+                        <label><input type="radio" name="switch"
+                                onclick="document.getElementById('xyz').style.display = 'block';" value='あり(家族以外)'>あり(家族以外)</label>
+                        <label><input type="radio" name="switch"
+                                onclick="document.getElementById('xyz').style.display = 'none';" value='なし(単身)'>なし(単身)</label>
                     </dd>
 
                     <div id="xyz">
@@ -41,9 +41,8 @@
                         <dt><span class="must">必須</span>本人以外の同居人</dt>
                         <dd>
                             人数
-                            <select name="number" id="number">
-                                <option class="a" disabled selected>選択してください</option>
-                                <option value="1">1人</option>
+                            <select name="housemateNumber">
+                                <option value="1" selected>1人</option>
                                 <option value="2">2人</option>
                                 <option value="3">3人</option>
                                 <option value="4">4人</option>
@@ -61,7 +60,7 @@
                                         $('#P').empty();
                                         for (var i = 0; i < $(this).val(); i++) {
                                             var addForm = $(
-                                                '<p>続柄・関係<select name="relationship[]" id="relationship1"><option class="a" disabled selected>選択してください</option><option value="配偶者">配偶者</option><option value="子ども">子ども</option><option value="父">父</option><option value="母">母</option><option value="兄弟・姉妹">兄弟・姉妹</option><option value="祖父">祖父</option><option value="祖母">祖母</option><option value="叔父">叔父</option><option value="叔母">叔母</option><option value="孫">孫</option><option value="甥姪">甥姪</option><option value="その他">その他</option></select>年齢<select name="age[]" id="age"><option class="a" disabled selected>選択してください</option><option value="3歳未満">3歳未満</option><option value="3歳～6歳未満">3歳～6歳未満</option><option value="6歳～10歳未満">6歳～10歳未満</option><option value="10歳～20歳未満">10歳～20歳未満</option><option value="20歳～30歳未満">20歳～30歳未満</option><option value="30歳～40歳未満">30歳～40歳未満</option><option value="40歳～50歳未満">40歳～50歳未満</option><option value="50歳～60歳未満">50歳～60歳未満</option><option value="60歳～70歳未満">60歳～70歳未満</option><option value="70歳～80歳未満">70歳～80歳未満</option><option value="80歳～90歳未満">80歳～90歳未満</option><option value="90歳～100歳未満">90歳～100歳未満</option><option value="100歳以上">100歳以上</option></select>歳</p>'
+                                                '<p>続柄・関係<select name="relationship[]" id="relationship1"><option value="配偶者" selected>配偶者</option><option value="子ども">子ども</option><option value="父">父</option><option value="母">母</option><option value="兄弟・姉妹">兄弟・姉妹</option><option value="祖父">祖父</option><option value="祖母">祖母</option><option value="叔父">叔父</option><option value="叔母">叔母</option><option value="孫">孫</option><option value="甥姪">甥姪</option><option value="その他">その他</option></select>年齢<select name="age[]" id="age"><option value="3歳未満">3歳未満</option><option value="3歳～6歳未満">3歳～6歳未満</option><option value="6歳～10歳未満">6歳～10歳未満</option><option value="10歳～20歳未満">10歳～20歳未満</option><option value="20歳～30歳未満">20歳～30歳未満</option><option value="30歳～40歳未満">30歳～40歳未満</option><option value="40歳～50歳未満">40歳～50歳未満</option><option value="50歳～60歳未満">50歳～60歳未満</option><option value="60歳～70歳未満">60歳～70歳未満</option><option value="70歳～80歳未満">70歳～80歳未満</option><option value="80歳～90歳未満">80歳～90歳未満</option><option value="90歳～100歳未満">90歳～100歳未満</option><option value="100歳以上">100歳以上</option></select>歳</p>'
                                             );
                                             $('#P').append(addForm);
 
@@ -76,9 +75,8 @@
 
                         <dd id="P">
                             続柄・関係
-                            <select name="relationship[]" id="relationship1">
-                                <option class="a" disabled selected>選択してください</option>
-                                <option value="配偶者">配偶者</option>
+                            <select name="housemateDetailRelation[]" id="relationship1">
+                                <option value="配偶者" selected>配偶者</option>
                                 <option value="配偶者">子ども</option>
                                 <option value="父">父</option>
                                 <option value="母">母</option>
@@ -93,9 +91,8 @@
                             </select>
 
                             年齢
-                            <select name="age[]" id="age">
-                                <option class="a" disabled selected>選択してください</option>
-                                <option value="3歳未満">3歳未満</option>
+                            <select name="housemateDetailAge[]" id="age">
+                                <option value="3歳未満" selected>3歳未満</option>
                                 <option value="3歳～6歳未満">3歳～6歳未満</option>
                                 <option value="6歳～10歳未満">6歳～10歳未満</option>
                                 <option value="10歳～20歳未満">10歳～20歳未満</option>
@@ -116,16 +113,17 @@
 
                     <dt><span class="must">必須</span>家族全員のペット飼育同意</dt>
                     <dd>
-                        <label><input type="radio" name="accept" id="accept1">あり</label>
-                        <label><input type="radio" name="accept" id="accept2">なし</label>
+                        <label><input type="radio" name="housemateAgreement" value='あり' checked>あり</label>
+                        <label><input type="radio" name="housemateAgreement" value='なし'>なし</label>
                     </dd>
+
                     <dt><span class="must">必須</span>アレルギーの有無</dt>
                     <dd>
                         <p>※ご本人・または同居している方にアレルギー保有の有無を選択してください</p>
-                        <label><input type="radio" name="allergies" id="allergies1"
-                                onclick="document.getElementById('abc').style.display = 'block';">あり</label>
-                        <label><input type="radio" name="allergies" id="allergies2"
-                                onclick="document.getElementById('abc').style.display = 'none';">なし</label>
+                        <label><input type="radio" name="allergies"
+                                onclick="document.getElementById('abc').style.display = 'block';" value='あり' checked>あり</label>
+                        <label><input type="radio" name="allergies"
+                                onclick="document.getElementById('abc').style.display = 'none';" value='なし'>なし</label>
                     </dd>
 
                     <div id="abc">
@@ -149,11 +147,9 @@
                             <div id="input_pluralBox">
                                 <div id="input_plural">
 
-
                                     続柄・関係
-                                    <select name="relationship[]" id="relationship2">
-                                        <option class="a" disabled selected>選択してください</option>
-                                        <option value="自分">自分</option>
+                                    <select name="housemateAllergyDetailRelation[]" id="relationship2">
+                                        <option value="自分" selected>自分</option>
                                         <option value="配偶者">配偶者</option>
                                         <option value="子ども">子ども</option>
                                         <option value="父">父</option>
@@ -169,9 +165,8 @@
                                     </select>
 
                                     アレルギー
-                                    <select name="allergy[]" id="allergy">
-                                        <option class="a" disabled selected>選択してください</option>
-                                        <option value="犬アレルギー">犬アレルギー</option>
+                                    <select name="housemateAllergyDetailAllergy[]" id="allergy">
+                                        <option value="犬アレルギー" selected>犬アレルギー</option>
                                         <option value="猫アレルギー">猫アレルギー</option>
                                     </select>
 
@@ -194,7 +189,7 @@
                     <dt><span class="must">必須</span>住居タイプ</dt>
                     <dd>
                         【自家】
-                        <label><input type="radio" name="houseType" value='持ち家:戸建て'>戸建て</label>
+                        <label><input type="radio" name="houseType" value='持ち家:戸建て' checked>戸建て</label>
                         <label><input type="radio" name="houseType" value='持ち家:マンション'>マンション</label>
                     <dd>
                         【賃貸】
@@ -206,17 +201,17 @@
                     </dd>
                     <dt><span class="must">必須</span>ペット飼育の可否</dt>
                     <dd>
-                        <label><input type="radio" name="landlordAgreement" value='可'>可</label>
+                        <label><input type="radio" name="landlordAgreement" value='可' checked>可</label>
                         <label><input type="radio" name="landlordAgreement" value='不可'>不可</label>
                     </dd>
                     <dt><span class="must">必須</span>一年以内の転居・転勤</dt>
                     <dd>
-                        <label><input type="radio" name="transfer" value='なし'>なし</label>
+                        <label><input type="radio" name="transfer" value='なし' checked>なし</label>
                         <label><input type="radio" name="transfer" value='あり'>あり</label>
                     </dd>
                     <dt><span class="must">必須</span>募集者による自宅訪問の可否</dt>
                     <dd>
-                        <label><input type="radio" name="visitable" value='可'>可</label>
+                        <label><input type="radio" name="visitable" value='可' checked>可</label>
                         <label><input type="radio" name="visitable" value='不可'>不可</label>
                         <p>※募集者が飼育環境の確認のため、自宅へ訪問する場合があります。</p>
                     </dd>
@@ -228,13 +223,13 @@
                 <dl>
                     <dt><span class="must">必須</span>飼育場所</dt>
                     <dd>
-                        <label><input type="radio" name="place" value='室内'>室内</label>
+                        <label><input type="radio" name="place" value='室内' checked>室内</label>
                         <label><input type="radio" name="place" value='屋外'>室外</label>
                     </dd>
                     <dt><span class="must">必須</span>ペットが単独になる時間</dt>
                     <dd>
                         <select name='aloneHours'>
-                            <option value='1時間未満'>1時間未満</option>
+                            <option value='1時間未満' selected>1時間未満</option>
                             <option value='約1時間'>約1時間</option>
                             <option value='約2時間'>約2時間</option>
                             <option value='約3時間'>約3時間</option>
@@ -247,7 +242,7 @@
                     </dd>
                     <dt><span class="must">必須</span>ペット飼育経験の有無</dt>
                     <dd>
-                        <label><input type="radio" name="experience" value='あり'>あり</label>
+                        <label><input type="radio" name="experience" value='あり' checked>あり</label>
                         <label><input type="radio" name="experience" value='なし'>なし</label>
                     </dd>
                     <dt><span class="must">必須</span>現在のペット飼育状況</dt>
@@ -258,7 +253,7 @@
                         <label><input type="checkbox" name="pets[]" value="鳥">鳥</label>
                         <label><input type="checkbox" name="pets[]" value="爬虫類">爬虫類</label>
                         <label><input type="checkbox" name="pets[]" value="その他">その他</label>
-                        <label><input type="checkbox" name="pets[]" value="飼っていない">飼っていない</label>
+                        <label><input type="checkbox" name="pets[]" value="飼っていない" selected>飼っていない</label>
                     </dd>
                 </dl>
             </div>

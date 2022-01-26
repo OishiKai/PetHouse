@@ -55,6 +55,18 @@ class HomeController extends Controller
         }
     }
 
+    public function confirmQuestionnaire(Request $request)
+    {   
+        $user = \Auth::user();
+        $data = $request->all();
+        dd($data);
+        if ($user['status'] == 0){
+            return view('confirmQuestionnaireF', compact('user', 'data'));
+        }else{
+            return view('confirmQuestionnaireC', compact('user', 'data'));
+        }
+    }
+
     public function answerQuestionnaire(Request $request)
     {
         dd($request);
