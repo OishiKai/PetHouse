@@ -59,7 +59,6 @@ class HomeController extends Controller
     {   
         $user = \Auth::user();
         $data = $request->all();
-        dd($data);
         if ($user['status'] == 0){
             return view('confirmQuestionnaireF', compact('user', 'data'));
         }else{
@@ -69,11 +68,11 @@ class HomeController extends Controller
 
     public function answerQuestionnaire(Request $request)
     {
-        dd($request);
+        // dd($request);
         $data = $request->all();
         
         $user = \Auth::user();
-        // dd($data);
+        dd($data);
         if($user['status'] == 0){
             Fosterquestionnaire::where('user_email', $user['email'])->update([
                 'answered' => '1', 

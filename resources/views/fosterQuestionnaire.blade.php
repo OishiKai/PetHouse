@@ -29,11 +29,14 @@
                     <dt><span class="must">必須</span>同居人の有無</dt>
                     <dd>
                         <label><input type="radio" name="switch"
-                                onclick="document.getElementById('xyz').style.display = 'block';" value='あり(家族)' checked>あり(家族)</label>
+                                onclick="document.getElementById('xyz').style.display = 'block';" value='あり(家族)'
+                                checked>あり(家族)</label>
                         <label><input type="radio" name="switch"
-                                onclick="document.getElementById('xyz').style.display = 'block';" value='あり(家族以外)'>あり(家族以外)</label>
+                                onclick="document.getElementById('xyz').style.display = 'block';"
+                                value='あり(家族以外)'>あり(家族以外)</label>
                         <label><input type="radio" name="switch"
-                                onclick="document.getElementById('xyz').style.display = 'none';" value='なし(単身)'>なし(単身)</label>
+                                onclick="document.getElementById('xyz').style.display = 'none';"
+                                value='なし(単身)'>なし(単身)</label>
                     </dd>
 
                     <div id="xyz">
@@ -41,7 +44,7 @@
                         <dt><span class="must">必須</span>本人以外の同居人</dt>
                         <dd>
                             人数
-                            <select name="housemateNumber">
+                            <select name="housemateNumber" id='housemateNumber'>
                                 <option value="1" selected>1人</option>
                                 <option value="2">2人</option>
                                 <option value="3">3人</option>
@@ -56,11 +59,11 @@
                         <script>
                             window.addEventListener('DOMContentLoaded', function () {
                                 $(function ($) {
-                                    $('#number').change(function () {
+                                    $('#housemateNumber').change(function () {
                                         $('#P').empty();
                                         for (var i = 0; i < $(this).val(); i++) {
                                             var addForm = $(
-                                                '<p>続柄・関係<select name="relationship[]" id="relationship1"><option value="配偶者" selected>配偶者</option><option value="子ども">子ども</option><option value="父">父</option><option value="母">母</option><option value="兄弟・姉妹">兄弟・姉妹</option><option value="祖父">祖父</option><option value="祖母">祖母</option><option value="叔父">叔父</option><option value="叔母">叔母</option><option value="孫">孫</option><option value="甥姪">甥姪</option><option value="その他">その他</option></select>年齢<select name="age[]" id="age"><option value="3歳未満">3歳未満</option><option value="3歳～6歳未満">3歳～6歳未満</option><option value="6歳～10歳未満">6歳～10歳未満</option><option value="10歳～20歳未満">10歳～20歳未満</option><option value="20歳～30歳未満">20歳～30歳未満</option><option value="30歳～40歳未満">30歳～40歳未満</option><option value="40歳～50歳未満">40歳～50歳未満</option><option value="50歳～60歳未満">50歳～60歳未満</option><option value="60歳～70歳未満">60歳～70歳未満</option><option value="70歳～80歳未満">70歳～80歳未満</option><option value="80歳～90歳未満">80歳～90歳未満</option><option value="90歳～100歳未満">90歳～100歳未満</option><option value="100歳以上">100歳以上</option></select>歳</p>'
+                                                '<p>続柄・関係<select name="housemateDetailRelation[]" id="relationship1"><option value="配偶者" selected>配偶者</option><option value="子ども">子ども</option><option value="父">父</option><option value="母">母</option><option value="兄弟・姉妹">兄弟・姉妹</option><option value="祖父">祖父</option><option value="祖母">祖母</option><option value="叔父">叔父</option><option value="叔母">叔母</option><option value="孫">孫</option><option value="甥姪">甥姪</option><option value="その他">その他</option></select>年齢<select name="housemateDetailAge[]" id="age"><option value="3歳未満">3歳未満</option><option value="3歳～6歳未満">3歳～6歳未満</option><option value="6歳～10歳未満">6歳～10歳未満</option><option value="10歳～20歳未満">10歳～20歳未満</option><option value="20歳～30歳未満">20歳～30歳未満</option><option value="30歳～40歳未満">30歳～40歳未満</option><option value="40歳～50歳未満">40歳～50歳未満</option><option value="50歳～60歳未満">50歳～60歳未満</option><option value="60歳～70歳未満">60歳～70歳未満</option><option value="70歳～80歳未満">70歳～80歳未満</option><option value="80歳～90歳未満">80歳～90歳未満</option><option value="90歳～100歳未満">90歳～100歳未満</option><option value="100歳以上">100歳以上</option></select>歳</p>'
                                             );
                                             $('#P').append(addForm);
 
@@ -108,20 +111,19 @@
                             </select>
                             歳
                         </dd>
-
+                        <dt><span class="must">必須</span>家族全員のペット飼育同意</dt>
+                        <dd>
+                            <label><input type="radio" name="housemateAgreement" value='あり' checked>あり</label>
+                            <label><input type="radio" name="housemateAgreement" value='なし'>なし</label>
+                        </dd>
                     </div>
-
-                    <dt><span class="must">必須</span>家族全員のペット飼育同意</dt>
-                    <dd>
-                        <label><input type="radio" name="housemateAgreement" value='あり' checked>あり</label>
-                        <label><input type="radio" name="housemateAgreement" value='なし'>なし</label>
-                    </dd>
 
                     <dt><span class="must">必須</span>アレルギーの有無</dt>
                     <dd>
                         <p>※ご本人・または同居している方にアレルギー保有の有無を選択してください</p>
                         <label><input type="radio" name="allergies"
-                                onclick="document.getElementById('abc').style.display = 'block';" value='あり' checked>あり</label>
+                                onclick="document.getElementById('abc').style.display = 'block';" value='あり'
+                                checked>あり</label>
                         <label><input type="radio" name="allergies"
                                 onclick="document.getElementById('abc').style.display = 'none';" value='なし'>なし</label>
                     </dd>
@@ -253,7 +255,8 @@
                         <label><input type="checkbox" name="pets[]" value="鳥">鳥</label>
                         <label><input type="checkbox" name="pets[]" value="爬虫類">爬虫類</label>
                         <label><input type="checkbox" name="pets[]" value="その他">その他</label>
-                        <label><input type="checkbox" name="pets[]" value="飼っていない" selected>飼っていない</label>
+                        <label><input type="checkbox" name="pets[]" value="飼っていない" checked>飼っていない</label>
+                        <input type="checkbox" name="pets[]" value="sample" style='display: none;' checked>
                     </dd>
                 </dl>
             </div>
