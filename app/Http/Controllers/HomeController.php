@@ -62,6 +62,7 @@ class HomeController extends Controller
         if ($user['status'] == 0){
             return view('confirmQuestionnaireF', compact('user', 'data'));
         }else{
+            Conservationquestionnaire::validator($request);
             return view('confirmQuestionnaireC', compact('user', 'data'));
         }
     }

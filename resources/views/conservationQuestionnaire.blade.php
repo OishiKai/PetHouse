@@ -25,14 +25,14 @@
         <h2>プロフィール登録・変更</h2>
     </div>
 
-    <form id="profile" action="#">
+    <form method="POST" action="/confirmQuestionnaire" enctype="multipart/form-data">
+        @csrf
 
         <div id="b">
             <dl>
                 <dt><span class="must">必須</span>保護活動者属性</dt>
                 <dd class="a">
                     <select name="conservationStatus" id="attribute">
-                        <option class="a" value="" disabled selected>選択してください</option>
                         <option value="個人">個人</option>
                         <option value="有志の団体・グループ(非法人)">有志の団体・グループ(非法人)</option>
                         <option value="企業">企業</option>
@@ -47,7 +47,13 @@
 
                 <dt><span class="must">必須</span>団体名・法人名</dt>
                 <dd>
-                    <input type="text" name="activityName" id="name" required>
+                    <input type="text" name="activityName" id="name" value="{{ old('activityName') }}" required>
+
+                    @error('activityName')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </dd>
 
                 <dt><span class="must">必須</span>団体・法人所在地または活動拠点</dt>
@@ -59,7 +65,7 @@
                         </div>
                         <div class="col-42">
                             <input type="text" class="@error('zip21') is-invalid @enderror" name="zip21" size="4"
-                                maxlength="3" required>
+                                maxlength="3" value="{{ old('zip21')}}" required>
                             @error('zip21')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -82,20 +88,20 @@
                         </div>
                     </div>
 
-                    <p>◇市区町村</p>
-                    <input type="text" id="address2" name="addr21" required>
+                    <p>◇住所</p>
+                    <input type="text" id="address2" name="addr21" value="{{ old('addr21') }}" required>
                     <p class="R">※全角</p><br>
                 </dd>
 
                 <dt><span class="must">必須</span>主な保護施設</dt>
                 <dd class="B">
                     <p class="R">※あてはまるものを一つ以上選択してください。複数選択可</p>
-                    <label><input type="checkbox" name="Shelter[]" id="Shelter1" value="自宅">自宅</label>
-                    <label><input type="checkbox" name="Shelter[]" id="Shelter2" value="専用シェルター">専用シェルター</label>
-                    <label><input type="checkbox" name="Shelter[]" id="Shelter3" value="保護猫カフェ">保護猫カフェ</label>
-                    <label><input type="checkbox" name="Shelter[]" id="Shelter4" value="保護犬カフェ">保護犬カフェ</label><br>
-                    <label><input type="checkbox" name="Shelter[]" id="Shelter5" value="動物病院">動物病院</label>
-                    <label><input type="checkbox" name="Shelter[]" id="Shelter6" value="その他"
+                    <label><input type="checkbox" name="shelter[]" id="Shelter1" value="自宅">自宅</label>
+                    <label><input type="checkbox" name="shelter[]" id="Shelter2" value="専用シェルター">専用シェルター</label>
+                    <label><input type="checkbox" name="shelter[]" id="Shelter3" value="保護猫カフェ">保護猫カフェ</label>
+                    <label><input type="checkbox" name="shelter[]" id="Shelter4" value="保護犬カフェ">保護犬カフェ</label><br>
+                    <label><input type="checkbox" name="shelter[]" id="Shelter5" value="動物病院">動物病院</label>
+                    <label><input type="checkbox" name="shelter[]" id="Shelter6" value="その他"
                             onclick="connecttext('textforscb',this.checked);">その他</label>
                     <input type="text" name="othertext" id="textforscb" value="">
                 </dd>
@@ -113,7 +119,7 @@
                     <dd>
                         <dl class="area">
                             <dt><label><input type="checkbox" name="area[]" value="北海道">北海道</label></dt>
-                            <dd><label><input type="checkbox" name="area[]" value="北海道">北海道</label></dd>
+                            <dd><label>北海道</label></dd>
                         </dl>
 
                         <dl class="area">
@@ -217,6 +223,12 @@
                 <dd>
                     <p class="R">※保護活動者は活動実績がわかるウェブサイトのURLが必要です</p>
                     <p>サイトURL <input type="text" name="url[]" id=url1 required></p>
+
+                    @error('url')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </dd>
                 <dt><span class="any">任意</span>その他活動サイト</dt>
                 <dd>
@@ -248,13 +260,22 @@
 
                 <dt><span class="must">必須</span>募集者プロフィール</dt>
                 <dd>
-                    <textarea name="profile" id=sta_me required></textarea>
+                    <textarea name="profile" id='sta_me' required></textarea>
                     <p class="R">※例…私たちは捨てられた猫ちゃんたちの新しい里親を見つける活動をしている<br>　　　NPO法人の保護活動者です</p>
+                    @error('profile')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </dd>
                 <dt><span class="any">任意</span>プロフィール画面</dt>
                 <dd>
-                    <input type="file" name="profile_img">
-
+                    <input type="file" name="profile_img" required>
+                    @error('profile')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
 
 
                     <p class="R_1">
