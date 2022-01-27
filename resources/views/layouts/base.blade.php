@@ -22,9 +22,18 @@
                 </a>
             </div>
                 <div class="top-menu">
+                    @guest
                     <a class="loginmenu" href="{{ route('register') }}" title="会員登録・ログイン">
                         <i class="far fa-user-circle" style="font-size: 40px;"></i><br>会員登録・ログイン
                     </a>
+                    @else
+                    {{$user['kanjiFamilyName']}}様
+                    <a class="loginmenu" href="{{ route('logout') }}" title="ログアウト" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                        <i class="far fa-user-circle" style="font-size: 40px;"></i><br>ログアウト
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+                    @endguest
                     <a class="loginmenu" href="#" title="お気に入り">
                         <i class="fas fa-heart" style="font-size: 40px;"></i><br>お気に入り
                     </a>

@@ -28,6 +28,7 @@ class CreateFosterquestionnairesTable extends Migration
             $table->string('visitable')->default('none');
             $table->string('breedingPlace')->default('none');
             $table->string('aloneHours')->default('0');
+            $table->string('experience')->default('none');
             $table->string('situation')->default('none');
         });
     }
