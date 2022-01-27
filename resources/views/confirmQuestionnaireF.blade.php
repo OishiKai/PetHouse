@@ -22,7 +22,7 @@
                         <tr align="center">
                             <td>同居人の有無</td>
                             <td>{{$data['switch']}}</td>
-                            <input type='text' style='display: none;' value="{{$data['switch']}}">
+                            <input type='text' style='display: none;' name='switch' value="{{$data['switch']}}">
                         </tr>
                         @if ($data['switch'] != 'なし(単身)')
                         <tr align="center">
@@ -66,6 +66,17 @@
                                 @endforeach
                             </td>
                         </tr>
+                        @elseif ($data['switch'] == 'なし(単身)' && $data['allergies'] == 'あり')
+                        <tr align="center">
+                            <td>アレルギー患者</td>
+                            <td>
+                                本人
+                                <input type='text' style='display: none;' name='housemateAllergyDetailRelation[]' value="本人">
+                                <input type='text' style='display: none;' name='housemateAllergyDetailAllergySolo' value="{{$data['housemateAllergyDetailAllergySolo']}}">
+
+                            </td>
+                        </tr>
+
                         @endif
                         <tr align="center">
                             <td>住居タイプ</td>
@@ -100,6 +111,7 @@
                         <tr align="center">
                             <td>ペット飼育経験の有無</td>
                             <td>{{$data['experience']}}</td>
+                            <input type='text' style='display: none;' name='experience' value="{{$data['experience']}}">
                         </tr>
                         <tr align="center">
                             <td>現在のペット飼育状況</td>

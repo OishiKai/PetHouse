@@ -29,13 +29,13 @@
                     <dt><span class="must">必須</span>同居人の有無</dt>
                     <dd>
                         <label><input type="radio" name="switch"
-                                onclick="document.getElementById('xyz').style.display = 'block';" value='あり(家族)'
-                                checked>あり(家族)</label>
+                                onclick="document.getElementById('xyz').style.display = 'block';document.getElementById('al').style.display = 'block';document.getElementById('re').style.display = 'none';"
+                                value='あり(家族)' checked>あり(家族)</label>
                         <label><input type="radio" name="switch"
-                                onclick="document.getElementById('xyz').style.display = 'block';"
+                                onclick="document.getElementById('xyz').style.display = 'block';document.getElementById('al').style.display = 'block';document.getElementById('re').style.display = 'none';"
                                 value='あり(家族以外)'>あり(家族以外)</label>
                         <label><input type="radio" name="switch"
-                                onclick="document.getElementById('xyz').style.display = 'none';"
+                                onclick="document.getElementById('xyz').style.display = 'none';document.getElementById('al').style.display = 'none';document.getElementById('re').style.display = 'block';"
                                 value='なし(単身)'>なし(単身)</label>
                     </dd>
 
@@ -145,7 +145,7 @@
 
                         </script>
 
-                        <dd>
+                        <dd id='al'>
                             <div id="input_pluralBox">
                                 <div id="input_plural">
 
@@ -172,16 +172,19 @@
                                         <option value="猫アレルギー">猫アレルギー</option>
                                     </select>
 
-                                    　　　　　　　　　
                                     <input type="button" value="＋選択追加" class="add pluralBtn">
                                     <input type="button" value="削除" class="del pluralBtn">
-
                                 </div>
                             </div>
                         </dd>
-
+                        <dd id='re' style='display: none;'>
+                            アレルギー
+                            <select name="housemateAllergyDetailAllergySolo" id="allergy">
+                                <option value="犬アレルギー" selected>犬アレルギー</option>
+                                <option value="猫アレルギー">猫アレルギー</option>
+                            </select>
+                        </dd>
                     </div>
-
                 </dl>
             </div>
 
