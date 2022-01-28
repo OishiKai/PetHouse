@@ -63,6 +63,7 @@ class HomeController extends Controller
             return view('confirmQuestionnaireF', compact('user', 'data'));
         }else{
             Conservationquestionnaire::validator($request);
+            // dd($data);
             return view('confirmQuestionnaireC', compact('user', 'data'));
         }
     }
@@ -75,122 +76,6 @@ class HomeController extends Controller
         $user = \Auth::user();
         // dd($data);
         Fosterquestionnaire::store($data, $user);
-        // if($user['status'] == 0){
-        //     Fosterquestionnaire::where('user_email', $user['email'])->update([
-        //         'answered' => '1', 
-        //         'housemate' => $data['switch'], 
-        //         'houseType' => $data['houseType'], 
-        //         'landlordAgreement' => $data['landlordAgreement'],
-        //         'transfer' => $data['transfer'],
-        //         'visitable' => $data['visitable'],
-        //         'breedingPlace' => $data['breedingPlace'],
-        //         'aloneHours' => $data['aloneHours'],
-        //     ]);
-
-        //     if($data['switch'] == 'あり(家族)' || $data['switch'] == 'あり(家族以外)'){
-        //         // 同居人あり
-        //         $relation = $data['housemateDetailRelation'];
-        //         $age = $data['housemateDetailAge'];
-        //         for ($i=0; $i<$data['housemateNumber']; $i++){
-        //             $mem[] = "{$relation[$i]}=>{$age[$i]}";
-        //         }
-
-        //         $allRelate = $data['housemateAllergyDetailRelation'];
-        //         $allAge = $data['housemateAllergyDetailAllergy']; 
-        //         if($data['housemateAllergy'] != 'なし'){
-        //             // 同居人アレルギーあり
-        //             for ($i=0; $i<$data['housemateAllergy']; $i++){
-        //                 $alMem[] = "{$allRelate[$i]}=>{$allAge[$i]}";
-        //             }
-                    
-        //             $housemateAllergyDetail = implode('&', $alMem);
-        //         }else{
-        //             // 同居人アレルギーなし
-        //             $housemateAllergyDetail = 'なし';
-        //         }
-
-        //         $situation = $data['pets'];
-        //         if(count($situation) > 2){
-        //             for($i=2;$i<count($situation);$i++){
-        //                 $sit = $situation[$i];
-        //             }
-        //         }else{
-        //             $sit = '飼っていない';
-        //         }
-
-        //         Fosterquestionnaire::where('user_email', $user['email'])->update([
-        //             'housemateNumber' => $data['housemateNumber'],
-        //             'housemateDetail' => implode('&', $mem),
-        //             'housemateAgreement' => $data['housemateAgreement'],
-        //             'housemateAllergy' => $data['housemateAllergy'],
-        //             'housemateAllergyDetail' => $housemateAllergyDetail,
-        //             'situation' => $sit,
-        //         ]);
-        //     }else{
-        //         // 同居人なし
-        //         // dd($data);
-        //         $situation = $data['pets'];
-        //         if(count($situation) > 2){
-        //             for($i=2;$i<count($situation);$i++){
-        //                 $sit = $situation[$i];
-        //             }
-        //         }else{
-        //             $sit = '飼っていない';
-        //         }
-        //         Fosterquestionnaire::where('user_email', $user['email'])->update([
-        //             'housemateAllergy' => "本人=>{$data['housemateAllergySolo']}",
-        //             'situation' => $sit,
-
-        //             'housemateNumber' => 0,
-        //             'housemateDetail' => 'none',
-        //             'housemateAgreement' => 'none',
-        //             'housemateAllergyDetail' => 'none',
-        //         ]);
-        //     }
-        // }else{
-        //     // dd($data);
-        //     $validatedData = $request->validate([
-        //         'activityName' => ['required', 'string', 'min:2', 'max:20'],
-        //         'zip21' => ['required', 'string', 'regex:/^[0-9]{3}/u','max:3'],
-        //         'zip22' => ['required', 'string', 'regex:/^[0-9]{4}/u','max:4'],
-        //         'addr21' => ['required', 'string', 'max:40'],
-        //         'shelter'=> ['required'],
-        //         'pet' => ['required'],
-        //         'area' => ['required'],
-        //         'url' => ['required', 'string'],
-        //         'profile' => ['required', 'string', 'min:20', 'max:150'],
-        //         // 'profile_img' => ['required'],
-        //     ]);
-
-        //     $file = $data['profile_img'];
-        //     $profileLogoName = "profile_id={$user['id']}.".$file->getClientOriginalExtension();
-        //     $target_path = public_path('profile_images/');
-        //     $file->move($target_path, $profileLogoName);
-
-        //     $shelter = implode('&', $data['shelter']);
-
-        //     if($data['other'] != null){
-        //         $shelter = "{$shelter}&other={$data['other']}";
-        //     }
-
-        //     Conservationquestionnaire::where('user_email', $user['email'])->update([
-        //         'answered' => '1',
-        //         'conservationStatus' => $data['conservationStatus'],
-        //         'activityName' => $data['activityName'],
-        //         'address' => $data['addr21'],
-        //         'postalCode' => "{$data['zip21']}-{$data['zip22']}",
-        //         'shelter' => $shelter,
-        //         'pet' => implode('&', $data['pet']),
-        //         'area' => implode('&', $data['area']),
-        //         'url' => $data['url'],
-        //         'profile' => $data['profile'],
-        //         'logo' => $profileLogoName,
-        //     ]);
-        //     print($shelter);
-        //     // dd($data);
-        // }
-        
-        // dd($data);
         return view('home', compact('user'));
     }
 
