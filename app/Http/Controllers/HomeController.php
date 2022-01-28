@@ -43,6 +43,16 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function myPage()
+    {
+        $user = \Auth::user();
+        if ($user['status'] == 0){
+            return view('fosterMyPage', compact('user'));
+        }else{
+            return view('conservationMyPage', compact('user'));
+        }
+    }
+
     public function questionnaire()
     {   
         $user = \Auth::user();

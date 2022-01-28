@@ -1,0 +1,164 @@
+
+/*保護活動者のcssはstyle.cssとこのcssを扱う*/
+
+
+/*以下メインコンテンツ記述部分*/
+		/*sideber*/
+		.sideBox {
+			left: 10px;
+  			right: 0px;
+  			width: 240px;
+    
+  			margin: 2em 0;
+  			padding: 1em 1em;
+  			position: relative;
+			background-color: rgb(255, 255, 255);
+
+			border: 1px solid #b53f3f;/*保護活動者のサイドメニュー色*/
+			text-align: left;
+			border-radius: 0px;
+			overflow: hidden;
+		  } 
+
+		  .sideBox::after {
+			position: absolute;
+			top: -10px;
+			width: 1px;
+			height: -webkit-calc(100% + 20px);
+			height: calc(100% + 20px);
+			content: "";
+		  }
+		  
+		  .sideBox:before {
+			left: 10px;
+		  }
+		  
+		  .menu-title {/*サイドメニュータイトル*/
+			color: #fff;
+			background: #b53f3f;
+			padding: .4em .8em;
+			font-weight: bold;
+		  }
+		  .sideBox ul{/*メニュー項目*/
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		  }
+		  .sideBox ul li {
+			padding: 0;
+			margin: 0;
+		}
+		.sideBox ul li a {
+			color: #b53f3f;
+			font-weight: bold;
+			text-decoration: none;
+			display: block;
+			padding: .4em 1.2em;
+			border-bottom: 1px dotted #b53f3f;
+		}
+		.sideBox ul li a:hover {
+			color: #ff9f43;
+		}
+		.sideBox ul li:last-child a {
+			border: none;
+		}
+
+
+		  /*main*/
+		  .MP-main {
+			width: 1050px;
+			height: 1500px;
+			text-align: center;
+			background-color: rgb(247, 247, 247);
+  			margin-left:20px;/*サイドバーとメインコンテンツの間に隙間 をあけた*/
+			
+		  }
+		  
+		  main-content {
+			display:flex;/*サイドバーとメインコンテンツを横並びにする                指定をした*/
+		  }
+		  	/*ようこそ〇〇様部分*/
+			.MP-main h1{
+				font-size: 40px;
+				margin-top: 20px;
+				margin-left: 80px;
+				margin-right: 80px;
+				color: #963636;/*文字色*/
+  				/*線の種類（点線）2px 線色*/
+  				border-bottom: dashed 4px #963636;
+			}
+			/*h2…メッセージ、希望者からの申請*/
+			.notice{
+				margin-left: 250px;
+				margin-right: 250px;
+				color: #963636;/*文字色*/
+  				padding: 0.3em 0;/*上下の余白*/
+  				border-top: solid 3px #963636;/*上線*/
+  				border-bottom: solid 3px #963636;/*下線*/
+			}
+			/*メインコンテンツのpクラス*/
+			.article{
+				font-size: 17px;
+			}
+			/*メインコンテンツ　該当ページへ向かうボタンの装飾*/
+			.linkbtn a {
+				color: black;
+				position: relative;
+  				padding: 1rem 2rem calc(1rem + 10px);
+  				background: #ceb849;
+			  }
+			  /*↑〃の背景*/
+			.linkbtn a:before {
+				position: absolute;
+  				top: -11px;
+  				left: -11px;
+  				width: 100%;
+  				height: 100%;
+  				content: '';
+  				border: 3px solid #000;
+			  }
+			  .linkbtn a:hover {/*ボタンホバー字に色変更*/
+				color: white;
+				background-color: #B99b00;
+			}
+			  
+		
+			
+		.li-msg1:hover {
+			text-decoration: underline;/*リンクホバー字にアンダーバーを表示*/
+			}
+
+		.li-msg2:hover {
+			text-decoration: underline;/*リンクホバー字にアンダーバーを表示*/
+			}
+		
+		/*通知のバッチ*/
+			/*未読時の仕様*/
+			/*メッセージ部分*/
+			.li-msg1::after{
+			content: "NEW";/*表示するバッチ*/
+    		position: relative;
+			cursor: pointer;
+			padding: 1rem;
+			
+    		font-family: 'Courier New', Courier, monospace;
+    		color: #ff0000;
+    		top: -10px;
+    		right: 10px;
+    		font-size: 5px;
+    		text-shadow: 0px 0px 2px #ff0000;
+			}
+			/*希望者からの申請部分*/
+			/*表示するバッチはhtmlに記載*/
+			.MP-badge2 {
+				position: relative;
+				cursor: pointer;
+				padding: 1rem;
+			
+    			font-family: 'Courier New', Courier, monospace;
+    			color: #ff0000;
+    			top: -10px;
+    			right: 10px;
+    			font-size: 5px;
+    			text-shadow: 0px 0px 2px #ff0000;
+			  }
