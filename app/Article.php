@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class Article extends Model
 {
@@ -43,6 +44,7 @@ class Article extends Model
                 'health' => $data['health'],
                 'transaction' => $data['transaction'],
                 'remarks' => $data['remarks'],
+                'created_at' => Carbon::now() 
             ]);
         }else if ($data['switch'] == '猫'){
             $store = Article::insertGetId([
@@ -68,6 +70,7 @@ class Article extends Model
                 'health' => $data['health'],
                 'transaction' => $data['transaction'],
                 'remarks' => $data['remarks'],
+                'created_at' => Carbon::now() 
             ]);
         }
     }

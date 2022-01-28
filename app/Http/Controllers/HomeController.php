@@ -123,7 +123,7 @@ class HomeController extends Controller
         Article::validator($request);
         
         Article::test($data, $user['id']);
-        return view('home');
+        return view('home', compact('user'));
     }
 
     public function articleDetail($id)
