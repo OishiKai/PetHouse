@@ -7,7 +7,8 @@
 @section('content')
 <div class="largeFlame">
     <div class="middleFlame">
-        <form action="#" method="post">
+        <form method="POST" action="/answerQuestionnaire">
+            @csrf
             <div class="texts">
                 <h2>入力内容確認</h2>
                 <p>入力内容はこちらで宜しいでしょうか？<br>よろしければ「送信する」ボタンを押して下さい。</p>
@@ -37,7 +38,7 @@
                             <td>〒{{ $data['zip21'] }} -
                                 {{ $data['zip22'] }}</td>
                             <input type='text' style='display: none;' name='zipCode'
-                                value="{{ $data['zip21'] }} - {{ $data['zip22'] }}">
+                                value="{{ $data['zip21'] }}-{{ $data['zip22'] }}">
                         </tr>
                         <tr align="center">
                             <td>活動拠点の住所</td>
@@ -56,6 +57,8 @@
                                     {{ $data['othertext'] }}
                                     <input type='text' style='display: none;' name='otherText'
                                         value="{{ $data['othertext'] }}">
+                                @else
+                                <input type='text' style='display: none;' name='otherText'>
                                 @endif
                             </td>
                         </tr>
