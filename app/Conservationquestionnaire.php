@@ -35,6 +35,7 @@ class Conservationquestionnaire extends Model
             'postalCode' => $data['zipCode'],
             'shelter' => implode('&', $shelter),
             'pet' => implode('&', $data['pet']),
+            'area' => implode('&', $data['area']),
             'url' => implode('&', $data['url']),
             'profile' => $data['profile'],
         ]);

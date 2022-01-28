@@ -74,7 +74,7 @@ class HomeController extends Controller
         $data = $request->all();
         
         $user = \Auth::user();
-        dd($data);
+        // dd($data);
 
         if ($user['status'] == 0){
             Fosterquestionnaire::store($data, $user);
