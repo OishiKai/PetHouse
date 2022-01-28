@@ -18,7 +18,7 @@
     <!--header-->
     <div id="top">
         <div class="top-logo">
-            <a href="./base.html">
+            <a href="{{ route('home') }}">
                 <img src="{{ asset('js/img/logo-removebg-preview (3).png') }}" alt="logo-image">
             </a>
         </div>
@@ -83,18 +83,18 @@
                             <div class="acd-content">
                                 <li class="acd-contents1">
                                     <a href="pet-seach.html">
-                                        <img src="img/%E9%9B%91%E7%A8%AE%E7%8A%AC.jpg">
+                                        <img src="{{ asset('lootImg/雑種犬.jpg')}}">
                                         <p class="pet-name">雑種</p>
                                     </a>
                                 </li>
                                 <li class="acd-contents1">
                                     <a href="pet-seach.html">
-                                        <img src="img/%E6%9F%B4%E7%8A%AC.jpg">
+                                        <img src="{{ asset('lootImg/柴犬.jpg')}}">
                                         <p class="pet-name">柴犬</p>
                                     </a>
                                 <li class="acd-contents1">
                                     <a href="pet-seach.html">
-                                        <img src=img/%E3%83%9D%E3%83%A1%E3%83%A9%E3%83%8B%E3%82%A2%E3%83%B3.jpg>
+                                        <img src="{{ asset('lootImg/ポメラニアン.jpg')}}">
                                         <p class="pet-name">ポメラニアン</p>
                                     </a>
                                 </li>
