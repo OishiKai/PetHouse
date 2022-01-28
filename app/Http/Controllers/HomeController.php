@@ -109,7 +109,7 @@ class HomeController extends Controller
         $user = \Auth::user();
 
         if ($user['status'] == '1'){
-            return view('article');
+            return view('article', compact('user'));
         }else{
             return view('home');
         }

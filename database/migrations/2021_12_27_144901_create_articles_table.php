@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class CreateArticlesTable extends Migration
 {
@@ -40,7 +41,7 @@ class CreateArticlesTable extends Migration
             $table->string('transaction'); // 引き渡し可能場所
             $table->string('remarks'); // その他備考
             
-            $table->timestamps();
+            $table->date('created_at');
         });
     }
 
