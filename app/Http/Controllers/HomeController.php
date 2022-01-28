@@ -53,6 +53,15 @@ class HomeController extends Controller
         }
     }
 
+    public function faq()
+    {
+        if (Auth::check()) {
+            $user = \Auth::user();
+            return view('faq', compact('user'));
+        }
+        return view('faq');
+    }
+
     public function questionnaire()
     {   
         $user = \Auth::user();
