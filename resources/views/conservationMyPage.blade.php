@@ -2,7 +2,6 @@
 
 @section('head')
 <link rel="stylesheet" href="{{ asset('css/conservationMyPageStyle.css') }}">
-<!-- <link rel="stylesheet" href="{{ asset('css/fosterMyPageStyle.css') }}"> -->
 @endsection
 
 @section('content')
