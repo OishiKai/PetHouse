@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/myPage', 'HomeController@myPage')->name('myPage');
 
     Route::get('/questionnaire', 'HomeController@questionnaire')->name('questionnaire');
     Route::post('/confirmQuestionnaire', 'HomeController@confirmQuestionnaire')->name('confirmQuestionnaire');
