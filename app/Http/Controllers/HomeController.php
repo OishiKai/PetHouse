@@ -74,9 +74,15 @@ class HomeController extends Controller
         $data = $request->all();
         
         $user = \Auth::user();
-        // dd($data);
-        Fosterquestionnaire::store($data, $user);
-        return view('home', compact('user'));
+        dd($data);
+
+        if ($user['status'] == 0){
+            Fosterquestionnaire::store($data, $user);
+            return view('home', compact('user'));
+        }else{
+            Conservationquestionnaire::store($data, $user);
+            return view('home', compact('user'));
+        }
     }
 
     public function article()

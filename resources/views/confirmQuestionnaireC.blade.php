@@ -91,6 +91,7 @@
                                 </tr>
                             @endif
                         @endforeach
+                        <textarea name="profile" id='sta_me' value="{{$data['profile']}}" style='display: none;'>
                     </tbody>
                 </table>
             </div>
