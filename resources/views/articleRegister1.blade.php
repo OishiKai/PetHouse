@@ -1,8 +1,9 @@
 @extends('layouts.base')
 
 @section('head')
-<script src="{{ asset('js/articleStyle.js') }}" defer></script>
-<link rel="stylesheet" href="{{ asset('css/articleScript.css') }}">
+<script src="{{ asset('js/formSwitch.js') }}"></script>
+<script src="{{ asset('js/articleScript.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('css/articleStyle.css') }}">
 @endsection
 
 @section('content')
@@ -16,11 +17,41 @@
             <!--ペット種別-->
             <h2 class="form-label"><span class="form-require">必須</span>ペット種別</h2>
             <dd>
-                <label><input type="radio" name="pet" id="pet1" value="犬">犬</label>
-                <label><input type="radio" name="pet" id="pet2" value="猫">猫</label>
+                <label><input type="radio" name="switch" id="pet1" value="犬" onclick="formSwitch()" checked>犬</label>
+                <label><input type="radio" name="switch" id="pet2" value="猫" onclick="formSwitch()">猫</label>
             </dd><br>
             <!--ペット種別-->
 
+            <div id='default'>
+                <h2 class="form-label"><span class="form-require">必須</span>ペット種別</h2>
+                <dd>
+                    <select name='speciesDog'>
+                        <option value='雑種' selected>雑種</option>
+                        <option value='柴犬'>柴犬</option>
+                        <option value='ポメラニアン'>ポメラニアン</option>
+                        <option value='トイプードル'>トイプードル</option>
+                        <option value='ダックスフント'>ダックスフント</option>
+                        <option value='チワワ'>チワワ</option>
+                        <option value='その他'>その他</option>
+                    </select>
+                </dd><br>
+            </div>
+
+            <div id='another' style='display: none;'>
+            <h2 class="form-label"><span class="form-require">必須</span>ペット種別</h2>
+                <dd>
+                    <select name='speciesCat'>
+                        <option value='雑種' selected>雑種</option>
+                        <option value='アメリカンショート'>アメリカンショート</option>
+                        <option value='マンチカン'>マンチカン</option>
+                        <option value='スコティッシュフォールド'>スコティッシュフォールド</option>
+                        <option value='エキゾチックショートヘア'>エキゾチックショートヘア</option>
+                        <option value='ミヌエット'>ミヌエット</option>
+                        <option value='ブリティッシュショートヘア'>ブリティッシュショートヘア</option>
+                        <option value='その他'>その他</option>
+                    </select>
+                </dd><br>
+            </div>
 
             <!--性別-->
             <h2 class="form-label"><span class="form-require">必須</span>性別</h2>
