@@ -25,6 +25,12 @@ class ArticleController extends Controller
         $user = \Auth::user();
         return view('articleRegister1', compact('user'));
     }
-
     
+    public function articleRegisterA(Request $request)
+    {
+        $user = \Auth::user();
+        $data = $request->all();
+        // dd($data);
+        return view('articleRegister2', compact('user', 'data'));
+    }
 }

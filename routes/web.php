@@ -28,6 +28,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/answerQuestionnaire', 'HomeController@answerQuestionnaire')->name('answerQuestionnaire');
 
     Route::get('/article', 'ArticleController@article')->name('article');
-    Route::post('/articleStore', 'HomeController@articleStore')->name('articleStore');
+    Route::post('/articleRegisterA', 'ArticleController@articleRegisterA')->name('articleRegisterA');
     Route::get('/articleDetail/{id}', 'HomeController@articleDetail')->name('articleDetail');
 });

@@ -11,7 +11,8 @@
 
 <div id="main_1">
     <section>
-        <form id="karitoukou post">
+        <form method="POST" action="{{ route('articleRegisterA') }}" enctype="multipart/form-data">
+            @csrf
 
 
             <!--ペット種別-->
@@ -38,7 +39,7 @@
             </div>
 
             <div id='another' style='display: none;'>
-            <h2 class="form-label"><span class="form-require">必須</span>ペット種別</h2>
+                <h2 class="form-label"><span class="form-require">必須</span>ペット種別</h2>
                 <dd>
                     <select name='speciesCat'>
                         <option value='雑種' selected>雑種</option>
@@ -56,51 +57,63 @@
             <!--性別-->
             <h2 class="form-label"><span class="form-require">必須</span>性別</h2>
             <dd>
-                <label><input type="radio" name="sex" id="sex1" value="オス">オス</label>
-                <label><input type="radio" name="sex" id="sex2" value="メス">メス</label>
-                <label><input type="radio" name="sex" id="sex3" value="不明">不明</label>
+                <label><input type="radio" name="gender" value="オス">オス</label>
+                <label><input type="radio" name="gender" value="メス">メス</label>
+                <label><input type="radio" name="gender" value="不明">不明</label>
             </dd><br>
             <!--性別-->
 
+            <h2 class="form-label"><span class="form-require">必須</span>ワクチン接種状況</h2>
+            <dd>
+                <label><input type="radio" name="vaccination" value="接種済み" checked>接種済み</label>
+                <label><input type="radio" name="vaccination" value="未接種">未接種</label>
+            </dd><br>
+
+            <h2 class="form-label"><span class="form-require">必須</span>避妊・去勢手術状況</h2>
+            <dd>
+                <label><input type="radio" name="castration" value="施術済み" checked>施術済み</label>
+                <label><input type="radio" name="castration" value="未施術">未施術</label>
+            </dd><br>
+
+            <h2 class="form-label"><span class="form-require">必須</span>ペットの名前</h2>
+            <dd>
+                <label><input type="text" name="name" required></label>
+            </dd><br>
+
+            <h2 class="form-label"><span class="form-require">必須</span>ペットの毛柄</h2>
+            <dd>
+                <label><input type="text" name="pattern" required></label>
+            </dd><br>
 
             <!--ペット紹介写真-->
             <h2 class="form-label"><span class="form-require">必須</span>ペット紹介写真</h2>
             <p class="form-label"><span class="form-require3"><b>必須</b></span>写真1</p>
             <dd>
-                <label><input type="file" name="sample" accept="image/jpeg, image/png, image/gif" multiple></label><br>
-                <label><input type="text" name="photo1" id="photolabel1" placeholder="例）11/8撮影"></label>
+                <label><input type="file" name="img1" accept="image/jpeg, image/png, image/gif" required></label><br>
             </dd><br>
             <p class="form-label"><span class="form-require4"><b>任意</b></span>写真2</p>
             <dd>
-                <label><input type="file" name="sample" accept="image/jpeg, image/png, image/gif" multiple></label><br>
-                <label><input type="text" name="photo2" id="photolabel2"></label>
+                <label><input type="file" name="img2" accept="image/jpeg, image/png, image/gif"></label><br>
             </dd><br>
             <p class="form-label"><span class="form-require4"><b>任意</b></span>写真3</p>
             <dd>
-                <label><input type="file" name="sample" accept="image/jpeg, image/png, image/gif" multiple></label><br>
-                <label><input type="text" name="photo3" id="photolabel3"></label>
+                <label><input type="file" name="img3" accept="image/jpeg, image/png, image/gif"></label><br>
             </dd><br>
             <p class="form-label"><span class="form-require4"><b>任意</b></span>写真4</p>
             <dd>
-                <label><input type="file" name="sample" accept="image/jpeg, image/png, image/gif" multiple></label><br>
-                <label><input type="text" name="photo4" id="photolabel4"></label>
+                <label><input type="file" name="img4" accept="image/jpeg, image/png, image/gif"></label><br>
             </dd><br>
             <p class="form-label"><span class="form-require4"><b>任意</b></span>写真5</p>
             <dd>
-                <label><input type="file" name="sample" accept="image/jpeg, image/png, image/gif" multiple></label><br>
-                <label><input type="text" name="photo5" id="photolabel5"></label>
+                <label><input type="file" name="img5" accept="image/jpeg, image/png, image/gif"></label><br>
             </dd><br>
             <p class="form-label"><span class="form-require4"><b>任意</b></span>写真6</p>
             <dd>
-                <label><input type="file" name="sample" accept="image/jpeg, image/png, image/gif" multiple></label><br>
-                <label><input type="text" name="photo6" id="photolabel6"></label>
+                <label><input type="file" name="img6" accept="image/jpeg, image/jpg, image/png, image/gif"></label><br>
             </dd><br>
             <!--ペット紹介写真-->
 
-
-            <a href="./oubosya.html">
-                <input type="button" class="form-Btn" value="次 へ">
-            </a>
+            <button type="submit" class="form-Btn">次 へ</button>
         </form>
     </section>
 
