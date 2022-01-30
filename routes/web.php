@@ -29,5 +29,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/article', 'ArticleController@article')->name('article');
     Route::post('/articleRegisterA', 'ArticleController@articleRegisterA')->name('articleRegisterA');
+    Route::post('/articleRegisterB', 'ArticleController@articleRegisterB')->name('articleRegisterB');
     Route::get('/articleDetail/{id}', 'HomeController@articleDetail')->name('articleDetail');
 });

@@ -99,18 +99,27 @@
             <dd>
                 <textarea name="remarks" rows="5" cols="100" value=''></textarea><br>
             </dd>
+            <!--その他備考-->
+
+            <input type="text" name="switch" style='display: none;'
+                value="{{ $data['switch'] }}">
+            @if($data['switch'] == "犬")
+                <input type="text" name="species" style='display: none;'
+                    value="{{ $data['speciesDog'] }}">
+            @else
+                <input type="text" name="species" style='display: none;'
+                    value="{{ $data['speciesCat'] }}">
+            @endif
+            <input type="text" name="gender" style='display: none;'
+                value="{{ $data['gender'] }}">
+            <input type="text" name="vaccination" style='display: none;'
+                value="{{ $data['vaccination'] }}">
+            <input type="text" name="castration" style='display: none;'
+                value="{{ $data['castration'] }}">
+            <input type="text" name="name" style='display: none;' value="{{ $data['name'] }}">
+
+            <button type="submit" class="form-Btn">次 へ</button>
         </form>
-        <!--その他備考-->
-
-
-        <a href="./kakunin.html">
-            <input type="button" class="form-Btn" value="次 へ">
-        </a>
-
-        <a href="./oubosya.html">
-            <input type="button" class="form-Btn" value="戻 る">
-        </a>
-
         <br><br>
         <!--scroll to top button-->
     </section>
