@@ -117,6 +117,10 @@
             <input type="text" name="castration" style='display: none;'
                 value="{{ $data['castration'] }}">
             <input type="text" name="name" style='display: none;' value="{{ $data['name'] }}">
+            <input type="text" name="pattern" style='display: none;' value="{{ $data['pattern'] }}">
+            <input type="text" name="size" style='display: none;' value="{{ $data['size'] }}">
+            <input type="text" name="age" style='display: none;' value="{{ $data['age'] }}">
+            <input type="text" name="month" style='display: none;' value="{{ $data['month'] }}">
 
             <button type="submit" class="form-Btn">次 へ</button>
         </form>

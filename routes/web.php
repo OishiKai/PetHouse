@@ -30,5 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/article', 'ArticleController@article')->name('article');
     Route::post('/articleRegisterA', 'ArticleController@articleRegisterA')->name('articleRegisterA');
     Route::post('/articleRegisterB', 'ArticleController@articleRegisterB')->name('articleRegisterB');
+    Route::post('/confirmArticle', 'ArticleController@confirmArticle')->name('confirmArticle');
+    Route::post('/articleStore', 'ArticleController@articleStore')->name('articleStore');
     Route::get('/articleDetail/{id}', 'HomeController@articleDetail')->name('articleDetail');
 });

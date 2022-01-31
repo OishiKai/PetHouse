@@ -1,69 +1,76 @@
 @extends('layouts.base')
 
 @section('head')
-<script src="{{ asset('js/articleStyle.js') }}" defer></script>
-<link rel="stylesheet" href="{{ asset('css/articleScript.css') }}">
+<script src="{{ asset('js/articleScript.js') }}" defer></script>
+<link rel="stylesheet" href="{{ asset('css/articleStyle.css') }}">
 @endsection
 
 @section('content')
-<h1 class="label-title">応募者条件判定フォーム</h1>
+<h1 class="label-title">応募者の条件について</h1>
 
 <div id="main_1">
 
     <section>
-        <form id="oubosya post">
+        <form method="POST" action="{{ route('articleStore') }}">
+            @csrf
 
-
-            <!--応募者-->
-            <h2 class="form-label"><span class="form-require">必須</span>応募者</h2>
+            <h2 class="form-label"><span class="form-require">必須</span>単身者の応募</h2>
             <dd>
-                <select class="same-width-list">
-                    <option value="#" selected>選択してください</option>
-                    <option value="single">単身者</option>
-                    <option value="seinior">高齢者</option>
-                    <option value="domestic">飼養ペット</option>
-                </select>
+                <label><input type="radio" name="singlePerson" id="seinior person1" value="不可" checked>不可</label>
+                <label><input type="radio" name="singlePerson" id="seinior person2" value="可">可</label>
             </dd><br>
-            <!--応募者-->
 
-
-            <!--単身者/応募者で単身者が選択された時に表示する。-->
-            <h2 class="form-label"><span class="form-require">必須</span>単身者</h2>
+            <h2 class="form-label"><span class="form-require">必須</span>高齢者の応募</h2>
             <dd>
-                <label><input type="radio" name="single person" id="seinior person1" value="不可">不可</label>
-                <label><input type="radio" name="single person" id="seinior person2" value="可">可</label>
+                <label><input type="radio" name="elderPerson" id="single person1" value="不可" checked>不可</label>
+                <label><input type="radio" name="elderPerson" id="single person2" value="可">可</label>
             </dd><br>
-            <!--単身者/応募者で単身者が選択された時に表示する。-->
 
-
-            <!--高齢者/応募者で高齢者が選択された時に表示する。-->
-            <h2 class="form-label"><span class="form-require">必須</span>高齢者</h2>
+            <h2 class="form-label"><span class="form-require">必須</span>既にペットを飼っている場合の応募</h2>
             <dd>
-                <label><input type="radio" name="seinior person" id="single person1" value="不可">不可</label>
-                <label><input type="radio" name="seinior person" id="single person2" value="可">可</label>
+                <label><input type="radio" name="keeper" id="domestic pets1" value="不可" checked>不可</label>
+                <label><input type="radio" name="keeper" id="domestic pets2" value="可">可</label>
             </dd><br>
-            <!--高齢者/応募者で高齢者が選択された時に表示する。-->
 
+            <input type="text" name="switch" style='display: none;'
+                value="{{ $data['switch'] }}">
+            <input type="text" name="species" style='display: none;'
+                value="{{ $data['species'] }}">
 
-            <!--飼養ペット/応募者で飼養ペットが選択された時に表示する。-->
-            <h2 class="form-label"><span class="form-require">必須</span>飼養ペット</h2>
-            <dd>
-                <label><input type="radio" name="domestic pets" id="domestic pets1" value="不可">不可</label>
-                <label><input type="radio" name="domestic pets" id="domestic pets2" value="可">可</label>
-            </dd><br>
-            <!--飼養ペット/応募者で飼養ペットが選択された時に表示する。-->
+            <input type="text" name="gender" style='display: none;'
+                value="{{ $data['gender'] }}">
+            <input type="text" name="vaccination" style='display: none;'
+                value="{{ $data['vaccination'] }}">
+            <input type="text" name="castration" style='display: none;'
+                value="{{ $data['castration'] }}">
+            <input type="text" name="name" style='display: none;' value="{{ $data['name'] }}">
+            <input type="text" name="pattern" style='display: none;'
+                value="{{ $data['pattern'] }}">
+            <input type="text" name="size" style='display: none;' value="{{ $data['size'] }}">
+            <input type="text" name="age" style='display: none;' value="{{ $data['age'] }}">
+            <input type="text" name="month" style='display: none;' value="{{ $data['month'] }}">
+            
+            <input type="text" name="title" style='display: none;' value="{{ $data['title'] }}">
+            <input type="text" name="background" style='display: none;'
+                value="{{ $data['background'] }}">
+            <input type="text" name="personality" style='display: none;'
+                value="{{ $data['personality'] }}">
+            <input type="text" name="zipCode" style='display: none;'
+                value="{{ $data['zipCode'] }}">
+            <input type="text" name="prefecture" style='display: none;'
+                value="{{ $data['prefecture'] }}">
+            <input type="text" name="health" style='display: none;'
+                value="{{ $data['health'] }}">
+            <input type="text" name="city" style='display: none;' value="{{ $data['city'] }}">
+            <input type="text" name="building" style='display: none;'
+                value="{{ $data['building'] }}">
+            <input type="text" name="remarks" style='display: none;'
+                value="{{ $data['remarks'] }}">
 
-
-            <a href="./zyoutosya.html">
-                <input type="button" class="form-Btn" value="次 へ">
-            </a>
-            <a href="./karitouroku.html">
-                <input type="button" class="form-Btn" value="戻 る">
-            </a>
+            <button type="submit" class="form-Btn">次 へ</button>
 
             <br><br>
         </form>
     </section>
-    <!--scroll to top button-->
 </div>
 @endsection

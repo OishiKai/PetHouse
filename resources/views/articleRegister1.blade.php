@@ -85,6 +85,45 @@
                 <label><input type="text" name="pattern" required></label>
             </dd><br>
 
+            <h2 class="form-label"><span class="form-require">必須</span>ペットのサイズ</h2>
+            <dd>
+                <label><input type="radio" name="size" value="小型" checked>小型</label>
+                <label><input type="radio" name="size" value="中型">中型</label>
+                <label><input type="radio" name="size" value="大型">大型</label>
+            </dd><br>
+
+            <h2 class="form-label"><span class="form-require">必須</span>ペットの年齢</h2>
+            <dd>
+                <label><select name='age'>
+                        <option value='0歳' selected>0歳</option>
+                        <option value='1歳'>1歳</option>
+                        <option value='2歳'>2歳</option>
+                        <option value='3歳'>3歳</option>
+                        <option value='4歳'>4歳</option>
+                        <option value='5歳'>5歳</option>
+                        <option value='6歳'>6歳</option>
+                        <option value='7歳'>7歳</option>
+                        <option value='8歳'>8歳</option>
+                        <option value='9歳'>9歳</option>
+                        <option value='10歳以上'>10歳以上</option>
+                    </select>
+                    
+                    <select name='month'>
+                        <option value='1ヶ月' selected>1ヶ月</option>
+                        <option value='2ヶ月'>2ヶ月</option>
+                        <option value='3ヶ月'>3ヶ月</option>
+                        <option value='4ヶ月'>4ヶ月</option>
+                        <option value='5ヶ月'>5ヶ月</option>
+                        <option value='6ヶ月'>6ヶ月</option>
+                        <option value='7ヶ月'>7ヶ月</option>
+                        <option value='8ヶ月'>8ヶ月</option>
+                        <option value='9ヶ月'>9ヶ月</option>
+                        <option value='10ヶ月'>10ヶ月</option>
+                        <option value='11ヶ月'>11ヶ月</option>
+                    </select>
+                </label>
+            </dd><br>
+
             <!--ペット紹介写真-->
             <h2 class="form-label"><span class="form-require">必須</span>ペット紹介写真</h2>
             <p class="form-label"><span class="form-require3"><b>必須</b></span>写真1</p>

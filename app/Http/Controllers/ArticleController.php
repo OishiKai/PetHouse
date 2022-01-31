@@ -41,4 +41,20 @@ class ArticleController extends Controller
         // dd($data);
         return view('articleRegister3', compact('user', 'data'));
     }
+
+    public function confirmArticle(Request $request)
+    {
+        $user = \Auth::user();
+        $data = $request->all();
+        // dd($data);
+        return view('articleConfirm', compact('user', 'data'));
+    }
+
+    public function articleStore(Request $request)
+    {
+        $user = \Auth::user();
+        $data = $request->all();
+        dd($data);
+        return view('articleConfirm', compact('user', 'data'));
+    }
 }
