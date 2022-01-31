@@ -40,7 +40,7 @@ class CreateArticlesTable extends Migration
             $table->string('personality'); // 性格
             $table->string('health'); // 健康状態
             $table->string('transaction'); // 引き渡し可能場所
-            $table->string('remarks'); // その他備考
+            $table->string('remarks')->nullable(); // その他備考
             
             $table->date('created_at');
         });

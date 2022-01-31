@@ -57,7 +57,7 @@
             <!--性別-->
             <h2 class="form-label"><span class="form-require">必須</span>性別</h2>
             <dd>
-                <label><input type="radio" name="gender" value="オス">オス</label>
+                <label><input type="radio" name="gender" value="オス" checked>オス</label>
                 <label><input type="radio" name="gender" value="メス">メス</label>
                 <label><input type="radio" name="gender" value="不明">不明</label>
             </dd><br>

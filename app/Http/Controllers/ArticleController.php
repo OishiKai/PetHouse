@@ -54,7 +54,8 @@ class ArticleController extends Controller
     {
         $user = \Auth::user();
         $data = $request->all();
-        dd($data);
-        return view('articleConfirm', compact('user', 'data'));
+        // dd($data);
+        Article::store($data, $user['id']);
+        return view('home', compact('user'));
     }
 }

@@ -9,16 +9,16 @@ use Carbon\Carbon;
 class Article extends Model
 {
     public $timestamps = true;
-    static function test($data, $user){
+    static function store($data, $user){
         $uuid = (string) Str::uuid();
         
-        for ($i = 1; $i <= 5; $i++) {
-            $file = $data["img{$i}"];
-            $profileLogoName = "{$uuid}({$i}).".$data["img{$i}"]->getClientOriginalExtension();
-            // dd($profileLogoName);
-            $target_path = public_path('article_images/');
-            $file->move($target_path, $profileLogoName);
-        }
+        // for ($i = 1; $i <= 5; $i++) {
+        //     $file = $data["img{$i}"];
+        //     $profileLogoName = "{$uuid}({$i}).".$data["img{$i}"]->getClientOriginalExtension();
+        //     // dd($profileLogoName);
+        //     $target_path = public_path('article_images/');
+        //     $file->move($target_path, $profileLogoName);
+        // }
 
         $store = Article::insertGetId([
             'status' => '募集中',
