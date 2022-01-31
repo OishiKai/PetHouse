@@ -28,9 +28,11 @@ class CreateArticlesTable extends Migration
             $table->string('castration'); // 避妊・去勢
             $table->string('singlePerson'); // 独身の募集可否
             $table->string('elderPerson'); // 高齢者の募集可否
-            $table->string('recruitmentPeriod'); // 募集期間
+            $table->string('keeper'); // 既にペットを飼っている場合の募集可否
+            
+            // $table->string('recruitmentPeriod'); // 募集期間
 
-            $table->string('place'); // ペット所在地
+            // $table->string('place'); // ペット所在地
             $table->string('name'); // ペットの名前
             $table->string('pattern'); //ペットの毛柄
 
@@ -38,9 +40,9 @@ class CreateArticlesTable extends Migration
             $table->string('personality'); // 性格
             $table->string('health'); // 健康状態
             $table->string('transaction'); // 引き渡し可能場所
-            $table->string('remarks'); // その他備考
+            $table->string('remarks')->nullable(); // その他備考
             
-            $table->timestamps();
+            $table->date('created_at');
         });
     }
 

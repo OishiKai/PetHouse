@@ -109,7 +109,7 @@ class HomeController extends Controller
         $user = \Auth::user();
 
         if ($user['status'] == '1'){
-            return view('article');
+            return view('article', compact('user'));
         }else{
             return view('home');
         }
@@ -123,7 +123,7 @@ class HomeController extends Controller
         Article::validator($request);
         
         Article::test($data, $user['id']);
-        return view('home');
+        return view('home', compact('user'));
     }
 
     public function articleDetail($id)

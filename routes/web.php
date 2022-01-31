@@ -27,7 +27,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/confirmQuestionnaire', 'HomeController@confirmQuestionnaire')->name('confirmQuestionnaire');
     Route::post('/answerQuestionnaire', 'HomeController@answerQuestionnaire')->name('answerQuestionnaire');
 
-    Route::get('/article', 'HomeController@article')->name('article');
-    Route::post('/articleStore', 'HomeController@articleStore')->name('articleStore');
+    Route::get('/article', 'ArticleController@article')->name('article');
+    Route::post('/articleRegisterA', 'ArticleController@articleRegisterA')->name('articleRegisterA');
+    Route::post('/articleRegisterB', 'ArticleController@articleRegisterB')->name('articleRegisterB');
+    Route::post('/confirmArticle', 'ArticleController@confirmArticle')->name('confirmArticle');
+    Route::post('/articleStore', 'ArticleController@articleStore')->name('articleStore');
     Route::get('/articleDetail/{id}', 'HomeController@articleDetail')->name('articleDetail');
 });
