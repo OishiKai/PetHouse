@@ -20,6 +20,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/search/{key}', 'HomeController@search')->name('search');
+
     Route::get('/myPage', 'HomeController@myPage')->name('myPage');
     Route::get('/faq', 'HomeController@faq')->name('faq');
 

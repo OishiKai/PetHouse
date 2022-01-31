@@ -135,4 +135,11 @@ class HomeController extends Controller
         // dd($data);
         return view('detail', compact('data','user','id'));
     }
+
+    public function search($key)
+    {
+        $user = \Auth::user();
+        $data = Article::where('species', $key)->get();
+        return view('search', compact('user', 'key', 'data'));
+    }
 }
