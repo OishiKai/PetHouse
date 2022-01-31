@@ -35,8 +35,6 @@ class Article extends Model
             'singlePerson' => $data['singlePerson'],
             'elderPerson' => $data['elderPerson'],
             'keeper' => $data['keeper'],
-            'recruitmentPeriod' => 'none',
-            'place' => 'none',
             'name' => $data['name'],
             'pattern' => $data['pattern'],
             'background' => $data['background'],
