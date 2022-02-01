@@ -49,15 +49,7 @@ body {
   float: left;
   height: 10em;
   }
-  div.top-menu {
-    display: block;
-  float: right;
-  text-align: right;
-  width: auto;
-  padding: 2%;
-  margin: 1% auto;
-
-  }
+  /* a */
   a.loginmenu {
     float: left;
     text-align: center;
@@ -73,9 +65,9 @@ body {
   margin: 5% auto;
   
   }
-a {
+/* a {
   color:#b7a077;
-  }
+  } */
   /*a:visited {
   color:forestgreen;
   }*/
