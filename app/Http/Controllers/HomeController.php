@@ -137,9 +137,14 @@ class HomeController extends Controller
         $user = \Auth::user();
         $article = Article::where('id', $id)->get();
         $data = $article[0];
-
-        // dd($data);
-        return view('detail', compact('data','user','id'));
+        $extensions = explode('&', $data['extensions']);
+        $files = array();
+        for ($i = 0;$i < count($extensions); $i++){
+            $j = $i + 1;
+            $files[] = "{$id}({$j}).{$extensions[$i]}";
+        }
+        // dd($files);
+        return view('detail', compact('data','user','id','files'));
     }
 
     public function search($key)
