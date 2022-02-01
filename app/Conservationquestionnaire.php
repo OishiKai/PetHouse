@@ -25,9 +25,10 @@ class Conservationquestionnaire extends Model
     }
 
     static function store($data, $user){
-        dd($data);
+        // dd($data);
         $fileName = "profile={$user['id']}.".$data['profileImg'];
-        $path = Storage::disk('s3')->putFileAs('/', new File("uploads/id={$user['id']}/profile/{$fileName}"), $fileName, 'public');
+        Conservationquestionnaire::storeS3($fileName, $user);
+        
 
         $shelter = $data['shelter'];
         if ($data['otherText'] != null){
@@ -51,17 +52,25 @@ class Conservationquestionnaire extends Model
     static function storeImg($file, $user){
         $fileName = "profile={$user['id']}.".$file->getClientOriginalExtension();
 
-        $target_path = public_path("uploads/id={$user['id']}/profile");
+        $target_path = public_path("uploads/id={$user['id']}/");
         if (file_exists($target_path)) {
-            $images = glob(public_path("uploads/id={$user['id']}/profile/*"));
+            $images = glob(public_path("uploads/id={$user['id']}/*"));
             foreach ($images as $img){
                 unlink($img);
             }
-            $move_path = public_path("uploads/id={$user['id']}/profile/");
-            $file->move($move_path, $fileName);
+            $file->move($target_path, $fileName);
         }else{
-            $move_path = public_path("uploads/id={$user['id']}/profile/");
-            $file->move($move_path, $fileName);
+            $file->move($target_path, $fileName);
         }
+    }
+
+    static function storeS3($fileName, $user){
+        $exs = ['jpeg', 'jpg', 'png'];
+        foreach ($exs as $ex){
+            if (Storage::disk('s3')->exists("/profile/profile={$user['id']}.{$ex}")){
+                $s3_delete = Storage::disk('s3')->delete("/profile/profile={$user['id']}.{$ex}");
+            }
+        }
+        $path = Storage::disk('s3')->putFileAs('/profile', new File("uploads/id={$user['id']}/{$fileName}"), $fileName, 'public');
     }
 }

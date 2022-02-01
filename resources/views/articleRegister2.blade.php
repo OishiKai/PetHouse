@@ -122,6 +122,10 @@
             <input type="text" name="age" style='display: none;' value="{{ $data['age'] }}">
             <input type="text" name="month" style='display: none;' value="{{ $data['month'] }}">
 
+            <input type="text" name="uuid" style='display: none;' value="{{ $data['uuid'] }}">
+            @foreach ($ex as $extension)
+            <input type="text" name="exts[]" style='display: none;' value="{{ $extension }}">
+            @endforeach
             <button type="submit" class="form-Btn">次 へ</button>
         </form>
         <br><br>
