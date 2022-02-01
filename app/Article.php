@@ -36,6 +36,7 @@ class Article extends Model
             'health' => $data['health'],
             'transaction' => "{$data['zipCode']}{$data['prefecture']}{$data['city']}{$data['building']}",
             'remarks' => $data['remarks'],
+            'extensions' => implode('&', $data['exts']),
             'created_at' => Carbon::now() 
         ]);
         

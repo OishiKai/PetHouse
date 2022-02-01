@@ -42,6 +42,8 @@ class CreateArticlesTable extends Migration
             $table->string('transaction'); // 引き渡し可能場所
             $table->string('remarks')->nullable(); // その他備考
             
+            $table->string('extensions');
+
             $table->date('created_at');
         });
     }
