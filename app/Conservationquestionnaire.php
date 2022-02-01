@@ -26,17 +26,13 @@ class Conservationquestionnaire extends Model
 
     static function store($data, $user){
         dd($data);
-        $file = $data['profileImg'];
-        $fileName = time() .$file->getClientOriginalName();
-        $target_path = public_path('uploads/');
-        $file->move($target_path, $fileName); 
-        $path = Storage::disk('s3')->putFileAs('/', new File("uploads/{$fileName}"), "hogehoge.png", 'public');
+        $fileName = "profile={$user['id']}.".$data['profileImg'];
+        $path = Storage::disk('s3')->putFileAs('/', new File("uploads/id={$user['id']}/profile/{$fileName}"), $fileName, 'public');
 
-        // $shelter = $data['shelter'];
-        // if ($data['otherText'] != null){
-        //     $shelter[] = $data['otherText'];
-        // }
-
+        $shelter = $data['shelter'];
+        if ($data['otherText'] != null){
+            $shelter[] = $data['otherText'];
+        }
 
         Conservationquestionnaire::where('user_email', $user['email'])->update([
             'answered' => '1',
@@ -50,5 +46,22 @@ class Conservationquestionnaire extends Model
             'url' => implode('&', $data['url']),
             'profile' => $data['profile'],
         ]);
+    }
+
+    static function storeImg($file, $user){
+        $fileName = "profile={$user['id']}.".$file->getClientOriginalExtension();
+
+        $target_path = public_path("uploads/id={$user['id']}/profile");
+        if (file_exists($target_path)) {
+            $images = glob(public_path("uploads/id={$user['id']}/profile/*"));
+            foreach ($images as $img){
+                unlink($img);
+            }
+            $move_path = public_path("uploads/id={$user['id']}/profile/");
+            $file->move($move_path, $fileName);
+        }else{
+            $move_path = public_path("uploads/id={$user['id']}/profile/");
+            $file->move($move_path, $fileName);
+        }
     }
 }

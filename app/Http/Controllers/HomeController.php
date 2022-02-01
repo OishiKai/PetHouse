@@ -82,6 +82,9 @@ class HomeController extends Controller
             return view('confirmQuestionnaireF', compact('user', 'data'));
         }else{
             Conservationquestionnaire::validator($request);
+            Conservationquestionnaire::storeImg($data['profileImg'], $user);
+            $ex = $data['profileImg']->getClientOriginalExtension();
+            $data['profileImg'] = $ex;
             // dd($data);
             return view('confirmQuestionnaireC', compact('user', 'data'));
         }

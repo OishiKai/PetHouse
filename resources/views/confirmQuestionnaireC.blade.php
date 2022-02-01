@@ -80,6 +80,8 @@
                                 @endforeach
                             </td>
                         </tr>
+                        <input type='text' name="profile" value="{{$data['profile']}}" style='display: none;'>
+                        <input type='text' name="profileImg" value="{{$data['profileImg']}}" style='display: none;'>
                         @foreach($data['url'] as $url)
                             @if($url != null)
                                 <tr align="center">
@@ -91,8 +93,6 @@
                                 </tr>
                             @endif
                         @endforeach
-                        <input type='text' name="profile" value="{{$data['profile']}}" style='display: none;'>
-                        <input type='file' name="profileImg" value="{{$data['profileImg']}}" style='display: none;'>
                     </tbody>
                 </table>
             </div>
