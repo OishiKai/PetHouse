@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
 @section('head')
 <script src="{{ asset('js/articleDetailScript.js') }}" defer></script>
@@ -14,34 +14,27 @@
         <a href="javascript:history.back()">＜＜前のページに戻る</a>
     </div>
     <div class="Publication">
-        <p>{{$user['id']}}の里親募集詳細</p>
+        <p>{{$user['kanjiFamilyName']}} {{$user['kanjiFirstName']}} さんの里親募集詳細</p>
         <p>募集ID：{{$id}}</p>
         <p>掲載日：[]</p>
 
         <p class="Deadline">掲載期限：[]まで</p>
     </div>
-    <div id="main">
+    <div id="contents-container">
         <section id="title">
             <h2>{{$data['title']}}</h2>
                 <p>♥お気に入り登録者[]人｜閲覧数[]</p>
         </section>
         <section id="imgGallery">
             <div class="mein-frame">
-                <img id="main-img" src="{{ asset('article_images\1.jpg') }}" alt="メイン写真">
+                <img id="main-img" src="https://pethouse1984.s3.ap-northeast-1.amazonaws.com/article/{{$files[0]}}" alt="メイン写真">
             </div>
             <ul class="thumbspace">
+                @for($i=0; $i < count($files); $i++)
                 <li>
-                    <img class="thumbnails" src="public\article_images\3e20da53-bb4c-44b5-9b96-1654cf1b7fa4(1).jpg" alt="写真1">
+                    <img class="thumbnails" src="https://pethouse1984.s3.ap-northeast-1.amazonaws.com/article/{{$files[$i]}}" data-imagesrc="https://pethouse1984.s3.ap-northeast-1.amazonaws.com/article/{{$files[$i]}}" alt="写真4">
                 </li>
-                <li>
-                    <img class="thumbnails" src="#" data-imagesrc="#" alt="写真2">
-                </li>
-                <li>
-                    <img class="thumbnails" src="#" data-imagesrc="#" alt="写真3">
-                </li>
-                <li>
-                    <img class="thumbnails" src="#" data-imagesrc="#" alt="写真4">
-                </li>
+                @endfor
             </ul>
             <script type="text/javascript">
                 var thumbs =document.querySelectorAll('.thumbnails');
