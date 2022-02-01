@@ -7,7 +7,7 @@
 @section('content')
 <div class="largeFlame">
     <div class="middleFlame">
-        <form method="POST" action="/answerQuestionnaire">
+        <form method="POST" action="/answerQuestionnaire" enctype="multipart/form-data">
             @csrf
             <div class="texts">
                 <h2>入力内容確認</h2>
@@ -92,6 +92,7 @@
                             @endif
                         @endforeach
                         <input type='text' name="profile" value="{{$data['profile']}}" style='display: none;'>
+                        <input type='file' name="profileImg" value="{{$data['profileImg']}}" style='display: none;'>
                     </tbody>
                 </table>
             </div>

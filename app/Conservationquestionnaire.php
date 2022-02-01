@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 
 class Conservationquestionnaire extends Model
 {
@@ -23,10 +25,19 @@ class Conservationquestionnaire extends Model
     }
 
     static function store($data, $user){
-        $shelter = $data['shelter'];
-        if ($data['otherText'] != null){
-            $shelter[] = "{{$data['otherText']}}";
-        }
+        dd($data);
+        $file = $data['profileImg'];
+        $fileName = time() .$file->getClientOriginalName();
+        $target_path = public_path('uploads/');
+        $file->move($target_path, $fileName); 
+        $path = Storage::disk('s3')->putFileAs('/', new File("uploads/{$fileName}"), "hogehoge.png", 'public');
+
+        // $shelter = $data['shelter'];
+        // if ($data['otherText'] != null){
+        //     $shelter[] = $data['otherText'];
+        // }
+
+
         Conservationquestionnaire::where('user_email', $user['email'])->update([
             'answered' => '1',
             'conservationStatus' => $data['conservationStatus'],
