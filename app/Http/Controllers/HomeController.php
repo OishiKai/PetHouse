@@ -62,6 +62,12 @@ class HomeController extends Controller
         return view('faq');
     }
 
+    public function inquiry()
+    {
+        $user = \Auth::user();
+        return view('inquiry', compact('user'));
+    }
+
     public function questionnaire()
     {   
         $user = \Auth::user();

@@ -2,7 +2,6 @@
 @section('head')
 <!-- <script src="{{ asset('js/confirmQuestionnaireFScript.js') }}" defer></script> -->
 <link href="{{ asset('css/inquiryStyle.css') }}" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 @endsection
 @section('content')
 <h1 class="form-title">サイトへのお問い合わせ</h1>
