@@ -67,6 +67,11 @@
             <input type="text" name="remarks" style='display: none;'
                 value="{{ $data['remarks'] }}">
 
+            <input type="text" name="uuid" style='display: none;' value="{{ $data['uuid'] }}">
+            
+            @foreach ($data['exts'] as $extension)
+            <input type="text" name="exts[]" style='display: none;' value="{{ $extension }}">
+            @endforeach
             <button type="submit" class="form-Btn">次 へ</button>
 
             <br><br>

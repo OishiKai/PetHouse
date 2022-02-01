@@ -128,29 +128,30 @@
             <h2 class="form-label"><span class="form-require">必須</span>ペット紹介写真</h2>
             <p class="form-label"><span class="form-require3"><b>必須</b></span>写真1</p>
             <dd>
-                <label><input type="file" name="img1" accept="image/jpeg, image/png, image/gif" required></label><br>
+                <label><input type="file" name="img[]" accept="image/jpeg, image/png" required></label><br>
             </dd><br>
             <p class="form-label"><span class="form-require4"><b>任意</b></span>写真2</p>
             <dd>
-                <label><input type="file" name="img2" accept="image/jpeg, image/png, image/gif"></label><br>
+                <label><input type="file" name="img[]" accept="image/jpeg, image/png"></label><br>
             </dd><br>
             <p class="form-label"><span class="form-require4"><b>任意</b></span>写真3</p>
             <dd>
-                <label><input type="file" name="img3" accept="image/jpeg, image/png, image/gif"></label><br>
+                <label><input type="file" name="img[]" accept="image/jpeg, image/png"></label><br>
             </dd><br>
             <p class="form-label"><span class="form-require4"><b>任意</b></span>写真4</p>
             <dd>
-                <label><input type="file" name="img4" accept="image/jpeg, image/png, image/gif"></label><br>
+                <label><input type="file" name="img[]" accept="image/jpeg, image/png"></label><br>
             </dd><br>
             <p class="form-label"><span class="form-require4"><b>任意</b></span>写真5</p>
             <dd>
-                <label><input type="file" name="img5" accept="image/jpeg, image/png, image/gif"></label><br>
+                <label><input type="file" name="img[]" accept="image/jpeg, image/png"></label><br>
             </dd><br>
             <p class="form-label"><span class="form-require4"><b>任意</b></span>写真6</p>
             <dd>
-                <label><input type="file" name="img6" accept="image/jpeg, image/jpg, image/png, image/gif"></label><br>
+                <label><input type="file" name="img[]" accept="image/jpeg, image/jpg, image/png"></label><br>
             </dd><br>
             <!--ペット紹介写真-->
+            <input type="text" name="uuid" style='display: none;' value=''>
 
             <button type="submit" class="form-Btn">次 へ</button>
         </form>

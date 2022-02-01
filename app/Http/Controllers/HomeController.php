@@ -62,6 +62,12 @@ class HomeController extends Controller
         return view('faq');
     }
 
+    public function inquiry()
+    {
+        $user = \Auth::user();
+        return view('inquiry', compact('user'));
+    }
+
     public function questionnaire()
     {   
         $user = \Auth::user();
@@ -82,6 +88,9 @@ class HomeController extends Controller
             return view('confirmQuestionnaireF', compact('user', 'data'));
         }else{
             Conservationquestionnaire::validator($request);
+            Conservationquestionnaire::storeImg($data['profileImg'], $user);
+            $ex = $data['profileImg']->getClientOriginalExtension();
+            $data['profileImg'] = $ex;
             // dd($data);
             return view('confirmQuestionnaireC', compact('user', 'data'));
         }
@@ -89,11 +98,8 @@ class HomeController extends Controller
 
     public function answerQuestionnaire(Request $request)
     {
-        // dd($request);
         $data = $request->all();
-        
         $user = \Auth::user();
-        // dd($data);
 
         if ($user['status'] == 0){
             Fosterquestionnaire::store($data, $user);
@@ -131,8 +137,20 @@ class HomeController extends Controller
         $user = \Auth::user();
         $article = Article::where('id', $id)->get();
         $data = $article[0];
+        $extensions = explode('&', $data['extensions']);
+        $files = array();
+        for ($i = 0;$i < count($extensions); $i++){
+            $j = $i + 1;
+            $files[] = "{$id}({$j}).{$extensions[$i]}";
+        }
+        // dd($files);
+        return view('detail', compact('data','user','id','files'));
+    }
 
-        // dd($data);
-        return view('detail', compact('data','user','id'));
+    public function search($key)
+    {
+        $user = \Auth::user();
+        $data = Article::where('species', $key)->get();
+        return view('search', compact('user', 'key', 'data'));
     }
 }

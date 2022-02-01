@@ -10,9 +10,9 @@ body {
   margin: 0;
   padding: 0;
 }
-a {
+/* a {
   color:#b7a077;
-}
+} */
 a:hover {
   color: #ff9f43;
   font-weight: bold;

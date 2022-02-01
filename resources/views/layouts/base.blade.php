@@ -82,18 +82,18 @@
 
                             <div class="acd-content">
                                 <li class="acd-contents1">
-                                    <a href="pet-seach.html">
+                                    <a href="/search/雑種">
                                         <img src="{{ asset('lootImg/雑種犬.jpg')}}">
                                         <p class="pet-name">雑種</p>
                                     </a>
                                 </li>
                                 <li class="acd-contents1">
-                                    <a href="pet-seach.html">
+                                    <a href="#">
                                         <img src="{{ asset('lootImg/柴犬.jpg')}}">
                                         <p class="pet-name">柴犬</p>
                                     </a>
                                 <li class="acd-contents1">
-                                    <a href="pet-seach.html">
+                                    <a href="/search/ポメラニアン">
                                         <img src="{{ asset('lootImg/ポメラニアン.jpg')}}">
                                         <p class="pet-name">ポメラニアン</p>
                                     </a>

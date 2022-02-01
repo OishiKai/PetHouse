@@ -7,7 +7,7 @@
 @section('content')
 <div class="largeFlame">
     <div class="middleFlame">
-        <form method="POST" action="/answerQuestionnaire">
+        <form method="POST" action="/answerQuestionnaire" enctype="multipart/form-data">
             @csrf
             <div class="texts">
                 <h2>入力内容確認</h2>
@@ -80,6 +80,8 @@
                                 @endforeach
                             </td>
                         </tr>
+                        <input type='text' name="profile" value="{{$data['profile']}}" style='display: none;'>
+                        <input type='text' name="profileImg" value="{{$data['profileImg']}}" style='display: none;'>
                         @foreach($data['url'] as $url)
                             @if($url != null)
                                 <tr align="center">
@@ -91,7 +93,6 @@
                                 </tr>
                             @endif
                         @endforeach
-                        <input type='text' name="profile" value="{{$data['profile']}}" style='display: none;'>
                     </tbody>
                 </table>
             </div>

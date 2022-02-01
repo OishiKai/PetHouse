@@ -271,13 +271,7 @@
                 </dd>
                 <dt><span class="any">任意</span>プロフィール画面</dt>
                 <dd>
-                    <input type="file" name="profile_img" required>
-                    @error('profile')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-
+                    <input type="file" name="profileImg" accept="image/jpeg, image/png, image/gif" required>
 
                     <p class="R_1">
                         ※<b>保護施設の様子</b>、または<b>保護団体のロゴ</b>、<b>保護している動物の写真</b>をアップロードしてください<br>
