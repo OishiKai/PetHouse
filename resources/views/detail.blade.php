@@ -22,9 +22,8 @@
             $date->format('Y-m-d');
             // dd($date->format('Y-m-d'));
         ?>
-        <p>掲載日：{{$date->format('Y年m月d日') }}</p>
-
-        <p class="Deadline">掲載期限：[]まで</p>
+        <p>掲載日：{{ $date->format('Y年m月d日') }}</p>
+        <p><button type="button" class="btn btn-btn-secondary">♥お気に入り</button></p>
     </div>
     <div id="contents-container">
         <section id="title">
