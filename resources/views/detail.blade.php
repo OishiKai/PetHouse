@@ -23,7 +23,19 @@
             // dd($date->format('Y-m-d'));
         ?>
         <p>掲載日：{{ $date->format('Y年m月d日') }}</p>
-        <p><button type="button" class="btn btn-btn-secondary">♥お気に入り</button></p>
+
+        <!-- <p>
+            <button type="submit" action="{{ route('favorite', ['id' => $id]) }}"  class="btn btn-btn-secondary">♥お気に入り</button>
+        </p> -->
+        @if ($favJudge == false)
+        <p>
+            <a href="{{ route('favorite', ['id' => $id]) }}">
+                <button type="button" class="btn btn-btn-secondary">♥お気に入り</button>
+            </a>
+        </p>
+        @else
+        <p>お気に入り登録済み</p>
+        @endif
     </div>
     <div id="contents-container">
         <section id="title">

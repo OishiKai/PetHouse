@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Fosterquestionnaire;
 use App\Conservationquestionnaire;
 use App\Article;
+use App\Favorite;
 
 class HomeController extends Controller
 {
@@ -143,8 +144,15 @@ class HomeController extends Controller
             $j = $i + 1;
             $files[] = "{$id}({$j}).{$extensions[$i]}";
         }
-        // dd($files);
-        return view('detail', compact('data','user','id','files'));
+
+        $favJudge = false;
+        if (Favorite::where('user_id', $user['id'])->where('article_id', $id)->exists()){
+            $favJudge = true;
+        }else{
+            $favJudge = false;
+        }
+
+        return view('detail', compact('data','user','id','files', 'favJudge'));
     }
 
     public function search($key)
@@ -152,5 +160,17 @@ class HomeController extends Controller
         $user = \Auth::user();
         $data = Article::where('species', $key)->get();
         return view('search', compact('user', 'key', 'data'));
+    }
+
+    public function favorite($id)
+    {
+        $user = \Auth::user();
+        
+        Favorite::insertGetId([
+            'user_id' => $user['id'],
+            'article_id' => $id
+        ]);
+
+        return redirect()->route('articleDetail', ['id' => $id]);
     }
 }
