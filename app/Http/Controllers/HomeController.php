@@ -110,14 +110,14 @@ class HomeController extends Controller
         }
     }
 
-    public function article()
+    public function message()
     {
         $user = \Auth::user();
 
-        if ($user['status'] == '1'){
-            return view('article', compact('user'));
+        if ($user['status'] == '0'){
+            return view('fosterMessage', compact('user'));
         }else{
-            return view('home');
+            return view('conservationMessage', compact('user'));
         }
     }
 

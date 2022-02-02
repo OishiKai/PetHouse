@@ -101,10 +101,4 @@
 
 
 </main-content>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 @endsection
