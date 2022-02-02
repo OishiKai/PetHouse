@@ -11,19 +11,20 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
-Route::get('/', 'HomeController@home')->name('home');
-Route::get('/faq', 'HomeController@faq')->name('faq');
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@home')->name('home');
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/home', 'HomeController@home')->name('home');
+    Route::get('/', 'HomeController@home')->name('home');
+    Route::get('/faq', 'HomeController@faq')->name('faq');
     Route::get('/search/{key}', 'HomeController@search')->name('search');
+});
+
+Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/myPage', 'HomeController@myPage')->name('myPage');
-    Route::get('/faq', 'HomeController@faq')->name('faq');
     Route::get('/inquiry', 'HomeController@inquiry')->name('inquiry');
 
     Route::get('/questionnaire', 'HomeController@questionnaire')->name('questionnaire');
