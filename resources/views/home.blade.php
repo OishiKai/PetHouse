@@ -23,11 +23,11 @@
         </div>
 
         <div class="mySlides fade">
-            <img class="intro-img" src="{{ asset('lootImg/4.jpg')}}">
+            <img class="intro-img" src="{{ asset('lootImg/4.jpg') }}">
         </div>
 
         <div class="mySlides fade">
-            <img class="intro-img" src="{{ asset('lootImg/5.jpg')}}">
+            <img class="intro-img" src="{{ asset('lootImg/5.jpg') }}">
         </div>
 
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -57,72 +57,21 @@
 
             <ul class="pets">
                 <li class="flex-item">
-                    <a href="">
-                        <img src="{{ asset('lootImg/inu.jpg')}}" class="pic" alt="pets-picture">
+                    <a href="/search/トイプードル">
+                        <img src="{{ asset('lootImg/トイプードル.jpg') }}" class="pic" alt="pets-picture">
                         <h2 class="new">NEW</h2>
-                        <div class="home-details_container">
-                            <details>
-                                <summary>
-                                    <span class="open">もっと見る</span>
-                                    <span class="close">閉じる</span>
-                                </summary>
-                                <div class="home-details-content">
-                                    <p>題名</p>
-                                    <p>種類</p>
-                                    <p>年齢</p>
-                                    <p>性別</p>
-                                    <p>所在地</p>
-                                    <p>応募可能地域</p>
-                                    <p>掲載期間</p>
-                                </div>
-                            </details>
-                        </div>
                     </a>
                 </li>
                 <li class="flex-item">
-                    <a href="">
-                        <img src="{{ asset('lootImg/inu2.jpg')}}" class="pic" alt="pets-picture">
+                    <a href="/search/雑種">
+                        <img src="{{ asset('lootImg/雑種犬.jpg') }}" class="pic" alt="pets-picture">
                         <h2 class="new">NEW</h2>
-                        <div class="home-details_container">
-                            <details>
-                                <summary>
-                                    <span class="open">もっと見る</span>
-                                    <span class="close">閉じる</span>
-                                </summary>
-                                <div class="home-details-content">
-                                    <p>題名</p>
-                                    <p>種類</p>
-                                    <p>年齢</p>
-                                    <p>性別</p>
-                                    <p>所在地</p>
-                                    <p>応募可能地域</p>
-                                    <p>掲載期間</p>
-                                </div>
-                            </details>
-                        </div>
                     </a>
                 </li>
                 <li class="flex-item">
-                    <a href="">
-                        <img src="{{ asset('lootImg/inu3.jpg')}}" class="pic" alt="pets-picture">
+                    <a href="/search/ダックスフント">
+                        <img src="{{ asset('lootImg/ダックスフント.jpg') }}" class="pic" alt="pets-picture">
                         <h2 class="new">NEW</h2>
-                        <div class="home-details_container">
-                            <details>
-                                <summary>
-                                    <span class="open">もっと見る</span>
-                                    <span class="close">閉じる</span>
-                                </summary>
-                                <div class="home-details-content">
-                                    <p>題名</p>
-                                    <p>種類</p>
-                                    <p>年齢</p>
-                                    <p>性別</p>
-                                    <p>所在地</p>
-                                    <p>応募可能地域</p>
-                                    <p>掲載期間</p>
-                                </div>
-                            </details>
-                        </div>
                     </a>
                 </li>
             </ul>
@@ -132,97 +81,29 @@
             <h4 class="pets-tittle">猫の最新募集</h4>
             <ul class="pets">
                 <li class="flex-item">
-                    <a href="">
-                        <img src="{{ asset('lootImg/cat1.jpg')}}" class="pic" alt="pets-picture">
+                    <a href="/search/ブリティッシュショートヘア">
+                        <img src="{{ asset('lootImg/ブリティッシュショートヘア.jpg') }}" class="pic" alt="pets-picture">
                         <h2 class="new">NEW</h2>
-                        <div class="home-details_container">
-                            <details>
-                                <summary>
-                                    <span class="open">もっと見る</span>
-                                    <span class="close">閉じる</span>
-                                    　</summary>
-                                <div class="home-details-content">
-                                    <p>題名</p>
-                                    <p>種類</p>
-                                    <p>年齢</p>
-                                    <p>性別</p>
-                                    <p>所在地</p>
-                                    <p>応募可能地域</p>
-                                    <p>掲載期間</p>
-                                </div>
-                            </details>
-                        </div>
                     </a>
                 </li>
 
                 <li class="flex-item">
-                    <a href="">
-                        <img src="{{ asset('lootImg/cat2.jpg')}}" class="pic" alt="pets-picture">
+                    <a href="/search/マンチカン">
+                        <img src="{{ asset('lootImg/マンチカン.jpg') }}" class="pic" alt="pets-picture">
                         <h2 class="new">NEW</h2>
-                        <div class="home-details_container">
-                            <details>
-                                <summary>
-                                    <span class="open">もっと見る</span>
-                                    <span class="close">閉じる</span>
-                                    　</summary>
-                                <div class="home-details-content">
-                                    <p>題名</p>
-                                    <p>種類</p>
-                                    <p>年齢</p>
-                                    <p>性別</p>
-                                    <p>所在地</p>
-                                    <p>応募可能地域</p>
-                                    <p>掲載期間</p>
-                                </div>
-                            </details>
-                        </div>
                     </a>
                 </li>
 
                 <li class="flex-item">
-                    <a href="">
-                        <img src="{{ asset('lootImg/cat3.jpg')}}" class="pic" alt="pets-picture">
+                    <a href="/search/その他猫">
+                        <img src="{{ asset('lootImg/その他猫.jpg') }}" class="pic" alt="pets-picture">
                         <h2 class="new">NEW</h2>
-                        <div class="home-details_container">
-                            <details>
-                                <summary>
-                                    <span class="open">もっと見る</span>
-                                    <span class="close">閉じる</span>
-                                </summary>
-                                <div class="home-details-content">
-                                    <p>題名</p>
-                                    <p>種類</p>
-                                    <p>年齢</p>
-                                    <p>性別</p>
-                                    <p>所在地</p>
-                                    <p>応募可能地域</p>
-                                    <p>掲載期間</p>
-                                </div>
-                            </details>
-                        </div>
                     </a>
                 </li>
             </ul>
         </div>
 
     </div>
-
-
-    <div class="pager">
-        <ul class="pagination">
-            <li><a href="">«</a></li>
-            <li><a class="active" href="">1</a></li>
-            <li><a href="">2</a></li>
-            <li><a href="">3</a></li>
-            <li><a href="">4</a></li>
-            <li><a href="">5</a></li>
-            <li><a href="">6</a></li>
-            <li><a href="">7</a></li>
-            <li><a href="">8</a></li>
-            <li><a href="">»</a></li>
-        </ul>
-    </div>
-
     <!--scroll to top button-->
     <div class="scrolltoTopbtn">
         <i class="fas fa-angle-up" style="font-size:60px;" title="トップページへ"></i><br>
@@ -230,5 +111,3 @@
 </div>
 
 @endsection
-
-

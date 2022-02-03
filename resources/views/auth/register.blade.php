@@ -7,8 +7,8 @@
 
 @section('content')
 <ul class="breadcrumb">
-    <li><a href="base.html">HOME</a></li>
-    <li>会員ログイン</li>
+    <li><a href="{{ route('home') }}">HOME</a></li>
+    <li>新規会員登録</li>
 </ul>
 
 <!--navigation-->

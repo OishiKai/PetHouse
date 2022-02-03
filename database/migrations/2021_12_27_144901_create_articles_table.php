@@ -14,6 +14,7 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
+            $table->bigIncrements('number')->unique();
             $table->string('id'); // 記事ID
             $table->string('user_id');
             $table->string('title'); // タイトル
@@ -34,7 +35,7 @@ class CreateArticlesTable extends Migration
 
             // $table->string('place'); // ペット所在地
             $table->string('name'); // ペットの名前
-            $table->string('pattern'); //ペットの毛柄
+            // $table->string('pattern'); //ペットの毛柄
 
             $table->string('background'); // 募集の経緯
             $table->string('personality'); // 性格

@@ -20,7 +20,7 @@
 <!---main content--->
 
 <div class="text-seach">
-    <h1>{{$key}} の検索結果</h1>
+    <h1>お気に入り登録済み募集記事</h1>
 </div>
 
 
@@ -591,4 +591,7 @@
         </div>
     </div>
 </div>
+
+<!--PAGE NO-->
+
 @endsection

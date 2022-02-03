@@ -16,7 +16,7 @@ Route::get('/home', 'HomeController@home')->name('home');
 Auth::routes();
 Route::get('/', 'HomeController@home')->name('home');
 Route::get('/faq', 'HomeController@faq')->name('faq');
-Route::get('/search/{key}', 'HomeController@search')->name('search');
+Route::get('/search/{pet}/{key}', 'HomeController@search')->name('search');
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -38,6 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/confirmArticle', 'ArticleController@confirmArticle')->name('confirmArticle');
     Route::post('/articleStore', 'ArticleController@articleStore')->name('articleStore');
     Route::get('/articleDetail/{id}', 'HomeController@articleDetail')->name('articleDetail');
+    Route::get('/articleList', 'articleController@articleList')->name('articleList');
+    Route::get('/articleDelete/{id}', 'articleController@articleDelete')->name('articleDelete');
+    Route::get('/articleFavorite', 'articleController@articleFavorite')->name('articleFavorite');
 
     Route::get('/favorite/{id}', 'HomeController@favorite')->name('favorite');
 });

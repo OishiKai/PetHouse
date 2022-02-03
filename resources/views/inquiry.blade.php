@@ -7,7 +7,7 @@
 <h1 class="form-title">サイトへのお問い合わせ</h1>
 <div class="go-to-login">
     <h3 class="go-login1">既出の質問などは→</h3>
-    <a class="go-login" href="Question.html">よくある質問へ</a>
+    <a class="go-login" href="{{ route('faq') }}">よくある質問へ</a>
 
 </div>
 
@@ -80,8 +80,8 @@
 </div>
 </form>
 </div>
-<div style="width: 100%; text-align: center;">
+<!-- <div style="width: 100%; text-align: center;">
     <input type="submit" id="login" value="送信">
-</div>
+</div> -->
 </div>
 @endsection

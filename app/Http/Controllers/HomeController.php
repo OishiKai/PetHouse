@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\User;
 use App\RegistFoster;
 use App\Fosterquestionnaire;
 use App\Conservationquestionnaire;
@@ -131,15 +133,33 @@ class HomeController extends Controller
         }else{
             $favJudge = false;
         }
-
-        return view('detail', compact('data','user','id','files', 'favJudge'));
+        $write = User::where('id', $data['user_id'])->get();
+        $writer = $write[0];
+        $question = Conservationquestionnaire::where('user_email', $writer['email'])->get();
+        $quest = $question[0];
+        // dd($writer);
+        $favCount = Favorite::where('article_id', $id)->count();
+        return view('detail', compact('data','user','id','files', 'favJudge', 'writer', 'quest', 'favCount'));
     }
 
-    public function search($key)
+    public function search($pet, $key)
     {
         $user = \Auth::user();
-        $data = Article::where('species', $key)->get();
-        return view('search', compact('user', 'key', 'data'));
+        if (Article::where('pet', $pet)->where('species', $key)->exists()){
+            $datas = Article::where('pet', $pet)->where('species', $key)->get();
+            $ex = array();
+            $ids = array();
+            foreach ($datas as $data){
+                $extensions = explode('&', $data['extensions']);
+                $ex[] = $extensions[0];
+                // $ids[] = $data['id'];
+            }
+            return view('search', compact('user', 'key', 'datas', 'ex'));
+
+        }else{
+            $datas = null;
+            return view('search', compact('user', 'key', 'datas'));
+        }
     }
 
     public function favorite($id)
