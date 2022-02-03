@@ -2,8 +2,8 @@
 
 @section('content')
 <ul class="breadcrumb">
-    <li><a href="base.html">HOME</a></li>
-    <li><a href="form.html">会員ログイン</a></li>
+    <li><a href="{{ route('home') }}">HOME</a></li>
+    <li><a href="{{ route('home') }}">会員ログイン</a></li>
     <li>ログイン</li>
 </ul>
 

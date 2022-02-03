@@ -54,7 +54,6 @@
                                     href="/articleDetail/{{ $art['id'] }}">{{ $art['title'] }}</a>
                             </td>
                             <td>
-                                <!-- 　<button class="button05"><a href="#" class="simple_square_btn5">編集</a></button> -->
                                 　<button class="button05"><a
                                         href="/articleDelete/{{ $art['id'] }}">削除</a></button>
                                 　</td>
