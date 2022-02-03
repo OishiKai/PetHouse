@@ -24,7 +24,7 @@ class CreateMessagesTable extends Migration
 
             $table->string('subject');
             $table->string('comment');
-
+            $table->date('created_at');
         });
     }
 

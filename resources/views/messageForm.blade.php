@@ -73,11 +73,11 @@
 
                     <input type="text" class="text" size="45"
                         value="{{ $user['kanjiFamilyName'] }}{{ $user['kanjiFirstName'] }}"
-                        name='formName' style='display: none;'>
+                        name='fromName' style='display: none;'>
                     <input type="text" class="text" size="45" value="{{ $myData['age'] }}"
-                        name='FromAge' style='display: none;'>
+                        name='fromAge' style='display: none;'>
                     <input type="text" class="text" size="45" value="{{ $myData['gender'] }}"
-                        name='FromGender' style='display: none;'>
+                        name='fromGender' style='display: none;'>
                 </table>
                 <input type="submit" class="submit" value="送信する" />
             </form>
