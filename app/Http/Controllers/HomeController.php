@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
+use App\RegistFoster;
 use App\Fosterquestionnaire;
 use App\Conservationquestionnaire;
 use App\Article;
@@ -122,18 +123,22 @@ class HomeController extends Controller
         }
     }
 
-    public function messageForm()
+    public function messageForm($id, $to)
     {
         $user = \Auth::user();
-
-        return view('messageForm', compact('user'));
+        $article = Article::where('id', $id)->get();
+        $data = $article[0];
+        $myDatas = RegistFoster::where('user_email', $user['email'])->get();
+        $myData = $myDatas[0];
+        // dd($data);
+        return view('messageForm', compact('user', 'data', 'to', 'myData', 'id'));
     }
 
-    public function articleStore(Request $request)
+    public function sendMessage(Request $request)
     {
         $user = \Auth::user();
         $data = $request->all();
-        // dd($data);
+        dd($data);
         Article::validator($request);
         
         Article::test($data, $user['id']);

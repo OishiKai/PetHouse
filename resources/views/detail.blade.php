@@ -27,14 +27,15 @@
         <!-- <p>
             <button type="submit" action="{{ route('favorite', ['id' => $id]) }}"  class="btn btn-btn-secondary">♥お気に入り</button>
         </p> -->
-        @if ($favJudge == false)
-        <p>
-            <a href="{{ route('favorite', ['id' => $id]) }}">
-                <button type="button" class="btn btn-btn-secondary">♥お気に入り</button>
-            </a>
-        </p>
+        @if($favJudge == false)
+            <p>
+                <a
+                    href="{{ route('favorite', ['id' => $id]) }}">
+                    <button type="button" class="btn btn-btn-secondary">♥お気に入り</button>
+                </a>
+            </p>
         @else
-        <p>お気に入り登録済み</p>
+            <p>お気に入り登録済み</p>
         @endif
     </div>
     <div id="contents-container">
@@ -205,17 +206,10 @@
                     </li>
                 </ul>
                 <div class="apply">
-                    <h2><a href="#">お申し込み</a></h2>
+                    <h2><a href="/messageForm/{{$id}}/{{$user['id']}}">お申し込み</a></h2>
                 </div>
             </div>
         </section>
-        <div class="resemble">
-            <h2>この子の条件に似たペット</h2>
-            []
-        </div>
-        <div class="back_b">
-            <a class="" href="javascript:history.back()">＜＜前のページに戻る</a>
-        </div>
     </div>
 </div>
 @endsection

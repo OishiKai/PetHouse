@@ -26,7 +26,7 @@
         </aside>
     @else
         <aside>
-            <nav class="MP-sideBox" >
+            <nav class="MP-sideBox">
                 <div class="menu-title">メニュー</div>
                 <ul>
                     <li><a href="MyPage-General.html">マイページTOP</a></li>
@@ -38,25 +38,46 @@
         </aside>
     @endif
     <!--main content-->
-    <div class="MP-main" style='height: 460px;'>
+    <div class="MP-main" style='height: 500px;'>
         <div class="messageform">
-            <form>
+            <form method="POST" action="/sendMessage">
+                @csrf
                 <h1>MESSAGE</h1>
+                @if( $user['status'] == '0')
+                    該当の記事を投稿した保護活動者にメッセージを送信します
+                @else
+                    該当の記事に対しての送信者に返信をします
+                @endif
                 <table>
                     <tr>
-                        <th><label>宛先</label></th>
-                        <td><input type="text" class="text" size="45" value="" /></td>
+                        <th><label>該当の記事</label></th>
+                        <td><input type="text" class="text" size="45"
+                                value="{{ $data['title'] }}" name='title' disabled /></td>
                     </tr>
                     <tr>
                         <th><label>件名</label></th>
-                        <td><input type="text" class="text" size="45" value="" /></td>
+                        <td><input type="text" class="text" size="45" value="" name='subject' /></td>
                     </tr>
 
                     <tr>
                         <th><label>メッセージ</label></th>
                         <td><textarea cols="60" rows="5" name="comments" id="comments"></textarea></td>
                     </tr>
+                    <input type="text" class="text" size="45" value="{{ $id }}"
+                        name='articleId' style='display: none;'>
 
+                    <input type="text" class="text" size="45" value="{{ $data['user_id'] }}"
+                        name='toUserId' style='display: none;'>
+                    <input type="text" class="text" size="45" value="{{ $user['id'] }}"
+                        name='fromUserId' style='display: none;'>
+
+                    <input type="text" class="text" size="45"
+                        value="{{ $user['kanjiFamilyName'] }}{{ $user['kanjiFirstName'] }}"
+                        name='formName' style='display: none;'>
+                    <input type="text" class="text" size="45" value="{{ $myData['age'] }}"
+                        name='FromAge' style='display: none;'>
+                    <input type="text" class="text" size="45" value="{{ $myData['gender'] }}"
+                        name='FromGender' style='display: none;'>
                 </table>
                 <input type="submit" class="submit" value="送信する" />
             </form>
