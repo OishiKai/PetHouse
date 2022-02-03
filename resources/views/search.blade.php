@@ -375,8 +375,11 @@
 
     <div class="main">
         <div class="flexbox">
-            <h4>全〇〇件中　〇件</h4>
-
+        @if ($datas != null)
+            <h4>{{count($datas)}}件</h4>
+        @else
+        <h4>0件</h4>
+        @endif
             <div class="button-wrapper">
 
                 <a href="" class="btn btn-border"> ▲新 </a>
@@ -384,35 +387,37 @@
             </div>
 
             <ul id=pets>
+                @if ($datas != null)
+                    @for($i=0;$i< count($datas);$i++)
+                    <div class="flex-item-osu">
+                        <li>
+                            <a href="/articleDetail/{{$datas[$i]['id']}}">
+                                <img src="https://pethouse1984.s3.ap-northeast-1.amazonaws.com/article/{{ $datas[$i]['id']}}(1).{{$ex[$i]}}" class="pic" alt="">
+                                <h2 class="new">NEW</h2>
+                                <div class="details_container">
+                                    <details>
 
-                <div class="flex-item-osu">
-                    <li>
-                        <a href="">
-                            <img src="{{ asset('lootImg/雑種犬.jpg')}}" class="pic" alt="">
-                            <h2 class="new">NEW</h2>
-                            <div class="details_container">
-                                <details>
-
-                                    <summary>
-                                        <span class="open">もっと見る</span>
-                                        <span class="close">閉じる</span>
-                                    </summary>
-                                    <div class="details-content">
-                                        <p>題名</p>
-                                        <p>種類</p>
-                                        <p>年齢</p>
-                                        <p>性別</p>
-                                        <p>所在地</p>
-                                        <p>応募可能地域</p>
-                                        <p>掲載期間</p>
-                                    </div>
-                                </details>
-                            </div>
-                        </a>
-                    </li>
-                </div>
-
-                <div class="flex-item-mesu">
+                                        <summary>
+                                            <span class="open">もっと見る</span>
+                                            <span class="close">閉じる</span>
+                                        </summary>
+                                        <div class="details-content">
+                                            <p>タイトル : {{$datas[$i]['title']}}</p>
+                                            <p>種類  : {{$datas[$i]['species']}}</p>
+                                            <p>年齢 : {{$datas[$i]['age']}}</p>
+                                            <p>性別  : {{$datas[$i]['gender']}}</p>
+                                            <p>募集状況  : {{$datas[$i]['status']}}</p>
+                                        </div>
+                                    </details>
+                                </div>
+                            </a>
+                        </li>
+                    </div>
+                    @endfor
+                @else
+                <h2>該当の募集記事は見つかりませんでした</h2>
+                @endif
+                <!-- <div class="flex-item-mesu">
                     <li>
                         <a href="">
                             <img src="{{ asset('lootImg/雑種犬.jpg')}}" class="pic" alt="">
@@ -576,7 +581,7 @@
                             </div>
                         </a>
                     </li>
-                </div>
+                </div> -->
 
 				
 

@@ -16,7 +16,7 @@ Route::get('/home', 'HomeController@home')->name('home');
 Auth::routes();
 Route::get('/', 'HomeController@home')->name('home');
 Route::get('/faq', 'HomeController@faq')->name('faq');
-Route::get('/search/{key}', 'HomeController@search')->name('search');
+Route::get('/search/{pet}/{key}', 'HomeController@search')->name('search');
 
 Route::group(['middleware' => 'auth'], function () {
 

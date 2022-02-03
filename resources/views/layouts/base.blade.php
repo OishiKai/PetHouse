@@ -82,9 +82,9 @@
 
                             <div class="acd-content">
                                 <li class="acd-contents1">
-                                    <a href="/search/雑種">
+                                    <a href="/search/犬/雑種">
                                         <img src="{{ asset('lootImg/雑種犬.jpg')}}">
-                                        <p class="pet-name">雑種</p>
+                                        <p class="pet-name">雑daf種</p>
                                     </a>
                                 </li>
                                 <li class="acd-contents1">
@@ -93,7 +93,7 @@
                                         <p class="pet-name">柴犬</p>
                                     </a>
                                 <li class="acd-contents1">
-                                    <a href="/search/ポメラニアン">
+                                    <a href="/search/犬/ポメラニアン">
                                         <img src="{{ asset('lootImg/ポメラニアン.jpg')}}">
                                         <p class="pet-name">ポメラニアン</p>
                                     </a>
@@ -124,7 +124,7 @@
                                     </a>
                                 </li>
                                 <li class="acd-contents1">
-                                    <a href="pet-seach.html">
+                                    <a href="/search/その他犬">
                                         <img src="img/%E3%81%9D%E3%81%AE%E4%BB%96%E7%8A%AC.jpg">
                                         <p class="pet-name">その他</p>
                                     </a>

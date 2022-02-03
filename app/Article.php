@@ -11,6 +11,8 @@ use Carbon\Carbon;
 class Article extends Model
 {
     public $timestamps = true;
+    public$keyType = 'string';
+    public $incrementing = false;
     static function store($data, $user){
         // dd($data);
         Article::storeS3($data['exts'], $data['uuid'], $user);
