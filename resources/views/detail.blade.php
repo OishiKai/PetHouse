@@ -205,9 +205,11 @@
                         </table>
                     </li>
                 </ul>
+                @if ($user['status'] == '0')
                 <div class="apply">
                     <h2><a href="/messageForm/{{$id}}/{{$user['id']}}">お申し込み</a></h2>
                 </div>
+                @endif
             </div>
         </section>
     </div>

@@ -323,7 +323,7 @@
             </div>
             <input type='hidden' name='status' value=0>
             <div class="row">
-                <input type="submit" value="確認画面へ" />
+                <input type="submit" value="登録" />
             </div>
         </form>
     </div>
@@ -536,7 +536,7 @@
             </div>
             <input type='hidden' name='status' value=1>
             <div class="row">
-                <input type="submit" value="確認画面へ" />
+                <input type="submit" value="登録" />
             </div>
         </form>
     </div>
