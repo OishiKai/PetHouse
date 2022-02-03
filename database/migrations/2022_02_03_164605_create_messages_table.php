@@ -19,9 +19,9 @@ class CreateMessagesTable extends Migration
             $table->string('toId');
             $table->string('articleId');
 
-            $table->string('fromName');
-            $table->string('fromGender');
-            $table->string('fromAge');
+            $table->string('fromName')->default('none');;
+            $table->string('fromGender')->default('none');;
+            $table->string('fromAge')->default('none');;
 
             $table->string('subject');
             $table->string('comment');

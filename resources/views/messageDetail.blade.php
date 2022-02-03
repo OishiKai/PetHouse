@@ -1,7 +1,8 @@
 @extends('layouts.base')
 
 @section('head')
-<link rel="stylesheet" href="{{ asset('css/messageFormStyle.css') }}">
+<script src="{{ asset('js/messageDetail.js') }}" defer></script>
+<link rel="stylesheet" href="{{ asset('css/messageDetail.css') }}">
 @if( $user['status'] == '0')
     <link rel="stylesheet" href="{{ asset('css/fosterMyPageStyle.css') }}">
 @else
@@ -39,88 +40,49 @@
     @endif
 
     <!--main content-->
-    <div class="MP-main">
+    <div class="MP-main" style='height: 624px;'>
         <div class="mainField">
             <div class="field1">
-                <img src="img/favicon1.png" alt="du" class="du">
+                <img src="https://pethouse1984.s3.ap-northeast-1.amazonaws.com/article/{{ $msg['articleId']}}(1).{{$ex}}" alt="du" class="du" width="160" height="160">
             </div>
             <div class="field2">
-                <h3>題名</h3>
+                <h3>{{$art['title']}}</h3>
                 <ul>
-                    <li>種類</li>
-                    <li>所在地</li>
-                    <li>年齢</li>
+                    <li>種類 : {{$art['species']}}</li>
+                    <li>サイズ : {{$art['size']}}</li>
+                    <li>年齢 : {{$art['age']}}</li>
                 </ul>
                 <ul>
-                    <li>応募可能地</li>
-                    <li>性別</li>
-                    <li>募集状況</li>
+                    <li>性別 : {{$art['gender']}}</li>
+                    <li>募集状況 : {{$art['status']}}</li>
                 </ul>
             </div>
         </div>
 
         <div class="section s_01">
 
-            <div class="accordion_one">
+            <div class="accordion_one open">
                 <div class="accordion_header">
-                    <img src="img/icon.png" alt="icon" class="icon">
-                    <h3 class="name">名前</h3>
-                    <p class="privateInformation">都道府県/年齢/性別</p>
-                    <p class="sendTime">0000/00/00 00:00 AM</p>
+                    <img src="{{ asset('lootImg/someone.png')}}" alt="icon" class="icon">
+                    <h3 class="name">{{$msg['fromName']}} : {{$msg['subject']}}</h3>
+                    <p class="privateInformation">{{$msg['fromAge']}}歳 / {{$msg['fromGender']}}</p>
+                    <p class="sendTime">{{$msg['created_at']->format('Y年m月d日')}}</p>
                     <div class="i_box"><i class="one_i"></i></div>
                 </div>
-                <div class="accordion_inner">
+                <div class="accordion_inner" style='display: block;'>
                     <div class="box_one">
                         <p class="txt_a_ac">
-                            本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文2
+                            {{$msg['comment']}}
                         </p>
                     </div>
+    
                 </div>
             </div>
-
-            <div class="accordion_one">
-                <div class="accordion_header">
-                    <img src="img/icon.png" alt="icon" class="icon">
-                    <h3 class="name">名前</h3>
-                    <p class="privateInformation">都道府県/年齢/性別</p>
-                    <p class="sendTime">0000/00/00 00:00 AM</p>
-                    <div class="i_box"><i class="one_i"></i></div>
-                </div>
-                <div class="accordion_inner">
-                    <div class="box_one">
-                        <p class="txt_a_ac">
-                            本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文2
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion_one">
-                <div class="accordion_header">
-                    <img src="img/icon.png" alt="icon" class="icon">
-                    <h3 class="name">名前</h3>
-                    <p class="privateInformation">都道府県/年齢/性別</p>
-                    <p class="sendTime">0000/00/00 00:00 AM</p>
-                    <div class="i_box"><i class="one_i"></i></div>
-                </div>
-                <div class="accordion_inner">
-                    <div class="box_one">
-                        <p class="txt_a_ac">
-                            本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文2
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <a href="/messageForm/{{$msg['articleId']}}/{{$msg['id']}}"><h2>返信する<h2></a>
         </div>
-
+    </div>
 
 
 </main-content>
 <!--/main-content-->
-
-<br>
-<br>
-<br>
-<br>
-<br>
 @endsection

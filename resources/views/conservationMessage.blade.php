@@ -48,7 +48,7 @@
                     @foreach ($messages as $msg)
                     <tr>
                         <td class="icon">{{$msg['fromName']}} さん</td>
-                        <td><a class="li-member" href="">内容を確認する</a></td>
+                        <td><a class="li-member" href="{{ route('messageDetail', ['id' => $msg['id']]) }}">内容を確認する</a></td>
                         <td><time datetime="2022-01-28">{{$msg['created_at']->format('Y年m月d日')}}</time></td>
                     </tr>
                     @endforeach

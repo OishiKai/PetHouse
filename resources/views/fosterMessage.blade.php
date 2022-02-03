@@ -38,44 +38,24 @@
 
             <thead>
                 <tr>
-                    <th>お名前</th>
+                    <th>該当の記事</th>
                     <th>メッセージ<br><span style="font-size:12px;">以下リンク先で各保護活動者とのチャットページに飛びます</span></th>
                     <th>着信日時</th>
                 </tr>
             </thead>
 
             <tbody>
-                <tr>
-                    <td class="icon">Aさん</td>
-                    <td><a class="li-member" href="">チャットボックスに向かう</a></td>
-                    <td><time datetime="2022-01-28">2022年1月28日</time></td>
-                </tr>
-
-                <tr>
-                    <td class="icon">Bさん</td>
-                    <td><a class="li-member" href="">チャットボックスに向かう</a></td>
-                    <td><time datetime="2022-01-28">2022年1月27日</time></td>
-                </tr>
-
-                <tr>
-                    <td class="icon">Cさん</td>
-                    <td><a class="li-member" href="">チャットボックスに向かう</a></td>
-                    <td><time datetime="2022-01-28">2022年1月26日</time></td>
-                </tr>
-
-                <tr>
-                    <td class="icon">Dさん</td>
-                    <td><a class="li-member" href="">チャットボックスに向かう</a></td>
-                    <td><time datetime="2022-01-28">2022年1月25日</time></td>
-                </tr>
-
-                <tr>
-                    <td class="icon">Eさん</td>
-                    <td><a class="li-member" href="">チャットボックスに向かう</a></td>
-                    <td><time datetime="2022-01-28">2022年1月24日</time></td>
-                </tr>
-
-
+                @if ($messages != null)
+                    @for ($i=0;$i < count($titles);$i++)
+                    <tr>
+                        <td class="icon">{{$titles[$i]}}</td>
+                        <td><a class="li-member" href="{{ route('messageDetail', ['id' => $messages[$i]['id']]) }}">内容を確認する</a></td>
+                        <td><time datetime="2022-01-28">{{$messages[$i]['created_at']->format('Y年m月d日')}}</time></td>
+                    </tr>
+                    @endfor
+                @else
+                    メッセージはありません
+                @endif
             </tbody>
 
         </table>
