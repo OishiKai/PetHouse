@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
+use App\RegistFoster;
 use App\Fosterquestionnaire;
 use App\Conservationquestionnaire;
 use App\Article;
+use App\Favorite;
+use App\Message;
 
 class HomeController extends Controller
 {
@@ -15,10 +18,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -110,28 +113,6 @@ class HomeController extends Controller
         }
     }
 
-    public function article()
-    {
-        $user = \Auth::user();
-
-        if ($user['status'] == '1'){
-            return view('article', compact('user'));
-        }else{
-            return view('home');
-        }
-    }
-
-    public function articleStore(Request $request)
-    {
-        $user = \Auth::user();
-        $data = $request->all();
-        // dd($data);
-        Article::validator($request);
-        
-        Article::test($data, $user['id']);
-        return view('home', compact('user'));
-    }
-
     public function articleDetail($id)
     {
         $user = \Auth::user();
@@ -143,8 +124,15 @@ class HomeController extends Controller
             $j = $i + 1;
             $files[] = "{$id}({$j}).{$extensions[$i]}";
         }
-        // dd($files);
-        return view('detail', compact('data','user','id','files'));
+
+        $favJudge = false;
+        if (Favorite::where('user_id', $user['id'])->where('article_id', $id)->exists()){
+            $favJudge = true;
+        }else{
+            $favJudge = false;
+        }
+
+        return view('detail', compact('data','user','id','files', 'favJudge'));
     }
 
     public function search($key)
@@ -152,5 +140,17 @@ class HomeController extends Controller
         $user = \Auth::user();
         $data = Article::where('species', $key)->get();
         return view('search', compact('user', 'key', 'data'));
+    }
+
+    public function favorite($id)
+    {
+        $user = \Auth::user();
+        
+        Favorite::insertGetId([
+            'user_id' => $user['id'],
+            'article_id' => $id
+        ]);
+
+        return redirect()->route('articleDetail', ['id' => $id]);
     }
 }

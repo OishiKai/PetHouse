@@ -11,24 +11,26 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
-Route::get('/', 'HomeController@home')->name('home');
-Route::get('/faq', 'HomeController@faq')->name('faq');
-Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
+Auth::routes();
+Route::get('/', 'HomeController@home')->name('home');
+Route::get('/faq', 'HomeController@faq')->name('faq');
+Route::get('/search/{key}', 'HomeController@search')->name('search');
+
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/search/{key}', 'HomeController@search')->name('search');
 
     Route::get('/myPage', 'HomeController@myPage')->name('myPage');
-    Route::get('/faq', 'HomeController@faq')->name('faq');
     Route::get('/inquiry', 'HomeController@inquiry')->name('inquiry');
 
     Route::get('/questionnaire', 'HomeController@questionnaire')->name('questionnaire');
     Route::post('/confirmQuestionnaire', 'HomeController@confirmQuestionnaire')->name('confirmQuestionnaire');
     Route::post('/answerQuestionnaire', 'HomeController@answerQuestionnaire')->name('answerQuestionnaire');
+
+    Route::get('/message', 'MessageController@message')->name('message');
+    Route::get('/messageForm/{id}/{to}', 'MessageController@messageForm')->name('messageForm');
+    Route::post('/sendMessage', 'MessageController@sendMessage')->name('sendMessage');
+    Route::get('/messageDetail/{id}', 'MessageController@messageDetail')->name('messageDetail');
 
     Route::get('/article', 'ArticleController@article')->name('article');
     Route::post('/articleRegisterA', 'ArticleController@articleRegisterA')->name('articleRegisterA');
@@ -36,4 +38,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/confirmArticle', 'ArticleController@confirmArticle')->name('confirmArticle');
     Route::post('/articleStore', 'ArticleController@articleStore')->name('articleStore');
     Route::get('/articleDetail/{id}', 'HomeController@articleDetail')->name('articleDetail');
+
+    Route::get('/favorite/{id}', 'HomeController@favorite')->name('favorite');
 });

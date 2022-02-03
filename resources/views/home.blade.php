@@ -53,20 +53,20 @@
 
     <div class="pet-main">
         <div class="dog-box">
-            <h4 class="pets-tittle">ワンちゃん</h4>
+            <h4 class="pets-tittle">犬の最新募集</h4>
 
             <ul class="pets">
                 <li class="flex-item">
                     <a href="">
                         <img src="{{ asset('lootImg/inu.jpg')}}" class="pic" alt="pets-picture">
                         <h2 class="new">NEW</h2>
-                        <div class="details_container">
+                        <div class="home-details_container">
                             <details>
                                 <summary>
                                     <span class="open">もっと見る</span>
                                     <span class="close">閉じる</span>
                                 </summary>
-                                <div class="details-content">
+                                <div class="home-details-content">
                                     <p>題名</p>
                                     <p>種類</p>
                                     <p>年齢</p>
@@ -83,13 +83,13 @@
                     <a href="">
                         <img src="{{ asset('lootImg/inu2.jpg')}}" class="pic" alt="pets-picture">
                         <h2 class="new">NEW</h2>
-                        <div class="details_container">
+                        <div class="home-details_container">
                             <details>
                                 <summary>
                                     <span class="open">もっと見る</span>
                                     <span class="close">閉じる</span>
                                 </summary>
-                                <div class="details-content">
+                                <div class="home-details-content">
                                     <p>題名</p>
                                     <p>種類</p>
                                     <p>年齢</p>
@@ -106,13 +106,13 @@
                     <a href="">
                         <img src="{{ asset('lootImg/inu3.jpg')}}" class="pic" alt="pets-picture">
                         <h2 class="new">NEW</h2>
-                        <div class="details_container">
+                        <div class="home-details_container">
                             <details>
                                 <summary>
                                     <span class="open">もっと見る</span>
                                     <span class="close">閉じる</span>
                                 </summary>
-                                <div class="details-content">
+                                <div class="home-details-content">
                                     <p>題名</p>
                                     <p>種類</p>
                                     <p>年齢</p>
@@ -129,19 +129,19 @@
         </div>
 
         <div class="cat-box">
-            <h4 class="pets-tittle">ネコちゃん</h4>
+            <h4 class="pets-tittle">猫の最新募集</h4>
             <ul class="pets">
                 <li class="flex-item">
                     <a href="">
                         <img src="{{ asset('lootImg/cat1.jpg')}}" class="pic" alt="pets-picture">
                         <h2 class="new">NEW</h2>
-                        <div class="details_container">
+                        <div class="home-details_container">
                             <details>
                                 <summary>
                                     <span class="open">もっと見る</span>
                                     <span class="close">閉じる</span>
                                     　</summary>
-                                <div class="details-content">
+                                <div class="home-details-content">
                                     <p>題名</p>
                                     <p>種類</p>
                                     <p>年齢</p>
@@ -159,13 +159,13 @@
                     <a href="">
                         <img src="{{ asset('lootImg/cat2.jpg')}}" class="pic" alt="pets-picture">
                         <h2 class="new">NEW</h2>
-                        <div class="details_container">
+                        <div class="home-details_container">
                             <details>
                                 <summary>
                                     <span class="open">もっと見る</span>
                                     <span class="close">閉じる</span>
                                     　</summary>
-                                <div class="details-content">
+                                <div class="home-details-content">
                                     <p>題名</p>
                                     <p>種類</p>
                                     <p>年齢</p>
@@ -183,13 +183,13 @@
                     <a href="">
                         <img src="{{ asset('lootImg/cat3.jpg')}}" class="pic" alt="pets-picture">
                         <h2 class="new">NEW</h2>
-                        <div class="details_container">
+                        <div class="home-details_container">
                             <details>
                                 <summary>
                                     <span class="open">もっと見る</span>
                                     <span class="close">閉じる</span>
                                 </summary>
-                                <div class="details-content">
+                                <div class="home-details-content">
                                     <p>題名</p>
                                     <p>種類</p>
                                     <p>年齢</p>

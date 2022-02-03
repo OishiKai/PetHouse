@@ -140,9 +140,9 @@
                     <label for="age">性別・年齢</label>
                 </div>
                 <div class="col-35">
-                    <input type="radio" id="dansei" name="gender" value="male" />
+                    <input type="radio" id="dansei" name="gender" value="男性" />
                     <label for="male">男性</label>
-                    <input type="radio" id="josei" name="gender" value="female" />
+                    <input type="radio" id="josei" name="gender" value="女性" />
                     <label for="female">女性</label>
                 </div>
                 <div class="col-42">
@@ -323,7 +323,7 @@
             </div>
             <input type='hidden' name='status' value=0>
             <div class="row">
-                <input type="submit" value="確認画面へ" />
+                <input type="submit" value="登録" />
             </div>
         </form>
     </div>
@@ -536,7 +536,7 @@
             </div>
             <input type='hidden' name='status' value=1>
             <div class="row">
-                <input type="submit" value="確認画面へ" />
+                <input type="submit" value="登録" />
             </div>
         </form>
     </div>

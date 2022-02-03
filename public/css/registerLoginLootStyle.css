@@ -911,7 +911,7 @@ ul.pagination li a:hover:not(.active) {background-color: #c0c0c0;}
   
 }
 
-.details_container{
+/* .details_container{
   margin: center;
   display: inline-block;
   color: #fff;
@@ -925,8 +925,8 @@ ul.pagination li a:hover:not(.active) {background-color: #c0c0c0;}
   padding: 10px;
   text-align: center;
   
-  outline: none;/*青い枠を消す*/
-}
+  outline: none;/*青い枠を消す
+} */
 
 .form-title {
   text-align: center;

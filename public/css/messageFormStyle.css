@@ -1,0 +1,37 @@
+.container{
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 340px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+.MP-main {
+    border: solid 1px;
+    align-items: baseline;
+    height: auto;
+}
+.messageform {
+  padding-left: 160px;
+}
+
+form {
+  background:#F5F5F5;
+  width:700px;
+  padding:20px 40px;
+}
+form div {
+  padding: 10px 20px;
+}
+h1 {
+  text-align:center;
+  font-size:30px;
+}
+input.submit {
+  display:block;
+  margin:0 200px;
+}
+.label {
+  display:block;
+  float:left;
+  width:200px;
+}
+

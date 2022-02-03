@@ -14,7 +14,7 @@
                 <li><a href="MyPage-General.html">マイページTOP</a></li>
                 <li><a href="">お問い合わせ中の<br>ペット</a></li>
                 <li><a href="">お気に入り一覧</a></li>
-                <li><a href="">保護活動者からの<br>メッセージ</a></li>
+                <li><a href="{{ route('message') }}">保護活動者からの<br>メッセージ</a></li>
                 <li><a href="">アンケート登録・変更</a></li>
             </ul>
     </aside>

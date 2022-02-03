@@ -20,17 +20,18 @@
         <nav class="sideBox">
             <div class="menu-title">メニュー</div>
             <ul>
-                <li><a href="{{ route('home') }}">マイページTOP</a></li>
+                <li><a href="{{ route('myPage') }}">マイページTOP</a></li>
                 <li><a href="">登録ペット一覧</a></li>
-                <li><a href="">ペット新規登録</a></li>
-                <li><a href="">里親希望者からの<br>メッセージ</a></li>
+                <li><a href="{{ route('article') }}">ペット新規登録</a></li>
+                <li><a href="{{ route('message') }}">里親希望者からの<br>メッセージ</a></li>
                 <li><a href="">プロフィール<br>登録・変更</a></li>
             </ul>
     </aside>
 
     <!--main content-->
     <div class="MP-main">
-        <h1>～ようこそ {{$user['kanjiFamilyName']}} {{$user['kanjiFirstName']}} 様～</h1>
+        <h1>～ようこそ {{ $user['kanjiFamilyName'] }}
+            {{ $user['kanjiFirstName'] }} 様～</h1>
         <p class="article">里親希望者とのやり取りや記事の掲載ページ情報に保護活動者様の情報を提供していただきます。</p>
         <p class="article">以下のリンクからプロ―フィールの登録をお願いいたします。</p>
         <br>
