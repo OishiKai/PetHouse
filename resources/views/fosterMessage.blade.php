@@ -7,8 +7,8 @@
 
 @section('content')
 <ul class="breadcrumb">
-    <li><a href="base.html">HOME</a></li>
-    <li><a href="MyPage-General.html">マイページTOP</a></li>
+    <li><a href="{{ route('home') }}">HOME</a></li>
+    <li><a href="{{ route('myPage') }}">マイページTOP</a></li>
     <li>メッセージ一覧</li>
 </ul>
 
@@ -19,11 +19,10 @@
         <nav class="MP-sideBox">
             <div class="menu-title">メニュー</div>
             <ul>
-                <li><a href="MyPage-General.html">マイページTOP</a></li>
-                <li><a href="">お問い合わせ中の<br>ペット</a></li>
-                <li><a href="">お気に入り一覧</a></li>
-                <li><a href="MP-Gene-messege.html">保護活動者からの<br>メッセージ</a></li>
-                <li><a href="">アンケート登録・変更</a></li>
+                <li><a href="{{ route('myPage') }}">マイページTOP</a></li>
+                <li><a href="{{ route('articleFavorite') }}">お気に入り一覧</a></li>
+                <li><a href="{{ route('message') }}">保護活動者からの<br>メッセージ</a></li>
+                <li><a href="{{ route('questionnaire') }}">アンケート登録・変更</a></li>
             </ul>
     </aside>
 
@@ -35,29 +34,31 @@
         <br>
         <!--table-->
         <table>
-
-            <thead>
-                <tr>
-                    <th>該当の記事</th>
-                    <th>メッセージ<br><span style="font-size:12px;">以下リンク先で各保護活動者とのチャットページに飛びます</span></th>
-                    <th>着信日時</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                @if ($messages != null)
-                    @for ($i=0;$i < count($titles);$i++)
+            @if($messages != null)
+                <thead>
                     <tr>
-                        <td class="icon">{{$titles[$i]}}</td>
-                        <td><a class="li-member" href="{{ route('messageDetail', ['id' => $messages[$i]['id']]) }}">内容を確認する</a></td>
-                        <td><time datetime="2022-01-28">{{$messages[$i]['created_at']->format('Y年m月d日')}}</time></td>
+                        <th>該当の記事</th>
+                        <th>メッセージ<br><span style="font-size:12px;">以下リンク先で各保護活動者とのチャットページに飛びます</span></th>
+                        <th>着信日時</th>
                     </tr>
-                    @endfor
-                @else
-                    メッセージはありません
-                @endif
-            </tbody>
+                </thead>
 
+                <tbody>
+                    @for($i=0;$i < count($titles);$i++)
+                        <tr>
+                            <td class="icon">{{ $titles[$i] }}</td>
+                            <td><a class="li-member"
+                                    href="{{ route('messageDetail', ['id' => $messages[$i]['id']]) }}">内容を確認する</a>
+                            </td>
+                            <td><time
+                                    datetime="2022-01-28">{{ $messages[$i]['created_at']->format('Y年m月d日') }}</time>
+                            </td>
+                        </tr>
+                    @endfor
+                </tbody>
+            @else
+                メッセージはありません
+            @endif
         </table>
 
 

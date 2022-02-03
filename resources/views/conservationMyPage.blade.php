@@ -6,7 +6,7 @@
 
 @section('content')
 <ul class="breadcrumb">
-    <li><a href="base.html">HOME</a></li>
+    <li><a href="{{ route('home') }}">HOME</a></li>
     <li>保護活動者マイページTOP</li>
 </ul>
 
@@ -21,10 +21,10 @@
             <div class="menu-title">メニュー</div>
             <ul>
                 <li><a href="{{ route('myPage') }}">マイページTOP</a></li>
-                <li><a href="">登録ペット一覧</a></li>
+                <li><a href="{{ route('articleList') }}">登録ペット一覧</a></li>
                 <li><a href="{{ route('article') }}">ペット新規登録</a></li>
                 <li><a href="{{ route('message') }}">里親希望者からの<br>メッセージ</a></li>
-                <li><a href="">プロフィール<br>登録・変更</a></li>
+                <li><a href="{{ route('questionnaire') }}">プロフィール<br>登録・変更</a></li>
             </ul>
     </aside>
 
@@ -48,7 +48,7 @@
         <br>
 
         <div class="linkbtn">
-            <a href="">よくある質問</a>
+            <a href="{{ route('faq') }}">よくある質問</a>
         </div>
 
         <br>
@@ -60,46 +60,18 @@
         <br>
 
         <h2 class="notice">メッセージ</h2><br>
-        <div>
-            <li><a class="li-msg1" href="">"〇〇"様から返信が来ています</a></li><br>
-            <li><a class="li-msg1" href="">"〇〇"様から返信が来ています</a></li><br>
-            <li><a class="li-msg1" href="">"〇〇"様から返信が来ています</a></li><br>
-        </div>
+    
         <br>
         <div class="linkbtn">
-            <a href="">里親希望者からのメッセージ一覧 ページへ向かう</a>
+            <a href="{{ route('message') }}">里親希望者からのメッセージ一覧 ページへ向かう</a>
         </div>
         <br>
         <br>
         <br>
         <br>
 
-
-
-        <h2 class="notice">希望者からの申請</h2><br>
-        <div>
-            <li><a class="li-msg2" onclick="this.classList.add('active')" href="">"〇〇〇"(題名)のペットに里親希望者から申請が届いています
-                    <span class="MP-badge2">1</span>
-                </a>
-            </li>
-            <br>
-
-            <li><a class="li-msg2" onclick="this.classList.add('active')" href="">"〇〇〇"(題名)のペットに里親希望者から申請が届いています
-                    <span class="MP-badge2">10</span>
-                </a>
-            </li>
-            <br>
-            <li><a class="li-msg2" onclick="this.classList.add('active')" href="">"〇〇〇"(題名)のペットに里親希望者から申請が届いています
-                    <span class="MP-badge2">100</span>
-                </a>
-            </li>
-            <br>
-
-        </div>
-        <br>
-        <br>
         <div class="linkbtn">
-            <a href="">登録ペット一覧 ページへ向かう</a>
+            <a href="{{ route('articleList') }}">登録ペット一覧 ページへ向かう</a>
         </div>
 
     </div>

@@ -1,17 +1,19 @@
 @extends('layouts.base')
 
 @section('head')
-<!-- <script src="{{ asset('js/articleScript.js') }}" defer></script> -->
-<link rel="stylesheet" href="{{ asset('css/conservationMessageStyle.css') }}">
+<link rel="stylesheet" href="{{ asset('css/articleList.css') }}">
 @endsection
 
 @section('content')
 <ul class="breadcrumb">
     <li><a href="{{ route('home') }}">HOME</a></li>
-    <li><a href="{{ route('myPage') }}">マイページTOP</a></li>
-    <li>メッセージ一覧</li>
+    <li><a href="{{ route('myPage') }}">マイぺージTOP</a></li>
+    <li>登録ペット一覧</li>
 </ul>
 
+
+
+<!--content-->
 <main-content>
 
     <!-----side----->
@@ -29,36 +31,38 @@
 
     <!--main content-->
     <div class="MP-main">
-        <h1>里親希望者からのお問い合わせ一覧</h1>
+        <h1>登録ペット一覧</h1>
         <br>
         <br>
         <!--table-->
         <table>
-            @if($messages != null)
+            @if($articles != null)
                 <thead>
                     <tr>
-                        <th>お名前</th>
-                        <th>メッセージ<br><span style="font-size:12px;">以下リンク先でメッセージ詳細ページに飛びます</span></th>
-                        <th>着信日時</th>
+                        　<th>投稿日時</th>
+                        <th>投稿したペット<br><span style="font-size:12px;">以下リンク先で各詳細ページに飛びます</span></th>
+                        <th>記事削除</th>
                     </tr>
                 </thead>
 
                 <tbody>
-
-                    @foreach($messages as $msg)
+                    @foreach($articles as $art)
                         <tr>
-                            <td class="icon">{{ $msg['fromName'] }} さん</td>
+                            <td><time>{{ $art['created_at']->format('Y年m月d日') }}</time>
+                            </td>
                             <td><a class="li-member"
-                                    href="{{ route('messageDetail', ['id' => $msg['id']]) }}">内容を確認する</a>
+                                    href="/articleDetail/{{ $art['id'] }}">{{ $art['title'] }}</a>
                             </td>
-                            <td><time
-                                    datetime="2022-01-28">{{ $msg['created_at']->format('Y年m月d日') }}</time>
-                            </td>
+                            <td>
+                                <!-- 　<button class="button05"><a href="#" class="simple_square_btn5">編集</a></button> -->
+                                　<button class="button05"><a
+                                        href="/articleDelete/{{ $art['id'] }}">削除</a></button>
+                                　</td>
                         </tr>
                     @endforeach
                 </tbody>
             @else
-                <h2>メッセージはありません</h2>
+                <h2>投稿した募集記事はありません</h2>
             @endif
         </table>
 

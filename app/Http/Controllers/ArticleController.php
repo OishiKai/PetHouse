@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\Fosterquestionnaire;
 use App\Conservationquestionnaire;
 use App\Article;
+use App\Favorite;
 
 class ArticleController extends Controller
 {
@@ -86,8 +87,43 @@ class ArticleController extends Controller
         if ($user['status'] == 0){
             return redirect()->route('myPage');
         }else{
-            $articles = Article::where('user_id', $user['id'])->get();
+            $articles = null;
+            if (Article::where('user_id', $user['id'])->exists()){
+                $articles = Article::where('user_id', $user['id'])->get();
+            }
             return view('articleList', compact('user', 'articles'));
+        }
+    }
+
+    public function articleDelete($id)
+    {
+        $user = \Auth::user();
+        $articles = Article::where('id', $id)->get();
+        if ($user['status'] == '0' || $user['id'] != $articles[0]['user_id']){
+            return redirect()->route('myPage');
+        }else{
+            $articles = Article::where('id', $id)->delete();
+            return redirect()->route('articleList');
+        }
+    }
+
+    public function articleFavorite()
+    {
+        $user = \Auth::user();
+        if (Favorite::where('user_id', $user['id'])->exists()){
+            $datas = Favorite::where('user_id', $user['id'])->get();
+            $ex = array();
+            // $ids = array();
+            foreach ($datas as $data){
+                $extensions = explode('&', $data['extensions']);
+                $ex[] = $extensions[0];
+                // $ids[] = $data['id'];
+            }
+            return view('articleFavorite', compact('user', 'key', 'datas', 'ex'));
+
+        }else{
+            $datas = null;
+            return view('articleFavorite', compact('user', 'datas'));
         }
     }
 }

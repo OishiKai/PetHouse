@@ -17,11 +17,11 @@
             <nav class="sideBox">
                 <div class="menu-title">メニュー</div>
                 <ul>
-                    <li><a href="MyPage-Activist.html">マイページTOP</a></li>
-                    <li><a href="">登録ペット一覧</a></li>
-                    <li><a href="">ペット新規登録</a></li>
-                    <li><a href="">里親希望者からの<br>メッセージ</a></li>
-                    <li><a href="">プロフィール<br>登録・変更</a></li>
+                    <li><a href="{{ route('myPage') }}">マイページTOP</a></li>
+                    <li><a href="{{ route('articleList') }}">登録ペット一覧</a></li>
+                    <li><a href="{{ route('article') }}">ペット新規登録</a></li>
+                    <li><a href="{{ route('message') }}">里親希望者からの<br>メッセージ</a></li>
+                    <li><a href="{{ route('questionnaire') }}">プロフィール<br>登録・変更</a></li>
                 </ul>
         </aside>
     @else
@@ -29,11 +29,10 @@
             <nav class="MP-sideBox">
                 <div class="menu-title">メニュー</div>
                 <ul>
-                    <li><a href="MyPage-General.html">マイページTOP</a></li>
-                    <li><a href="">お問い合わせ中の<br>ペット</a></li>
-                    <li><a href="">お気に入り一覧</a></li>
-                    <li><a href="MP-Gene-messege.html">保護活動者からの<br>メッセージ</a></li>
-                    <li><a href="">アンケート登録・変更</a></li>
+                    <li><a href="{{ route('myPage') }}">マイページTOP</a></li>
+                    <li><a href="{{ route('articleFavorite') }}">お気に入り一覧</a></li>
+                    <li><a href="{{ route('message') }}">保護活動者からの<br>メッセージ</a></li>
+                    <li><a href="{{ route('questionnaire') }}">アンケート登録・変更</a></li>
                 </ul>
         </aside>
     @endif

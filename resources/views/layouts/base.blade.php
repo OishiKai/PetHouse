@@ -36,13 +36,13 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                     style="display: none;">@csrf</form>
             @endguest
-            <a class="loginmenu" href="#" title="お気に入り">
+            <a class="loginmenu" href="{{ route('articleFavorite') }}" title="お気に入り">
                 <i class="fas fa-heart" style="font-size: 40px;"></i><br>お気に入り
             </a>
-            <a class="loginmenu" href="#" title="メッセージ">
+            <a class="loginmenu" href="{{ route('message') }}" title="メッセージ">
                 <i class="fas fa-comments" style="font-size: 40px;"></i><br>メッセージ
             </a>
-            <a class="loginmenu" href="#" title="よくある質問">
+            <a class="loginmenu" href="{{ route('faq') }}" title="よくある質問">
                 <i class="fas fa-question" style="font-size: 40px;"></i><br>よくある質問
             </a>
 
@@ -51,11 +51,11 @@
 
     <div id="nav">
         <div class="bar-button-left">
-            <a class="bar-home" href="base.html">HOME<br>--Pet House Top--</a>
+            <a class="bar-home" href="{{ route('home') }}">HOME<br>--Pet House Top--</a>
 
             <a class="bar-room" id="bar-room-popup" href="#modal-01">PET ROOM<br>--犬・猫 検索--</a>
 
-            <a class="bar-contact" href="#">お問い合わせ<br>--サイトに対して--</a>
+            <a class="bar-contact" href="{{ route('inquiry') }}">お問い合わせ<br>--サイトに対して--</a>
         </div>
     </div>
 
@@ -84,11 +84,11 @@
                                 <li class="acd-contents1">
                                     <a href="/search/犬/雑種">
                                         <img src="{{ asset('lootImg/雑種犬.jpg')}}">
-                                        <p class="pet-name">雑daf種</p>
+                                        <p class="pet-name">雑種</p>
                                     </a>
                                 </li>
                                 <li class="acd-contents1">
-                                    <a href="#">
+                                    <a href="/search/犬/柴犬">
                                         <img src="{{ asset('lootImg/柴犬.jpg')}}">
                                         <p class="pet-name">柴犬</p>
                                     </a>
@@ -99,33 +99,33 @@
                                     </a>
                                 </li>
                                 <li class="acd-contents1">
-                                    <a href="pet-seach.html">
-                                        <img src="img/%E3%83%88%E3%82%A4%E3%83%97%E3%83%BC%E3%83%89%E3%83%AB.jpg">
+                                    <a href="/search/犬/トイプードル">
+                                        <img src="{{ asset('lootImg/トイプードル.jpg')}}">
                                         <p class="pet-name">トイプードル</p>
                                     </a>
                                 </li>
                                 <li class="acd-contents1">
-                                    <a href="pet-seach.html">
+                                    <a href="/search/犬/ダックスフント">
                                         <img
-                                            src="img/%E3%83%80%E3%83%83%E3%82%AF%E3%82%B9%E3%83%95%E3%83%B3%E3%83%88.jpg">
+                                            src="{{ asset('lootImg/ダックスフント.jpg')}}">
                                         <p class="pet-name">ダックスフント</p>
                                     </a>
                                 </li>
                                 <li class="acd-contents1">
-                                    <a href="pet-seach.html">
-                                        <img src="img/%E3%82%B3%E3%83%BC%E3%82%AE%E3%83%BC.jpg">
+                                    <a href="/search/犬/コーギー">
+                                        <img src="{{ asset('lootImg/コーギー.jpg')}}">
                                         <p class="pet-name">コーギー</p>
                                     </a>
                                 </li>
                                 <li class="acd-contents1">
-                                    <a href="pet-seach.html">
-                                        <img src="img/%E3%83%81%E3%83%AF%E3%83%AF.jpg">
+                                    <a href="/search/犬/チワワ">
+                                        <img src="{{ asset('lootImg/チワワ.jpg')}}">
                                         <p class="pet-name">チワワ</p>
                                     </a>
                                 </li>
                                 <li class="acd-contents1">
                                     <a href="/search/その他犬">
-                                        <img src="img/%E3%81%9D%E3%81%AE%E4%BB%96%E7%8A%AC.jpg">
+                                        <img src="{{ asset('lootImg/その他犬.jpg')}}">
                                         <p class="pet-name">その他</p>
                                     </a>
                                 </li>
@@ -139,53 +139,53 @@
 
                             <div class="acd-content">
                                 <li class="acd-contents2">
-                                    <a href="pet-seach.html">
-                                        <img src="img/%E9%9B%91%E7%A8%AE%E7%8C%AB.jpg">
+                                    <a href="/search/猫/雑種">
+                                        <img src="{{ asset('lootImg/雑種猫.jpg')}}">
                                         <p class="pet-name">雑種</p>
                                     </a>
                                 </li>
                                 <li class="acd-contents2">
-                                    <a href="pet-seach.html">
+                                    <a href="/search/猫/アメリカンショート">
                                         <img
-                                            src="img/%E3%82%A2%E3%83%A1%E3%83%AA%E3%82%AB%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88.jpg">
+                                            src="{{ asset('lootImg/アメリカンショート.jpg')}}">
                                         <p class="pet-name">アメリカン<br>ショート</p>
                                     </a>
                                 <li class="acd-contents2">
-                                    <a href="pet-seach.html">
-                                        <img src="img/%E3%83%9E%E3%83%B3%E3%83%81%E3%82%AB%E3%83%B3.jpg">
+                                    <a href="/search/猫/マンチカン">
+                                        <img src="{{ asset('lootImg/マンチカン.jpg')}}">
                                         <p class="pet-name">マンチカン</p>
                                     </a>
                                 </li>
                                 <li class="acd-contents2">
-                                    <a href="pet-seach.html">
+                                    <a href="/search/猫/スコティッシュフォールド">
                                         <img
-                                            src="img/%E3%82%B9%E3%82%B3%E3%83%86%E3%82%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%83%95%E3%82%A9%E3%83%BC%E3%83%AB%E3%83%89.jpg">
+                                            src="{{ asset('lootImg/スコティッシュフォールド.jpg')}}">
                                         <p class="pet-name">スコティッシュ<br>フォールド</p>
                                     </a>
                                 </li>
                                 <li class="acd-contents2">
-                                    <a href="pet-seach.html">
+                                    <a href="/search/猫/エキゾチックショートヘア">
                                         <img
-                                            src="img/%E3%82%A8%E3%82%AD%E3%82%BE%E3%83%81%E3%83%83%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%83%98%E3%82%A2.jpg">
+                                            src="{{ asset('lootImg/エキゾチックショートヘア.jpg')}}">
                                         <p class="pet-name">エキゾチック<br>ショートヘア</p>
                                     </a>
                                 </li>
                                 <li class="acd-contents2">
-                                    <a href="pet-seach.html">
-                                        <img src="img/%E3%83%9F%E3%83%8C%E3%82%A8%E3%83%83%E3%83%88.jpg">
+                                    <a href="/search/猫/ミヌエット">
+                                        <img src="{{ asset('lootImg/ミヌエット.jpg')}}">
                                         <p class="pet-name">ミヌエット</p>
                                     </a>
                                 </li>
                                 <li class="acd-contents2">
-                                    <a href="pet-seach.html">
+                                    <a href="/search/猫/ブリティッシュショートヘア">
                                         <img
-                                            src="img/%E3%83%96%E3%83%AA%E3%83%86%E3%82%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%83%98%E3%82%A2.jpg">
+                                            src="{{ asset('lootImg/ブリティッシュショートヘア.jpg')}}">
                                         <p class="pet-name">ブリティッシュ<br>ショートヘア</p>
                                     </a>
                                 </li>
                                 <li class="acd-contents2">
-                                    <a href="pet-seach.html">
-                                        <img src="img/%E3%81%9D%E3%81%AE%E4%BB%96%E7%8C%AB.jpg">
+                                    <a href="/search/猫/雑種">
+                                        <img src="{{ asset('lootImg/その他猫.jpg')}}">
                                         <p class="pet-name">その他</p>
                                     </a>
                                 </li>
@@ -214,19 +214,19 @@
             <div class="footer-main">
                 <ul>
                     <h2>サイト案内</h2>
-                    <li><a href="#">TOPページ</a></li>
-                    <li><a href="#">よくある質問</a></li>
-                    <li><a href="#">サイトのお問い合わせ</a></li>
+                    <li><a href="{{ route('home') }}">TOPページ</a></li>
+                    <li><a href="{{ route('faq') }}">よくある質問</a></li>
+                    <li><a href="{{ route('inquiry') }}">サイトのお問い合わせ</a></li>
                 </ul>
                 <ul>
                     <h2>会員</h2>
-                    <li><a href="#">会員ログイン</a></li>
-                    <li><a href="#">会員登録(無料)</a></li>
+                    <li><a href="{{ route('login') }}">会員ログイン</a></li>
+                    <li><a href="{{ route('register') }}">会員登録(無料)</a></li>
                 </ul>
                 <ul>
                     <h2>その他</h2>
-                    <li><a href="#">お気に入り一覧</a></li>
-                    <li><a href="#">メッセージ</a></li>
+                    <li><a href="{{ route('articleFavorite') }}">お気に入り一覧</a></li>
+                    <li><a href="{{ route('message') }}">メッセージ</a></li>
                 </ul>
             </div>
         </div>

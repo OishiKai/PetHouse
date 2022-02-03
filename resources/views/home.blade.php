@@ -95,7 +95,7 @@
                 </li>
 
                 <li class="flex-item">
-                    <a href="/search/その他">
+                    <a href="/search/その他猫">
                         <img src="{{ asset('lootImg/その他猫.jpg') }}" class="pic" alt="pets-picture">
                         <h2 class="new">NEW</h2>
                     </a>
@@ -104,23 +104,6 @@
         </div>
 
     </div>
-
-
-    <div class="pager">
-        <ul class="pagination">
-            <li><a href="">«</a></li>
-            <li><a class="active" href="">1</a></li>
-            <li><a href="">2</a></li>
-            <li><a href="">3</a></li>
-            <li><a href="">4</a></li>
-            <li><a href="">5</a></li>
-            <li><a href="">6</a></li>
-            <li><a href="">7</a></li>
-            <li><a href="">8</a></li>
-            <li><a href="">»</a></li>
-        </ul>
-    </div>
-
     <!--scroll to top button-->
     <div class="scrolltoTopbtn">
         <i class="fas fa-angle-up" style="font-size:60px;" title="トップページへ"></i><br>
