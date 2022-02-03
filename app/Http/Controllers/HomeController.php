@@ -113,37 +113,6 @@ class HomeController extends Controller
         }
     }
 
-    public function message()
-    {
-        $user = \Auth::user();
-
-        if ($user['status'] == '0'){
-            return view('fosterMessage', compact('user'));
-        }else{
-            return view('conservationMessage', compact('user'));
-        }
-    }
-
-    public function messageForm($id, $to)
-    {
-        $user = \Auth::user();
-        $article = Article::where('id', $id)->get();
-        $data = $article[0];
-        $myDatas = RegistFoster::where('user_email', $user['email'])->get();
-        $myData = $myDatas[0];
-        // dd($data);
-        return view('messageForm', compact('user', 'data', 'to', 'myData', 'id'));
-    }
-
-    public function sendMessage(Request $request)
-    {
-        $user = \Auth::user();
-        $data = $request->all();
-        
-        Message::store($data);
-        return redirect()->route('home');
-    }
-
     public function articleDetail($id)
     {
         $user = \Auth::user();

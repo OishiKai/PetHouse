@@ -14,8 +14,8 @@
         <a href="javascript:history.back()">＜＜前のページに戻る</a>
     </div>
     <div class="Publication">
-        <p>{{ $user['kanjiFamilyName'] }} {{ $user['kanjiFirstName'] }}
-            さんの里親募集詳細</p>
+        <!-- <p>{{ $user['kanjiFamilyName'] }} {{ $user['kanjiFirstName'] }}
+            さんの里親募集詳細</p> -->
         <p>募集ID：{{ $id }}</p>
         <?php
             $date = $data['created_at'];

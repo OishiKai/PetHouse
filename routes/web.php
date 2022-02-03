@@ -27,9 +27,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/confirmQuestionnaire', 'HomeController@confirmQuestionnaire')->name('confirmQuestionnaire');
     Route::post('/answerQuestionnaire', 'HomeController@answerQuestionnaire')->name('answerQuestionnaire');
 
-    Route::get('/message', 'HomeController@message')->name('message');
-    Route::get('/messageForm/{id}/{to}', 'HomeController@messageForm')->name('messageForm');
-    Route::post('/sendMessage', 'HomeController@sendMessage')->name('sendMessage');
+    Route::get('/message', 'MessageController@message')->name('message');
+    Route::get('/messageForm/{id}/{to}', 'MessageController@messageForm')->name('messageForm');
+    Route::post('/sendMessage', 'MessageController@sendMessage')->name('sendMessage');
+    Route::get('/messageDetail/{id}', 'MessageController@messageDetail')->name('messageDetail');
 
     Route::get('/article', 'ArticleController@article')->name('article');
     Route::post('/articleRegisterA', 'ArticleController@articleRegisterA')->name('articleRegisterA');

@@ -38,43 +38,23 @@
             <thead>
                 <tr>
                     <th>お名前</th>
-                    <th>メッセージ<br><span style="font-size:12px;">以下リンク先で各里親希望者とのチャットページに飛びます</span></th>
+                    <th>メッセージ<br><span style="font-size:12px;">以下リンク先でメッセージ詳細ページに飛びます</span></th>
                     <th>着信日時</th>
                 </tr>
             </thead>
 
             <tbody>
-                <tr>
-                    <td class="icon">Aさん</td>
-                    <td><a class="li-member" href="">チャットボックスに向かう</a></td>
-                    <td><time datetime="2022-01-28">2022年1月28日</time></td>
-                </tr>
-
-                <tr>
-                    <td class="icon">Bさん</td>
-                    <td><a class="li-member" href="">チャットボックスに向かう</a></td>
-                    <td><time datetime="2022-01-27">2022年1月27日</time></td>
-                </tr>
-
-                <tr>
-                    <td class="icon">Cさん</td>
-                    <td><a class="li-member" href="">チャットボックスに向かう</a></td>
-                    <td><time datetime="2022-01-26">2022年1月26日</time></td>
-                </tr>
-
-                <tr>
-                    <td class="icon">Dさん</td>
-                    <td><a class="li-member" href="">チャットボックスに向かう</a></td>
-                    <td><time datetime="2022-01-25">2022年1月25日</time></td>
-                </tr>
-
-                <tr>
-                    <td class="icon">Fさん</td>
-                    <td><a class="li-member" href="">チャットボックスに向かう</a></td>
-                    <td><time datetime="2022-01-24">2022年1月24日</time></td>
-                </tr>
-
-
+                @if ($messages != null)
+                    @foreach ($messages as $msg)
+                    <tr>
+                        <td class="icon">{{$msg['fromName']}} さん</td>
+                        <td><a class="li-member" href="">内容を確認する</a></td>
+                        <td><time datetime="2022-01-28">{{$msg['created_at']->format('Y年m月d日')}}</time></td>
+                    </tr>
+                    @endforeach
+                @else
+                    メッセージはありません
+                @endif
             </tbody>
 
         </table>
