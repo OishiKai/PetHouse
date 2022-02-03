@@ -77,4 +77,17 @@ class ArticleController extends Controller
         Article::store($data, $user['id']);
         return view('home', compact('user'));
     }
+
+    public function articleList(Request $request)
+    {
+        $user = \Auth::user();
+        $data = $request->all();
+        // dd($data);
+        if ($user['status'] == 0){
+            return redirect()->route('myPage');
+        }else{
+            $articles = Article::where('user_id', $user['id'])->get();
+            return view('articleList', compact('user', 'articles'));
+        }
+    }
 }

@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/confirmArticle', 'ArticleController@confirmArticle')->name('confirmArticle');
     Route::post('/articleStore', 'ArticleController@articleStore')->name('articleStore');
     Route::get('/articleDetail/{id}', 'HomeController@articleDetail')->name('articleDetail');
+    Route::get('/articleList', 'articleController@articleList')->name('articleList');
 
     Route::get('/favorite/{id}', 'HomeController@favorite')->name('favorite');
 });
