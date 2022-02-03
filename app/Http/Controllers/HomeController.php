@@ -9,6 +9,7 @@ use App\Fosterquestionnaire;
 use App\Conservationquestionnaire;
 use App\Article;
 use App\Favorite;
+use App\Message;
 
 class HomeController extends Controller
 {
@@ -138,11 +139,9 @@ class HomeController extends Controller
     {
         $user = \Auth::user();
         $data = $request->all();
-        dd($data);
-        Article::validator($request);
         
-        Article::test($data, $user['id']);
-        return view('home', compact('user'));
+        Message::store($data);
+        return redirect()->route('home');
     }
 
     public function articleDetail($id)

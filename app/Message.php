@@ -8,7 +8,7 @@ use Carbon\Carbon;
 class Message extends Model
 {
     static function store($data){
-        $store = Article::insertGetId([
+        $store = Message::insertGetId([
             'fromId' => $data['fromUserId'],
             'toId' => $data['toUserId'],
             'articleId' => $data['articleId'],
