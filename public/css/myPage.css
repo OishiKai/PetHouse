@@ -911,7 +911,7 @@ ul.pagination li a:hover:not(.active) {background-color: #c0c0c0;}
   
 }
 
-.home-details_container{
+/* .home-details_container{
   margin: center;
   display: inline-block;
   color: #fff;
@@ -925,7 +925,25 @@ ul.pagination li a:hover:not(.active) {background-color: #c0c0c0;}
   padding: 10px;
   text-align: center;
   
-  outline: none;/*青い枠を消す*/
+  outline: none;/*青い枠を消す
+}*/
+
+.home-details_container {
+  margin: center;
+  display: inline-block;
+  color: #fff;
+  width: 100%;
+  max-width: 280px;
+}
+
+.home-details_container summary {
+  background-color: #373b3c;
+  width: 350px;
+  margin: 5px 0 0 0;
+  padding: 10px;
+  text-align: center;
+  outline: none;
+  /*青い枠を消す*/
 }
 
 .form-title {
