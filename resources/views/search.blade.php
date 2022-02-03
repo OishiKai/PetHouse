@@ -20,7 +20,7 @@
 <!---main content--->
 
 <div class="text-seach">
-    <h1>"柴犬"の検索結果</h1>
+    <h1>{{$key}} の検索結果</h1>
 </div>
 
 

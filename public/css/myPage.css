@@ -811,7 +811,7 @@ img {vertical-align: middle;}
 }
 .page-intro {
   position: relative;
-  background-image: url("../img/pageintro.jpg");
+  background-image: url("../lootImg/pageintro.jpg");
   background-size: cover;
 }
 
