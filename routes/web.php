@@ -12,15 +12,11 @@
 */
 
 
-
+Route::get('/home', 'HomeController@home')->name('home');
 Auth::routes();
-
-Route::group(['middleware' => 'guest'], function () {
-    Route::get('/home', 'HomeController@home')->name('home');
-    Route::get('/', 'HomeController@home')->name('home');
-    Route::get('/faq', 'HomeController@faq')->name('faq');
-    Route::get('/search/{key}', 'HomeController@search')->name('search');
-});
+Route::get('/', 'HomeController@home')->name('home');
+Route::get('/faq', 'HomeController@faq')->name('faq');
+Route::get('/search/{key}', 'HomeController@search')->name('search');
 
 Route::group(['middleware' => 'auth'], function () {
 
