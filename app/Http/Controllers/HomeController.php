@@ -122,6 +122,13 @@ class HomeController extends Controller
         }
     }
 
+    public function messageForm()
+    {
+        $user = \Auth::user();
+
+        return view('messageForm', compact('user'));
+    }
+
     public function articleStore(Request $request)
     {
         $user = \Auth::user();
