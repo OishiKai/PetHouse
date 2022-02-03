@@ -1,135 +1,86 @@
 @extends('layouts.base')
 
 @section('head')
-<script src="{{ asset('js/articleScript.js') }}" defer></script>
-<script src="{{ asset('js/postal_api.js') }}" defer></script>
 <link rel="stylesheet" href="{{ asset('css/articleStyle.css') }}">
 @endsection
 
 @section('content')
-<h1 class="label-title">譲渡者フォーム</h1>
+<div class="contents-container">
 
-<div id="main_1">
+    <h1 class="label-title">ペット情報登録　2/3</h1>
 
-    <section>
-        <form method="POST" action="{{ route('articleRegisterB') }}">
-            @csrf
+    <form id="pet_information2" method="POST" action="{{ route('articleRegisterB') }}">
+        @csrf
+        <div class="pet_information2">
+
+            <dl>
+                <!--応募タイトル-->
+                <dt><span class="must">必須</span>応募タイトル</dt>
+                <dd>
+                    <input type="text" name="title" id="title" placeholder="ペットの名前などの応募タイトルを入力してください" maxlength="25" required>
+                    <p>※25字以内</p>
+                </dd>
+
+                <!--募集の経緯-->
+                <dt><span class="must">必須</span>募集の経緯</dt>
+                <dd>
+                    <textarea name="background" id="background" cols="30" rows="5" placeholder="入力例：経済的に飼えなくなったため募集します。"
+                        required></textarea>
+                </dd>
+
+                <dt><span class="must">必須</span>ペットの名前</dt>
+                <dd>
+                    <input type="text" name="name" id="title" placeholder="今のペットの名前" maxlength="25" required>
+                </dd>
+
+                <!--性格や特徴-->
+                <dt><span class="must">必須</span>性格や特徴</dt>
+                <dd>
+                    <textarea name="personality" id="chatacter" cols="30" rows="5"
+                        placeholder="入力例：とてもおとなしい性格です。少し臆病な一面もあります。" required></textarea>
+                </dd>
+
+                <!--健康状態-->
+                <dt><span class="must">必須</span>健康状態</dt>
+                <dd>
+                    <textarea name="health" id="health" cols="30" rows="5" placeholder="入力例：健康面は特に問題ありません。"
+                        required></textarea>
+                </dd>
+
+                <!--その他備考-->
+                <dt><span class="any">任意</span>その他備考</dt>
+                <dd>
+                    <textarea name="remarks" id="remarks" cols="30" rows="5" value=''></textarea>
+                </dd>
+            </dl>
+
+        </div>
+        <input type="text" name="switch" style='display: none;' value="{{$data['switch']}}">
+        @if ($data['switch'] == '犬')
+            <input type="text" name="species" style='display: none;' value="{{$data['speciesDog']}}">
+        @else
+            <input type="text" name="species" style='display: none;' value="{{$data['speciesCat']}}">
+        @endif
+        <input type="text" name="gender" style='display: none;' value="{{$data['gender']}}">
+        <input type="text" name="size" style='display: none;' value="{{$data['size']}}">
+        <input type="text" name="age" style='display: none;' value="{{$data['age']}}">
+        <input type="text" name="month" style='display: none;' value="{{$data['month']}}">
+        <input type="text" name="vaccination" style='display: none;' value="{{$data['vaccination']}}">
+        <input type="text" name="castration" style='display: none;' value="{{$data['castration']}}">
+        <input type="text" name="singlePerson" style='display: none;' value="{{$data['singlePerson']}}">
+        <input type="text" name="elderPerson" style='display: none;' value="{{$data['elderPerson']}}">
+        <input type="text" name="keeper" style='display: none;' value="{{$data['keeper']}}">
+        @if ($data['transfer'] == '里親の家まで届ける')
+            <input type="text" name="transfer" style='display: none;' value="{{$data['transfer']}}">
+        @else
+            <input type="text" name="transfer" style='display: none;' value="〒{{$data['zip3']}}-{{$data['zip4']}} {{$data['prefecture']}}{{$data['city']}}{{$data['building']}}">
+        @endif
+
+        <button type="submit" class="form-Btn">次 へ</button>
 
 
-            <!--応募タイトル-->
-            <h2 class="form-label"><span class="form-require">必須</span>応募タイトル</h2>
-            <dd>
-                <label><input type="text" name="title" class="@error('title') is-invalid @enderror" size=30
-                        maxlength="25" required></label><br>
-                (25字以内)※募集タイトルを入力してください。
-                @error('title')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </dd><br>
-            <!--応募タイトル-->
+        <!-- <button type="submit" class="form-Btn">次 へ</button> -->
 
-
-            <!--募集の経緯-->
-            <h2 class="form-label"><span class="form-require">必須</span>募集の経緯</h2>
-            <dd>
-                <textarea name="background" class="@error('background') is-invalid @enderror" rows="5" cols="50"
-                    required></textarea><br>
-                (入力例:経済的に飼えなくなったため募集します。)
-                @error('background')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </dd><br>
-            <!--募集の経緯-->
-
-
-            <!--性格や特徴-->
-            <h2 class="form-label"><span class="form-require">必須</span>性格や特徴</h2>
-            <dd>
-                <textarea name="personality" class="@error('personality') is-invalid @enderror" rows="5" cols="100"
-                    required></textarea><br>
-                (入力例:とてもおとなしい性格です。少し臆病な一面もあります。)
-
-                @error('personality')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </dd><br>
-            <!--性格や特徴-->
-
-
-            <!--健康状態-->
-            <h2 class="form-label"><span class="form-require">必須</span>健康状態</h2>
-            <dd>
-                <textarea name="health" class="@error('health') is-invalid @enderror" rows="5" cols="100"
-                    required></textarea><br>
-                (入力例:健康面は特に問題ありません。)
-
-                @error('health')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </dd><br>
-            <!--健康状態-->
-
-
-            <!--引き渡し場所-->
-            <h2 class="form-label"><span class="form-require">必須</span>引き渡し場所</h2>
-            <dd>
-                <b>郵便番号<br></b>
-                <input type="text" name="zipCode" style="width:100px" id="zip_code" required>
-                <input type="button" value="住所検索" id="search_address_btn">
-                <input type="button" value="クリア" id="search_clear_btn">
-                <br />
-                <b>都道府県<br></b>
-                <input type="text" name="prefecture" style="width:500px" id="address1" required><br />
-                <b>市区町村<br></b>
-                <input type="text" name="city" style="width:500px" id="address2" required><br />
-                <b>番地・建物名<br></b>
-                <input type="text" name="building" style="width:500px" required><br />
-            </dd>
-
-            <!--その他備考-->
-            <h2 class="form-label"><span class="form-require2">任意</span>その他備考</h2>
-            <dd>
-                <textarea name="remarks" rows="5" cols="100" value=''></textarea><br>
-            </dd>
-            <!--その他備考-->
-
-            <input type="text" name="switch" style='display: none;'
-                value="{{ $data['switch'] }}">
-            @if($data['switch'] == "犬")
-                <input type="text" name="species" style='display: none;'
-                    value="{{ $data['speciesDog'] }}">
-            @else
-                <input type="text" name="species" style='display: none;'
-                    value="{{ $data['speciesCat'] }}">
-            @endif
-            <input type="text" name="gender" style='display: none;'
-                value="{{ $data['gender'] }}">
-            <input type="text" name="vaccination" style='display: none;'
-                value="{{ $data['vaccination'] }}">
-            <input type="text" name="castration" style='display: none;'
-                value="{{ $data['castration'] }}">
-            <input type="text" name="name" style='display: none;' value="{{ $data['name'] }}">
-            <input type="text" name="pattern" style='display: none;' value="{{ $data['pattern'] }}">
-            <input type="text" name="size" style='display: none;' value="{{ $data['size'] }}">
-            <input type="text" name="age" style='display: none;' value="{{ $data['age'] }}">
-            <input type="text" name="month" style='display: none;' value="{{ $data['month'] }}">
-
-            <input type="text" name="uuid" style='display: none;' value="{{ $data['uuid'] }}">
-            @foreach ($ex as $extension)
-            <input type="text" name="exts[]" style='display: none;' value="{{ $extension }}">
-            @endforeach
-            <button type="submit" class="form-Btn">次 へ</button>
-        </form>
-        <br><br>
-        <!--scroll to top button-->
-    </section>
+    </form>
 </div>
 @endsection

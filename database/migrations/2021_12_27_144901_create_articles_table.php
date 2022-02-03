@@ -35,7 +35,7 @@ class CreateArticlesTable extends Migration
 
             // $table->string('place'); // ペット所在地
             $table->string('name'); // ペットの名前
-            $table->string('pattern'); //ペットの毛柄
+            // $table->string('pattern'); //ペットの毛柄
 
             $table->string('background'); // 募集の経緯
             $table->string('personality'); // 性格

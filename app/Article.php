@@ -32,11 +32,11 @@ class Article extends Model
             'elderPerson' => $data['elderPerson'],
             'keeper' => $data['keeper'],
             'name' => $data['name'],
-            'pattern' => $data['pattern'],
+            // 'pattern' => $data['pattern'],
             'background' => $data['background'],
             'personality' => $data['personality'],
             'health' => $data['health'],
-            'transaction' => "{$data['zipCode']}{$data['prefecture']}{$data['city']}{$data['building']}",
+            'transaction' => $data['transfer'],
             'remarks' => $data['remarks'],
             'extensions' => implode('&', $data['exts']),
             'created_at' => Carbon::now() 

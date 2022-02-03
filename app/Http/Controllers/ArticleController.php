@@ -42,11 +42,11 @@ class ArticleController extends Controller
     {
         $user = \Auth::user();
         $data = $request->all();
-
-        $uuid = (string) Str::uuid();
-        $ex = Article::storeImg($data['img'], $uuid, $user);
-        $data['uuid'] = $uuid;
-        return view('articleRegister2', compact('user', 'data', 'ex'));
+        // dd($data);
+        // $uuid = (string) Str::uuid();
+        // $ex = Article::storeImg($data['img'], $uuid, $user);
+        // $data['uuid'] = $uuid;
+        return view('articleRegister2', compact('user', 'data'));
     }
 
     public function articleRegisterB(Request $request)
@@ -62,7 +62,11 @@ class ArticleController extends Controller
         $user = \Auth::user();
         $data = $request->all();
         // dd($data);
-        return view('articleConfirm', compact('user', 'data'));
+        $uuid = (string) Str::uuid();
+        $ex = Article::storeImg($data['img'], $uuid, $user);
+        $data['uuid'] = $uuid;
+        // dd($ex);
+        return view('articleConfirm', compact('user', 'data', 'ex'));
     }
 
     public function articleStore(Request $request)
