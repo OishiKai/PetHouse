@@ -41,7 +41,7 @@
     <div id="contents-container">
         <section id="title">
             <h2>{{ $data['title'] }}</h2>
-            <p>♥お気に入り登録者[]人｜閲覧数[]</p>
+            <p>♥お気に入り登録者 {{$favCount}} 人</p>
         </section>
         <section id="imgGallery">
             <div class="mein-frame">
@@ -67,7 +67,13 @@
                 }
 
             </script>
-            <h2>[名前] [(♂／♀)] [年齢]</h2>
+            @if ( $data['gender'] == 'オス')
+            <h2>{{ $data['name']}} くん  (♂) {{$data['age']}}</h2>
+            @elseif( $data['gender'] == 'メス')
+            <h2>{{ $data['name']}} ちゃん  (♀) {{$data['age']}}</h2>
+            @else
+            <h2>{{ $data['name']}} (性別不明) {{$data['age']}}</h2>
+            @endif
         </section>
         <section id="information">
             <div class="menu">
@@ -89,10 +95,6 @@
                             <tr>
                                 <th>サイズ</th>
                                 <td>{{ $data['size'] }}</td>
-                            </tr>
-                            <tr>
-                                <th>ペット所在地</th>
-                                <td>{{ $data['place'] }}</td>
                             </tr>
                         </table>
                     </li>
@@ -136,7 +138,11 @@
                             </tr>
                             <tr>
                                 <th>その他備考</th>
+                                @if ($data['remarks'] != null)
                                 <td>{{ $data['remarks'] }}</td>
+                                @else
+                                <td>なし</td>
+                                @endif
                             </tr>
                         </table>
                     </li>
@@ -164,17 +170,11 @@
                                 <th>
                                     <p>・先住ペットがいる方</p>
                                 </th>
-                                <td>[]</td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <p>・[]頭(匹)の譲渡を希望</p>
-                                </th>
-                                <td>【理由】[]</td>
+                                <td>{{ $data['keeper'] }}</td>
                             </tr>
                             <tr>
                                 <th>募集可能地域</th>
-                                <td></td>
+                                <td>{{ $quest['area']}}</td>
                             </tr>
                             <tr>
                                 <th>引き渡し場所</th>
@@ -192,15 +192,15 @@
                         <table>
                             <tr>
                                 <th>保護活動者<br>里親募集者名</th>
-                                <td>[]</td>
+                                <td>{{ $writer['kanjiFamilyName']}} {{ $writer['kanjiFirstName']}}</td>
                             </tr>
                             <tr>
                                 <th>会員種別</th>
-                                <td>[]</td>
+                                <td>{{ $quest['conservationStatus']}}</td>
                             </tr>
                             <tr>
                                 <th>団体・法人所在地<br>里親募集者住所</th>
-                                <td>[]</td>
+                                <td>{{ $quest['address']}}</td>
                             </tr>
                         </table>
                     </li>

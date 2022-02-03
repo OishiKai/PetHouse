@@ -25,7 +25,17 @@ class ArticleController extends Controller
     public function article()
     {
         $user = \Auth::user();
-        return view('articleRegister1', compact('user'));
+        if ($user['status'] != '1'){
+            return redirect()->route('myPage');
+        }else{
+            $question = Conservationquestionnaire::where('user_email', $user['email'])->get();
+            // dd($question);
+            if ($question[0]['answered'] == 'none'){
+                return redirect()->route('myPage');
+            }else{
+                return view('articleRegister1', compact('user'));
+            }
+        }
     }
     
     public function articleRegisterA(Request $request)

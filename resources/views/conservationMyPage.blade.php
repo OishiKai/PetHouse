@@ -34,6 +34,7 @@
             {{ $user['kanjiFirstName'] }} 様～</h1>
         <p class="article">里親希望者とのやり取りや記事の掲載ページ情報に保護活動者様の情報を提供していただきます。</p>
         <p class="article">以下のリンクからプロ―フィールの登録をお願いいたします。</p>
+        <h2>必ず募集記事を投稿される前にご回答ください。</h2>
         <br>
         <div class="linkbtn">
             <a href="{{ route('questionnaire') }}">アンケートの登録・変更ページへ向かう</a>
